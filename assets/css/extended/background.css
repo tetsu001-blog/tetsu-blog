@@ -1,8 +1,12 @@
 /* Custom Background Image */
-body {
-    background-image: url(/images/bg-image-wave.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
+html,
+body,
+.main,
+.theme-light {
+    background-color: transparent !important;
+    background-image: url(/images/bg-image-wave.png) !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-attachment: fixed !important;
+    background-position: center !important;
 }
