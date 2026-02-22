@@ -692,46 +692,7 @@
         });
     </script>
 
-    <!-- 目次用のスクリプト -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            var tocContainer = document.getElementById("toc-container");
-            if (!tocContainer) return;
 
-            var tocContent = document.getElementById("toc-content");
-            var tocToggle = document.getElementById("toc-toggle");
-
-            // 目次にリンク(<li>)が存在するか確認
-            var listItems = tocContent.querySelectorAll("li");
-            if (listItems.length > 0) {
-                tocContainer.style.display = "block"; // 目次を表示
-
-                // 目次の位置を最初の画像（サムネイル領域）の下に移動
-                var firstImage = document.querySelector(".prose img");
-                if (firstImage) {
-                    var parentBlock = firstImage.closest("div.separator, p") || firstImage.parentNode;
-                    if (parentBlock && parentBlock !== document.querySelector(".prose")) {
-                        parentBlock.parentNode.insertBefore(tocContainer, parentBlock.nextSibling);
-                    } else {
-                        firstImage.parentNode.insertBefore(tocContainer, firstImage.nextSibling);
-                    }
-                }
-            }
-
-            // 開閉の制御
-            if (tocToggle) {
-                tocToggle.addEventListener("click", function () {
-                    if (tocContent.style.display === "none") {
-                        tocContent.style.display = "block";
-                        tocToggle.textContent = "[非表示]";
-                    } else {
-                        tocContent.style.display = "none";
-                        tocToggle.textContent = "[表示]";
-                    }
-                });
-            }
-        });
-    </script>
 
     <!-- Fuse.js 検索ライブラリの読み込みと検索処理 -->
     <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>

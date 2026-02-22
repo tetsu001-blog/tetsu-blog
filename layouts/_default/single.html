@@ -9,30 +9,58 @@
         {{ end }}
     </header>
 
+    {{/* サムネイル画像（目次の上に表示） */}}
     {{ if .Params.image }}
-    <div class="mb-8 rounded overflow-hidden">
+    <div class="mb-8 rounded overflow-hidden" id="hero-thumbnail">
         <img src="{{ .Params.image | absURL }}" alt="{{ .Title }}" class="w-full h-auto rounded">
     </div>
     {{ end }}
 
-    <div class="prose prose-slate max-w-none prose-a:text-blue-500 hover:prose-a:text-blue-700">
-        {{ if and (not .IsHome) (ne .Slug "about") (ne .Slug "swap") (ne .Slug "privacy") (ne .Slug "contact") (ne .Slug
-        "thanks") }}
-        {{ if .TableOfContents }}
-        <div class="toc-container" id="toc-container">
-            <div class="toc-header">
-                <span class="toc-title">目次</span>
-                <span class="toc-toggle" id="toc-toggle"
-                    onclick="var c=document.getElementById('toc-content');if(c.style.display==='none'){c.style.display='';this.textContent='[非表示]'}else{c.style.display='none';this.textContent='[表示]'}"
-                    style="cursor:pointer;color:#3b82f6;">[非表示]</span>
-            </div>
-            <div class="toc-content" id="toc-content">
-                {{ .TableOfContents }}
-            </div>
+    {{/* 目次（サムネの下、本文の上に表示） */}}
+    {{ if and (not .IsHome) (ne .Slug "about") (ne .Slug "swap") (ne .Slug "privacy") (ne .Slug "contact") (ne .Slug
+    "thanks") }}
+    {{ if .TableOfContents }}
+    <div class="toc-container" id="toc-container">
+        <div class="toc-header">
+            <span class="toc-title">目次</span>
+            <span class="toc-toggle" id="toc-toggle"
+                onclick="var c=document.getElementById('toc-content');if(c.style.display==='none'){c.style.display='';this.textContent='[非表示]'}else{c.style.display='none';this.textContent='[表示]'}"
+                style="cursor:pointer;color:#3b82f6;">[非表示]</span>
         </div>
-        {{ end }}
-        {{ end }}
+        <div class="toc-content" id="toc-content">
+            {{ .TableOfContents }}
+        </div>
+    </div>
+    {{ end }}
+    {{ end }}
+
+    {{/* 本文 */}}
+    <div class="prose prose-slate max-w-none prose-a:text-blue-500 hover:prose-a:text-blue-700" id="article-content">
         {{ .Content }}
     </div>
 </article>
+
+{{/* サムネと同じ画像が本文内にもある場合、本文内の方を非表示にする */}}
+{{ if .Params.image }}
+<script>
+    (function () {
+        var thumb = '{{ .Params.image }}';
+        var content = document.getElementById('article-content');
+        if (!content) return;
+        var imgs = content.querySelectorAll('img');
+        for (var i = 0; i < imgs.length; i++) {
+            var src = imgs[i].getAttribute('src') || '';
+            if (src === thumb || src.indexOf(thumb) !== -1 || thumb.indexOf(src.replace(/.*\//, '/')) !== -1) {
+                var parent = imgs[i].closest('.separator, div, a');
+                if (parent && parent !== content) {
+                    parent.style.display = 'none';
+                } else {
+                    imgs[i].style.display = 'none';
+                }
+                break;
+            }
+        }
+    })();
+</script>
+{{ end }}
 {{ end }}
