@@ -9,6 +9,12 @@
         {{ end }}
     </header>
 
+    {{ if .Params.image }}
+    <div class="mb-8 rounded overflow-hidden">
+        <img src="{{ .Params.image | absURL }}" alt="{{ .Title }}" class="w-full h-auto rounded">
+    </div>
+    {{ end }}
+
     <div class="prose prose-slate max-w-none prose-a:text-blue-500 hover:prose-a:text-blue-700">
         {{ if and (not .IsHome) (ne .Slug "about") (ne .Slug "swap") (ne .Slug "privacy") (ne .Slug "contact") (ne .Slug
         "thanks") }}
