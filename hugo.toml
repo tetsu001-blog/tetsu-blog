@@ -16,3 +16,4 @@ ignoreFiles = ["content/templates/"]
 
 [outputs]
   home = ["HTML", "RSS", "JSON"]
+  section = ["HTML", "RSS"]
