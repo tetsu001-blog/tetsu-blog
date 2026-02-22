@@ -6,7 +6,7 @@ lastmod: 2026-02-11T11:36:48.531Z
 draft: false
 tags: []
 categories: []
-image: "/images/img_eb586a93a859.png"
+image: "images/img_eb586a93a859.png"
 ---
 
 <div class="separator" style="clear: both; text-align: center;"><a href="/images/img_c82ea29d139a.png" style="margin-left: 1em; margin-right: 1em;"><img border="0" data-original-height="800" data-original-width="1280" height="400" src="/images/img_eb586a93a859.png" width="640" /></a></div><br />2026年1月、GoogleのAIサブスクリプションに待望の新しい選択肢が登場しました。その名も<strong>「Google AI Plus」</strong>。月額1,200円という手頃な価格で、最新の高性能AIモデルとクラウドストレージを利用できるこのプランは、多くのユーザーにとって「ちょうどいい」選択肢となりそうです。本記事では、新プラン「Google AI

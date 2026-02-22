@@ -6,7 +6,7 @@ lastmod: 2026-02-11T10:15:26.197Z
 draft: false
 tags: []
 categories: []
-image: "/images/img_15ac5dd1ec14.png"
+image: "images/img_15ac5dd1ec14.png"
 ---
 
 <p data-path-to-node="5"></p><p data-path-to-node="5"></p><div class="separator" style="clear: both; text-align: center;"><a href="/images/img_7a67190871db.png" imageanchor="1" style="margin-left: 1em; margin-right: 1em;"><img border="0" data-original-height="349" data-original-width="640" height="350" src="/images/img_15ac5dd1ec14.png" width="640" /></a></div><br />Microsoft Edgeは、Google ChromeやFirefoxなどと並ぶ主要なWebブラウザですが、特に近年は大幅な進化を遂げ、他のブラウザにはない独自の強みを持っています。Edgeをメインとして使用している私が単なる「Windows標準ブラウザ」ではない、Edgeの<b>真の価値</b>をご紹介します。<p data-path-to-node="5"><br /></p><p data-path-to-node="6"></p>

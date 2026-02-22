@@ -6,7 +6,7 @@ lastmod: 2025-12-18T08:00:00.114Z
 draft: false
 tags: []
 categories: []
-image: "/images/img_f0c05517dd7a.jpg"
+image: "images/img_f0c05517dd7a.jpg"
 ---
 
 <div style="text-align: left;"><div class="separator" style="clear: both; text-align: center;"><a href="/images/img_1f259de61f2a.jpg" style="margin-left: 1em; margin-right: 1em;"><img data-original-height="768" data-original-width="1408" height="350" src="/images/img_f0c05517dd7a.jpg" width="640" /></a></div></div>

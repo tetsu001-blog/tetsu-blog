@@ -6,7 +6,7 @@ lastmod: 2025-12-11T09:30:47.414Z
 draft: false
 tags: []
 categories: []
-image: "/images/img_99b94de82ad5.jpg"
+image: "images/img_99b94de82ad5.jpg"
 ---
 
 <div class="separator" style="clear: both; text-align: center;"><a href="/images/img_28258144a912.jpg" style="margin-left: 1em; margin-right: 1em;"><img data-original-height="768" data-original-width="1408" height="350" src="/images/img_99b94de82ad5.jpg" width="640" /></a></div><br /><br /><p>普段よく使うWEBサイトやサービスを、毎回ブラウザを開いて検索したり、ブックマークから探したりしていませんか。</p>

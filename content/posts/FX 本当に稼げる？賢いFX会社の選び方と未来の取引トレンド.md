@@ -6,7 +6,7 @@ lastmod: 2025-12-11T09:27:45.047Z
 draft: false
 tags: []
 categories: []
-image: "/images/img_b50901fea471.jpg"
+image: "images/img_b50901fea471.jpg"
 ---
 
 <div><div class="separator" style="clear: both; text-align: center;"><a href="/images/img_75c4ae798b13.jpg" style="margin-left: 1em; margin-right: 1em;"><img data-original-height="462" data-original-width="849" src="/images/img_b50901fea471.jpg" /></a></div><br /></div>I. はじめに: FXの魅力と知っておくべきこと

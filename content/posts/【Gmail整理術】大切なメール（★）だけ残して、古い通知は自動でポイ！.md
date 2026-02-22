@@ -6,7 +6,7 @@ lastmod: 2026-02-16T10:11:33.503Z
 draft: false
 tags: []
 categories: []
-image: "/images/img_9d3d739fa36e.jpg"
+image: "images/img_9d3d739fa36e.jpg"
 ---
 
 <div class="separator" style="clear: both; text-align: center;"><a href="/images/img_02f15dfde47a.jpg" style="margin-left: 1em; margin-right: 1em;"><img data-original-height="559" data-original-width="1024" height="350" src="/images/img_9d3d739fa36e.jpg" width="640" /></a></div><br />Gmailを長く使っていると、メルマガや通知メールが溜まりに溜まって「保存容量が少なくなっています」という警告が出ること、ありませんか？

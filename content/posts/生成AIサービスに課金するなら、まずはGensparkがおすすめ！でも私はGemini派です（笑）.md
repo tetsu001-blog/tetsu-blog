@@ -6,7 +6,7 @@ lastmod: 2026-02-19T11:33:01.673Z
 draft: false
 tags: []
 categories: []
-image: "/images/img_7ef4f3c86980.jpg"
+image: "images/img_7ef4f3c86980.jpg"
 ---
 
 <div class="separator" style="clear: both; text-align: center;"><a href="/images/img_a41581ea2a9d.jpg" style="margin-left: 1em; margin-right: 1em;"><img data-original-height="559" data-original-width="1024" height="350" src="/images/img_7ef4f3c86980.jpg" width="640" /></a></div><br /><p>こんにちは、てつです！</p>
@@ -182,6 +182,7 @@ image: "/images/img_7ef4f3c86980.jpg"
     私の場合は「ストレージ容量」という、AIとは少し違う理由が決定打になりましたが、それも立派な選び方だと思っています（笑）。</p>
 
 <p>皆さんはどのAIが気になっていますか？もし「こんな使い方してるよ！」というおすすめがあれば、ぜひコメントで教えてくださいね！</p>
+
 
 
 

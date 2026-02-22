@@ -6,7 +6,7 @@ lastmod: 2025-11-23T05:56:48.876Z
 draft: false
 tags: []
 categories: []
-image: "/images/img_9a65b204fc11.jpg"
+image: "images/img_9a65b204fc11.jpg"
 ---
 
 <div><div class="separator" style="clear: both; text-align: center;"><a href="/images/img_812db5f06a5b.jpg" style="margin-left: 1em; margin-right: 1em;"><img data-original-height="768" data-original-width="1408" height="350" src="/images/img_9a65b204fc11.jpg" width="640" /></a></div><br /></div><div>Microsoftが推進する「AIネイティブOS」への転換が、忠実なユーザーや開発者コミュニティからの猛反発を招き、深刻な危機に瀕しています。本記事では、ソースの情報に基づき、MicrosoftのAI戦略が抱える危険性と、Windowsが「オワコン」と捉えられ始めている現実を分析します。</div>

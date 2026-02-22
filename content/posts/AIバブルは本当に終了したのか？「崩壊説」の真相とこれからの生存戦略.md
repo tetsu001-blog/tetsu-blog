@@ -6,7 +6,7 @@ lastmod: 2025-12-11T09:29:27.338Z
 draft: false
 tags: []
 categories: []
-image: "/images/img_18a802189672.jpg"
+image: "images/img_18a802189672.jpg"
 ---
 
 <div style="font-family: &quot;Google Sans&quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; text-align: left;"><div class="separator" style="clear: both; text-align: center;"><a href="/images/img_f1827cfc9609.jpg" style="margin-left: 1em; margin-right: 1em;"><img data-original-height="768" data-original-width="1408" height="350" src="/images/img_18a802189672.jpg" width="640" /></a></div><br /><br /></div>
