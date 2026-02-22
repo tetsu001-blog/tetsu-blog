@@ -18,15 +18,19 @@
     <div class="prose prose-slate max-w-none prose-a:text-blue-500 hover:prose-a:text-blue-700">
         {{ if and (not .IsHome) (ne .Slug "about") (ne .Slug "swap") (ne .Slug "privacy") (ne .Slug "contact") (ne .Slug
         "thanks") }}
-        <div class="toc-container" id="toc-container" style="display: none;">
+        {{ if .TableOfContents }}
+        <div class="toc-container" id="toc-container">
             <div class="toc-header">
                 <span class="toc-title">目次</span>
-                <span class="toc-toggle" id="toc-toggle">[非表示]</span>
+                <span class="toc-toggle" id="toc-toggle"
+                    onclick="var c=document.getElementById('toc-content');if(c.style.display==='none'){c.style.display='';this.textContent='[非表示]'}else{c.style.display='none';this.textContent='[表示]'}"
+                    style="cursor:pointer;color:#3b82f6;">[非表示]</span>
             </div>
             <div class="toc-content" id="toc-content">
                 {{ .TableOfContents }}
             </div>
         </div>
+        {{ end }}
         {{ end }}
         {{ .Content }}
     </div>
