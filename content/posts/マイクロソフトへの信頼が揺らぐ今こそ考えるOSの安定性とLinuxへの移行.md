@@ -4,7 +4,7 @@ slug: "2025-12-18"
 date: 2025-12-18T08:00:00Z
 lastmod: 2025-12-18T08:00:00.114Z
 draft: false
-tags: []
+tags: ["Linux", "PC"]
 categories: []
 image: "/images/img_f0c05517dd7a.jpg"
 ---
@@ -70,4 +70,5 @@ image: "/images/img_f0c05517dd7a.jpg"
 ## まとめ
 
 <p>マイクロソフトがAIや新機能の追加を急ぐ一方で、OSの根幹である安定性と信頼性が犠牲になっている側面は否定できません。もし現在の環境に不安を感じているのであれば、サブ機からでもLinuxを試し、自分にとって最適な「安定した土台」を探してみてはいかがでしょうか。</p><div class="separator" style="clear: both; text-align: center;"><a href="/images/img_147db4ae4f3c.jpg" style="margin-left: 1em; margin-right: 1em;"><img data-original-height="768" data-original-width="1408" height="219" src="/images/img_772541953f8d.jpg" width="400" /></a></div><br /><br />
+
 

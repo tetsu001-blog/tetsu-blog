@@ -4,7 +4,7 @@ slug: "2026-02-03"
 date: 2026-02-03T08:00:00Z
 lastmod: 2026-02-19T11:26:59.325Z
 draft: false
-tags: []
+tags: ["ブログ運営"]
 categories: []
 image: "/images/img_06c18ab94cd6.jpg"
 ---
@@ -288,5 +288,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 <p>これで、よりリッチで高速なブログカードが表示されるようになります。万が一APIが動かない場合でも、自動的に旧来のはてなブログカードが表示される安全設計になっています。</p>
 </article>
+
 
 

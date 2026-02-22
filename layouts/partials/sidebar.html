@@ -4,24 +4,75 @@
     <a href="/about/" class="text-blue-500 text-sm hover:underline hover:text-blue-700">自己紹介</a>
 </div>
 
-<!-- Archive -->
-<div
-    class="bg-white rounded border border-slate-100 p-5 flex justify-between items-center cursor-pointer shadow-sm group">
-    <h3 class="font-bold text-slate-800 text-sm">アーカイブ</h3>
-    <svg class="w-4 h-4 text-blue-500 transform group-hover:translate-y-0.5 transition-transform" fill="none"
-        stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-    </svg>
+<!-- Archive (Accordion) -->
+<div class="bg-white rounded border border-slate-100 shadow-sm overflow-hidden">
+    <div class="p-5 flex justify-between items-center cursor-pointer group"
+        onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180');">
+        <h3 class="font-bold text-slate-800 text-sm">アーカイブ</h3>
+        <svg class="w-4 h-4 text-blue-500 transition-transform duration-300" fill="none" stroke="currentColor"
+            viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+        </svg>
+    </div>
+    <div class="hidden border-t border-slate-100">
+        <ul class="py-2">
+            {{ $pages := where .Site.RegularPages "Type" "posts" }}
+            {{ $months := dict }}
+            {{ range $pages }}
+            {{ $key := .Date.Format "2006-01" }}
+            {{ $label := .Date.Format "2006年1月" }}
+            {{ if not (index $months $key) }}
+            {{ $months = merge $months (dict $key $label) }}
+            {{ end }}
+            {{ end }}
+            {{ $sortedKeys := slice }}
+            {{ range $key, $val := $months }}
+            {{ $sortedKeys = $sortedKeys | append $key }}
+            {{ end }}
+            {{ $sortedKeys = sort $sortedKeys "value" "desc" }}
+            {{ range $key := $sortedKeys }}
+            {{ $label := index $months $key }}
+            {{ $count := 0 }}
+            {{ range $pages }}
+            {{ if eq (.Date.Format "2006-01") $key }}
+            {{ $count = add $count 1 }}
+            {{ end }}
+            {{ end }}
+            <li>
+                <a href="/posts/"
+                    class="flex justify-between items-center px-5 py-1.5 text-sm text-slate-600 hover:bg-slate-50 hover:text-blue-600 transition-colors">
+                    <span>{{ $label }}</span>
+                    <span class="text-xs text-slate-400">({{ $count }})</span>
+                </a>
+            </li>
+            {{ end }}
+        </ul>
+    </div>
 </div>
 
-<!-- Labels -->
-<div
-    class="bg-white rounded border border-slate-100 p-5 flex justify-between items-center cursor-pointer shadow-sm group">
-    <h3 class="font-bold text-slate-800 text-sm">ラベル</h3>
-    <svg class="w-4 h-4 text-blue-500 transform group-hover:translate-y-0.5 transition-transform" fill="none"
-        stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-    </svg>
+<!-- Labels (Accordion) -->
+<div class="bg-white rounded border border-slate-100 shadow-sm overflow-hidden">
+    <div class="p-5 flex justify-between items-center cursor-pointer group"
+        onclick="this.nextElementSibling.classList.toggle('hidden'); this.querySelector('svg').classList.toggle('rotate-180');">
+        <h3 class="font-bold text-slate-800 text-sm">ラベル</h3>
+        <svg class="w-4 h-4 text-blue-500 transition-transform duration-300" fill="none" stroke="currentColor"
+            viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+        </svg>
+    </div>
+    <div class="hidden border-t border-slate-100">
+        <ul class="py-2">
+            {{ range $name, $taxonomy := .Site.Taxonomies.tags }}
+            <li>
+                <a href="{{ " /tags/" | relLangURL }}{{ $name | urlize }}/"
+                    class="flex justify-between items-center px-5 py-1.5 text-sm text-slate-600 hover:bg-slate-50 hover:text-blue-600 transition-colors">
+                    <span>{{ $name }}</span>
+                    <span class="text-xs text-slate-400">({{ len $taxonomy.Pages }})</span>
+                </a>
+            </li>
+            {{ end }}
+        </ul>
+    </div>
 </div>
 
 <!-- Privacy Policy -->

@@ -4,7 +4,7 @@ slug: "2026-02-16"
 date: 2026-02-16T10:11:00Z
 lastmod: 2026-02-16T10:11:33.503Z
 draft: false
-tags: []
+tags: ["ツール活用", "Google", "AI"]
 categories: []
 image: "/images/img_9d3d739fa36e.jpg"
 ---
@@ -123,4 +123,5 @@ function Gmail_cleanUp() {
 </ul>
 
 <p>ご自身のメールの溜まり具合に合わせて、ぜひお好みの期間で設定してみてくださいね！</p>
+
 

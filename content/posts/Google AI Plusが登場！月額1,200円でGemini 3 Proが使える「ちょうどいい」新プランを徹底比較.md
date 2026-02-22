@@ -4,7 +4,7 @@ slug: "2026-02-11"
 date: 2026-02-11T08:43:00Z
 lastmod: 2026-02-11T11:36:48.531Z
 draft: false
-tags: []
+tags: ["AI", "Google"]
 categories: []
 image: "/images/img_eb586a93a859.png"
 ---
@@ -283,4 +283,5 @@ image: "/images/img_eb586a93a859.png"
 <p>
   さらに、新規加入者向けに<strong>最初の2ヶ月間は半額（600円）</strong>で利用できるキャンペーンも実施されているため、試してみるなら今がチャンスです。
 </p><p>生成AIを広く使いたいという方には、Gensparkもおすすめです。<br /></p><p><a href="https://tetsu-miscellaneous.blogspot.com/2026/01/aigensparkgemini.html">https://tetsu-miscellaneous.blogspot.com/2026/01/aigensparkgemini.html</a></p><br />
+
 

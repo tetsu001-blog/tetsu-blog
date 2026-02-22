@@ -4,7 +4,7 @@ slug: "2025-11-19"
 date: 2025-11-19T08:00:00Z
 lastmod: 2025-11-23T05:56:48.876Z
 draft: false
-tags: []
+tags: ["AI", "Windows", "ツール活用", "Microsoft"]
 categories: []
 image: "/images/img_9a65b204fc11.jpg"
 ---
@@ -28,4 +28,5 @@ image: "/images/img_9a65b204fc11.jpg"
 <div>Microsoftがユーザーの猛反発やバグの多さを無視してまでAIをゴリ押しする背景には、<b>ユーザーのためではなく、投資家と競争に打ち勝つための戦略</b>があります。</div><div><ul style="text-align: left;"><li><b>Windowsの集金装置化</b>: Microsoftは、AIが次のプラットフォームレベルのシフトだと信じており、<b>Windows OS自体が有料AIサービスを売り付けるための「集金装置」（ロートファネル）に変貌しつつある</b>と考えられています。</li></ul></div><div><ul style="text-align: left;"><li><b>B2C軽視とB2B重視</b>: Microsoftは、エンドユーザー（B2C）よりも、<b>大規模な収益源である企業向け（B2B）取引</b>を重視しており、OSにAIを組み込むことで、全社員にAI利用を強制し、そこから課金を得ようとしています。</li></ul></div><div><ul style="text-align: left;"><li>&nbsp;<b>重量課金制の懸念</b>&nbsp;: この戦略は、将来的に1回切りのOS料金や定額サブスクではなく、メールの要約や会議の分析など、<b>行ったこと全てに課金される「重量課金制」</b>へと移行する危険性をはらんでいます。</li></ul></div>
 ## 結論：安定性を失い、ユーザーの信頼を放棄したWindowsの未来
 <div>AIゴリ押しに対する批判を受け、ダブルリ氏は後に「私たちは開発者のことを<b>深く気にかけている</b>」と釈明しました。しかし、この言葉はコメント欄を封鎖したという<b>行動</b>と矛盾しており、多くのユーザーは信用していません。</div><div>Microsoftは、AIという「未来」に乗り遅れまいと、ユーザーの望む「安定したWindows 7のようなOS」を作る道（自社のクラウドサービスとAIへの<b>莫大な投資を捨てる</b>こと）を選ばず、AIという集金装置のために突き進むことを選んでいます。</div><div>しかし、土台となるOSが<b>不安定</b>で、<b>アップデートのたびにバグ</b>が出荷され（ローカルホストの破壊やタスクマネージャーのゾンビプロセスなど）、ユーザーの<b>声が封鎖</b>され続けるならば、Windowsは忠実なユーザーを失い続け、「オワコン化」を加速させるでしょう。</div><span><!--more--></span><div><b>（例え話）</b></div><div>Microsoftが今進めているAIゴリ押しは、<b>基礎工事がぐらついている古い家に、最新式の豪華なスマート家電（AI）を無理やり詰め込んでいる</b>ようなものです。住人（ユーザー）は「雨漏りを直せ」「床が不安定だ」と叫んでいるのに、家主（Microsoft）は「この家は未来のエージェント型住宅になる！」と叫び、住人の声をシャットアウトしています。豪華なスマート家電がどれだけ魅力的でも、土台が崩れてしまえば、住人たちはより安定した隣の家（MacやLinux）へ避難せざるを得ません。Microsoftが今本当にすべきことは、豪華な飾りつけではなく、<b>基礎の安定と住人との対話</b>のはずです。<div class="separator" style="clear: both; text-align: center;"><a href="/images/img_45b1b5d3573d.jpg" style="margin-left: 1em; margin-right: 1em;"><img data-original-height="1024" data-original-width="1024" height="400" src="/images/img_749c5cb6a4b1.jpg" width="400" /></a></div><br /></div>
+
 

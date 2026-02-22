@@ -17,5 +17,5 @@ Thumbs.db
 *.swp
 *.bak
 
-# Images (Do not push to GitHub)
-static/images/
+# Images
+# (削除：画像をGitHubへプッシュするために除外設定を解除)

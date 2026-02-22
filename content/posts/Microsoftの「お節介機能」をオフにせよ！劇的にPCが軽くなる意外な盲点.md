@@ -4,7 +4,7 @@ slug: "2026-01-05"
 date: 2026-01-05T08:37:00Z
 lastmod: 2026-02-03T00:43:38.346Z
 draft: false
-tags: []
+tags: ["Microsoft", "Windows"]
 categories: []
 image: "/images/img_8d6e7a2413e5.jpg"
 ---
@@ -176,6 +176,7 @@ image: "/images/img_8d6e7a2413e5.jpg"
 <a href="/images/img_c283d79dc2b6.jpg" style="margin-left: 1em; margin-right: 1em;"><img data-original-height="768" data-original-width="1408" height="219" src="/images/img_582c004894fd.jpg" width="400" /></a>
 </div>
 <br /><br />
+
 
 
 
