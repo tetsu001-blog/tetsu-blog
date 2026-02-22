@@ -64,7 +64,7 @@
         <ul class="py-2">
             {{ range $name, $taxonomy := .Site.Taxonomies.tags }}
             <li>
-                <a href="{{ " /tags/" | relLangURL }}{{ $name | urlize }}/"
+                <a href="/tags/{{ $name | urlize }}/"
                     class="flex justify-between items-center px-5 py-1.5 text-sm text-slate-600 hover:bg-slate-50 hover:text-blue-600 transition-colors">
                     <span>{{ $name }}</span>
                     <span class="text-xs text-slate-400">({{ len $taxonomy.Pages }})</span>
