@@ -1,0 +1,8 @@
+/* Custom Background Image */
+body {
+    background-image: url(/images/bg-image.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
