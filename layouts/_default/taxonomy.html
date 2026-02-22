@@ -1,15 +1,31 @@
 {{ define "main" }}
 <div class="bg-white rounded shadow-sm border border-slate-100 p-6 md:p-10 mb-8">
     <header class="mb-8">
-        <h1 class="text-2xl md:text-3xl font-bold text-slate-800 mb-4">{{ .Title }}</h1>
+        <h1 class="text-2xl md:text-3xl font-bold text-slate-800 mb-2">{{ .Title }}</h1>
+        <p class="text-sm text-slate-500">{{ len .Pages }}件の記事</p>
     </header>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {{ range .Pages }}
-        <a href="{{ .Permalink }}"
-            class="block p-4 border border-slate-200 rounded hover:shadow-md hover:border-blue-300 transition-all">
-            <h3 class="font-bold text-sm text-slate-800 mb-1 line-clamp-2">{{ .Title }}</h3>
-            <p class="text-xs text-slate-500">{{ .Date.Format "2006年1月2日" }}</p>
-        </a>
+        <article
+            class="bg-white rounded shadow-sm overflow-hidden border border-slate-100 flex flex-col group relative">
+            <a href="{{ .RelPermalink }}" class="block relative aspect-video overflow-hidden">
+                {{ if .Params.image }}
+                <img src="{{ .Params.image | absURL }}" alt="{{ .Title }}"
+                    class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300">
+                {{ else }}
+                <div class="w-full h-full bg-slate-200 flex items-center justify-center">No Image</div>
+                {{ end }}
+            </a>
+            <div class="p-5 flex-grow flex flex-col">
+                <h3
+                    class="font-bold text-sm md:text-base mb-2 text-slate-800 hover:text-blue-600 transition-colors leading-tight flex-grow">
+                    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                </h3>
+                <div class="flex justify-between items-center mt-auto pt-3">
+                    <p class="text-xs text-slate-500">{{ .Date.Format "2006年1月2日" }}</p>
+                </div>
+            </div>
+        </article>
         {{ end }}
     </div>
 </div>
