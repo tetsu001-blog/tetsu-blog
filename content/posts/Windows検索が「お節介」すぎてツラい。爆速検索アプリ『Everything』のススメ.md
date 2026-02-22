@@ -4,7 +4,7 @@ slug: "2026-01-14"
 date: 2026-01-14T08:00:00Z
 lastmod: 2026-01-14T08:00:00.124Z
 draft: false
-tags: ["Windows", "ツール活用"]
+tags: ["デジタル"]
 categories: []
 image: "/images/img_7f7cd4e2d974.jpg"
 ---
@@ -40,5 +40,6 @@ image: "/images/img_7f7cd4e2d974.jpg"
 
 <p>Windowsの検索機能はどんどん多機能（かつ肥大化）していますが、私たちが本当に求めているのは<b>「探しているファイルがすぐに見つかること」</b>ですよね。</p>
 <p>「Windowsの検索が遅くて使いにくい！」と悩んでいる方は、ぜひ『Everything』を試してみてください。PCライフの快適さがガラッと変わりますよ！</p><br />
+
 
 

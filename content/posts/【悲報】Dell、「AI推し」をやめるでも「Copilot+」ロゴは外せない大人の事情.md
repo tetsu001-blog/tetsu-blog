@@ -4,7 +4,7 @@ slug: "2026-01-11"
 date: 2026-01-11T08:03:00Z
 lastmod: 2026-01-11T08:03:58.449Z
 draft: false
-tags: ["AI", "PC"]
+tags: ["雑記", "デジタル"]
 categories: []
 image: "/images/img_09e8d0556937.jpg"
 ---
@@ -40,5 +40,6 @@ image: "/images/img_09e8d0556937.jpg"
 <li><strong>市場の現実:</strong> 消費者はクラウドAIで満足しており、ローカルAI機能のためにPCを買い替える動機は薄い。Windows 10からの移行も停滞している。</li>
 </ul>
 <p>MicrosoftがAIゴリ押しを続ける中、ハードウェアメーカーであるDellが「ユーザー目線」に立ち返ったことは、PC市場にとって一つの転換点になるかもしれません。</p>
+
 
 

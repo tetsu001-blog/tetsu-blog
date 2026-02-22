@@ -1,0 +1,58 @@
+{{ define "main" }}
+<div class="bg-white rounded shadow-sm border border-slate-100 p-6 md:p-10 mb-8">
+    <header class="mb-8">
+        <h1 class="text-2xl md:text-3xl font-bold text-slate-800 mb-2" id="archive-title">{{ .Title }}</h1>
+        <p class="text-sm text-slate-500" id="archive-count">{{ len .Pages }}件の記事</p>
+    </header>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="posts-grid">
+        {{ range .Pages }}
+        <article
+            class="bg-white rounded shadow-sm overflow-hidden border border-slate-100 flex flex-col group relative post-card"
+            data-date="{{ .Date.Format " 2006-01" }}">
+            <a href="{{ .RelPermalink }}" class="block relative aspect-video overflow-hidden">
+                {{ if .Params.image }}
+                <img src="{{ .Params.image | absURL }}" alt="{{ .Title }}"
+                    class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300">
+                {{ else }}
+                <div class="w-full h-full bg-slate-200 flex items-center justify-center">No Image</div>
+                {{ end }}
+            </a>
+            <div class="p-5 flex-grow flex flex-col">
+                <h3
+                    class="font-bold text-sm md:text-base mb-2 text-slate-800 hover:text-blue-600 transition-colors leading-tight flex-grow">
+                    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                </h3>
+                <div class="flex justify-between items-center mt-auto pt-3">
+                    <p class="text-xs text-slate-500">{{ .Date.Format "2006年1月2日" }}</p>
+                </div>
+            </div>
+        </article>
+        {{ end }}
+    </div>
+</div>
+
+<script>
+    (function () {
+        var params = new URLSearchParams(window.location.search);
+        var month = params.get('month');
+        if (!month) return;
+
+        var cards = document.querySelectorAll('.post-card');
+        var shown = 0;
+        cards.forEach(function (card) {
+            if (card.getAttribute('data-date') === month) {
+                card.style.display = '';
+                shown++;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+
+        // 月ラベルを生成 (例: "2026-01" → "2026年1月")
+        var parts = month.split('-');
+        var label = parts[0] + '年' + parseInt(parts[1]) + '月';
+        document.getElementById('archive-title').textContent = label + 'の記事';
+        document.getElementById('archive-count').textContent = shown + '件の記事';
+    })();
+</script>
+{{ end }}
