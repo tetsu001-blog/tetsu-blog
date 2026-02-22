@@ -1,0 +1,139 @@
+{{ define "main" }}
+<div class="mb-4">
+    <h2 class="text-xl font-bold text-slate-800">新着</h2>
+</div>
+
+{{ $posts := where .Site.RegularPages "Type" "posts" }}
+{{ $posts = $posts.ByDate.Reverse }}
+
+{{/* Hugo標準のページネーション（12件）を利用しつつ、1ページ目を10件にするためのダミー要素追加トリック */}}
+{{ $combined := slice }}
+{{ if gt (len $posts) 0 }}
+{{ $dummy := index $posts 0 }}
+{{ $combined = $combined | append $dummy | append $dummy }}
+{{ end }}
+{{ range $posts }}
+{{ $combined = $combined | append . }}
+{{ end }}
+
+{{ $paginator := .Paginate $combined 12 }}
+{{ $items := $paginator.Pages }}
+
+{{ if eq $paginator.PageNumber 1 }}
+{{/* 1ページ目の場合：先頭のダミー2件をスキップし、残り10件を取得 */}}
+{{ $items = $items | after 2 }}
+{{ $first := $items | first 1 }}
+{{ $rest := $items | after 1 }}
+
+<!-- Hero Section (1st post) -->
+{{ range $first }}
+<article class="bg-white rounded shadow-sm overflow-hidden mb-8 border border-slate-100 group">
+    <a href="{{ .RelPermalink }}" class="block relative aspect-video md:aspect-[21/9] overflow-hidden">
+        {{ if .Params.image }}
+        <img src="{{ .Params.image }}" alt="{{ .Title }}"
+            class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300">
+        {{ else }}
+        <div class="w-full h-full bg-slate-200 flex items-center justify-center">No Image</div>
+        {{ end }}
+    </a>
+    <div class="p-6">
+        <h3 class="font-bold text-xl md:text-2xl mb-2 text-slate-800 hover:text-blue-600 transition-colors">
+            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        </h3>
+        <div class="flex justify-between items-center mt-4">
+            <p class="text-sm text-slate-500">{{ .Date.Format "2006年1月2日" }}</p>
+            <a href="https://x.com/intent/tweet?url={{ .Permalink }}&text=てつblog：{{ .Title }}" target="_blank"
+                rel="noopener noreferrer" class="text-blue-500 hover:text-blue-700">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                </svg>
+            </a>
+        </div>
+    </div>
+</article>
+{{ end }}
+
+<!-- Grid (remaining posts) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {{ range $rest }}
+    <article class="bg-white rounded shadow-sm overflow-hidden border border-slate-100 flex flex-col group relative">
+        <a href="{{ .RelPermalink }}" class="block relative aspect-video overflow-hidden">
+            {{ if .Params.image }}
+            <img src="{{ .Params.image }}" alt="{{ .Title }}"
+                class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300">
+            {{ else }}
+            <div class="w-full h-full bg-slate-200 flex items-center justify-center">No Image</div>
+            {{ end }}
+        </a>
+        <div class="p-5 flex-grow flex flex-col">
+            <h3
+                class="font-bold text-sm md:text-base mb-2 text-slate-800 hover:text-blue-600 transition-colors leading-tight flex-grow">
+                <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+            </h3>
+            <div class="flex justify-between items-center mt-auto pt-3">
+                <p class="text-xs text-slate-500">{{ .Date.Format "2006年1月2日" }}</p>
+                <a href="https://x.com/intent/tweet?url={{ .Permalink }}&text=てつblog：{{ .Title }}" target="_blank"
+                    rel="noopener noreferrer" class="text-blue-500 hover:text-blue-700">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </article>
+    {{ end }}
+</div>
+
+{{ else }}
+{{/* 2ページ目以降の場合：ヒーローセクションなしでグリッド12件のみ表示 */}}
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {{ range $items }}
+    <article class="bg-white rounded shadow-sm overflow-hidden border border-slate-100 flex flex-col group relative">
+        <a href="{{ .RelPermalink }}" class="block relative aspect-video overflow-hidden">
+            {{ if .Params.image }}
+            <img src="{{ .Params.image }}" alt="{{ .Title }}"
+                class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300">
+            {{ else }}
+            <div class="w-full h-full bg-slate-200 flex items-center justify-center">No Image</div>
+            {{ end }}
+        </a>
+        <div class="p-5 flex-grow flex flex-col">
+            <h3
+                class="font-bold text-sm md:text-base mb-2 text-slate-800 hover:text-blue-600 transition-colors leading-tight flex-grow">
+                <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+            </h3>
+            <div class="flex justify-between items-center mt-auto pt-3">
+                <p class="text-xs text-slate-500">{{ .Date.Format "2006年1月2日" }}</p>
+                <a href="https://x.com/intent/tweet?url={{ .Permalink }}&text=てつblog：{{ .Title }}" target="_blank"
+                    rel="noopener noreferrer" class="text-blue-500 hover:text-blue-700">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </article>
+    {{ end }}
+</div>
+{{ end }}
+
+<!-- Pagination / Next Page link -->
+{{ if gt $paginator.TotalPages 1 }}
+<div class="mt-12 flex justify-center items-center space-x-6 text-blue-500 font-medium text-lg lg:text-xl">
+    {{ if $paginator.HasPrev }}
+    <a href="{{ $paginator.Prev.URL }}" class="inline-block hover:underline active:opacity-70 transition-opacity">&lt;
+        前のページ</a>
+    {{ end }}
+
+    <span class="text-slate-500 text-sm">ページ {{ $paginator.PageNumber }} / {{ $paginator.TotalPages }}</span>
+
+    {{ if $paginator.HasNext }}
+    <a href="{{ $paginator.Next.URL }}" class="inline-block hover:underline active:opacity-70 transition-opacity">次のページ
+        &gt;</a>
+    {{ end }}
+</div>
+{{ end }}
+{{ end }}

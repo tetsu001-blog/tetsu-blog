@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="{{ default " ja" .Site.LanguageCode }}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+
+    <!-- OGP / Twitter Card -->
+    <meta property="og:site_name" content="{{ .Site.Title }}">
+    <meta property="og:type" content="{{ if .IsHome }}website{{ else }}article{{ end }}">
+    <meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
+    <meta property="og:description"
+        content="{{ with .Description }}{{ . }}{{ else }}{{ with .Summary }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}{{ end }}">
+    <meta property="og:url" content="{{ .Permalink }}">
+    {{ if .Params.image }}
+    <meta property="og:image" content="{{ .Params.image | absURL }}">
+    {{ else }}
+    <meta property="og:image" content="{{ `images/default-ogp.jpg` | absURL }}">
+    {{ end }}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
+    <meta name="twitter:description"
+        content="{{ with .Description }}{{ . }}{{ else }}{{ with .Summary }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}{{ end }}">
+    {{ if .Params.image }}
+    <meta name="twitter:image" content="{{ .Params.image | absURL }}">
+    {{ else }}
+    <meta name="twitter:image" content="{{ `images/default-ogp.jpg` | absURL }}">
+    {{ end }}
+
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@700&display=swap"
+        rel="stylesheet">
+    <!-- Highlight.js -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Noto Sans JP"', 'sans-serif'],
+                        serif: ['"Noto Serif JP"', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: "Noto Sans JP", sans-serif;
+        }
+
+        /* 記事本文のタイポグラフィ */
+        .prose h2 {
+            position: relative;
+            padding: 1rem 1.5rem;
+            background-color: #f0f9ff;
+            border-left: 6px solid #0ea5e9;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #0c4a6e;
+            margin-top: 2rem;
+            margin-bottom: 1.5rem;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+        }
+
+        .prose h3 {
+            position: relative;
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #1f2937;
+            padding-bottom: 0.5rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .prose h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #e5e7eb;
+        }
+
+        .prose h3::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 3rem;
+            height: 2px;
+            background: #3b82f6;
+            z-index: 1;
+        }
+
+        .prose h4 {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #334155;
+            margin-top: 1.25em;
+            margin-bottom: 0.5em;
+        }
+
+        .prose p {
+            margin-top: 0.75em;
+            margin-bottom: 0.75em;
+            line-height: 1.8;
+        }
+
+        .prose ul:not(.toc-content ul) {
+            list-style-type: none;
+            padding-left: 0;
+            margin-top: 0.75em;
+            margin-bottom: 1.5rem;
+        }
+
+        .prose ul:not(.toc-content ul)>li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-top: 0.25em;
+            margin-bottom: 0.75em;
+            color: #4b5563;
+        }
+
+        .prose ul:not(.toc-content ul)>li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.6em;
+            width: 8px;
+            height: 8px;
+            background-color: #8b5cf6;
+            border-radius: 50%;
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+        }
+
+        .prose ol:not(.toc-content ol) {
+            counter-reset: my-counter;
+            list-style: none;
+            padding-left: 0;
+            margin-top: 0.75em;
+            margin-bottom: 1.5rem;
+        }
+
+        .prose ol:not(.toc-content ol)>li {
+            position: relative;
+            padding-left: 2.5rem;
+            margin-top: 0.25em;
+            margin-bottom: 1rem;
+            color: #4b5563;
+            min-height: 28px;
+        }
+
+        .prose ol:not(.toc-content ol)>li::before {
+            counter-increment: my-counter;
+            content: counter(my-counter);
+            position: absolute;
+            left: 0;
+            top: -0.1em;
+            width: 28px;
+            height: 28px;
+            background-color: #f97316;
+            color: white;
+            font-size: 0.875rem;
+            font-weight: bold;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(249, 115, 22, 0.3);
+        }
+
+        .prose li {
+            line-height: 1.7;
+        }
+
+        .prose blockquote {
+            border-left: 4px solid #3b82f6;
+            padding: 0.5em 1em;
+            margin: 1em 0;
+            background-color: #f8fafc;
+            color: #475569;
+            font-style: italic;
+        }
+
+        .prose code {
+            background-color: #f1f5f9;
+            padding: 0.15em 0.4em;
+            border-radius: 3px;
+            font-size: 0.9em;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+        }
+
+        /* コードブロック コンテナ */
+        .code-block-wrapper {
+            position: relative;
+            margin: 1.5em 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .code-block-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #343a46;
+            padding: 8px 16px;
+            border-bottom: 1px solid #464d5a;
+        }
+
+        .code-block-lang {
+            font-size: 0.8em;
+            font-weight: 600;
+            color: #a0aec0;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .code-block-copy {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            background: none;
+            border: none;
+            color: #a0aec0;
+            cursor: pointer;
+            font-size: 0.8em;
+            padding: 4px 8px;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .code-block-copy:hover {
+            background-color: #4a5568;
+            color: #e2e8f0;
+        }
+
+        .code-block-copy.copied {
+            color: #68d391;
+        }
+
+        .code-block-copy svg {
+            width: 14px;
+            height: 14px;
+            fill: currentColor;
+        }
+
+        .prose pre {
+            background-color: #282c34;
+            color: #abb2bf;
+            padding: 1em 1.2em;
+            margin: 0;
+            overflow-x: auto;
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+
+        .prose pre code {
+            background: none;
+            padding: 0;
+            color: inherit;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+        }
+
+        .prose a {
+            color: #3b82f6;
+            text-decoration: none;
+        }
+
+        .prose a:hover {
+            color: #2563eb;
+            text-decoration: underline;
+        }
+
+        .prose hr {
+            border: none;
+            border-top: 1px solid #e2e8f0;
+            margin: 2em 0;
+        }
+
+        .prose img {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+            margin: 2em auto;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .prose table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1em 0;
+        }
+
+        .prose th,
+        .prose td {
+            border: 1px solid #e2e8f0;
+            padding: 0.5em 0.75em;
+            text-align: left;
+        }
+
+        .prose th {
+            background-color: #f8fafc;
+            font-weight: 600;
+        }
+
+        .prose strong {
+            font-weight: 700;
+        }
+
+        /* 目次 (TOC) */
+        .toc-container {
+            border: 1px solid #cbd5e1;
+            background-color: #ffffff;
+            padding: 1.5em;
+            margin: 2em auto;
+            max-width: 90%;
+        }
+
+        .toc-header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5em;
+            margin-bottom: 1em;
+        }
+
+        .toc-title {
+            font-size: 1.1em;
+            color: #334155;
+        }
+
+        .toc-toggle {
+            font-size: 0.9em;
+            color: #334155;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .toc-toggle:hover {
+            color: #0ea5e9;
+        }
+
+        .toc-content nav>ul {
+            padding-left: 0;
+            list-style: none;
+            margin: 0;
+            counter-reset: toc-counter;
+        }
+
+        .toc-content nav ul ul {
+            list-style: none;
+            padding-left: 1.5em;
+            counter-reset: toc-subcounter;
+        }
+
+        .toc-content nav li {
+            position: relative;
+            margin: 0.5em 0;
+            line-height: 1.5;
+        }
+
+        .toc-content nav>ul>li::before {
+            counter-increment: toc-counter;
+            content: counter(toc-counter) ". ";
+            color: #0284c7;
+            font-weight: 500;
+            margin-right: 0.3em;
+        }
+
+        .toc-content nav ul ul>li::before {
+            counter-increment: toc-subcounter;
+            content: counter(toc-counter) "." counter(toc-subcounter) ". ";
+            color: #0284c7;
+            font-weight: 500;
+            margin-right: 0.3em;
+        }
+
+        .toc-content nav a {
+            color: #0284c7;
+            text-decoration: none;
+            font-size: 1em;
+        }
+
+        .toc-content nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* ブログカード */
+        .blog-card {
+            display: flex !important;
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+            margin: 1.5em 0;
+            text-decoration: none !important;
+            color: #333 !important;
+            overflow: hidden;
+            height: 140px;
+            transition: all 0.3s ease;
+        }
+
+        .blog-card:hover {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+            opacity: 1 !important;
+        }
+
+        .blog-card-thumbnail {
+            width: 35%;
+            min-width: 120px;
+            max-width: 200px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            flex-shrink: 0;
+            border-right: 1px solid #f0f0f0;
+        }
+
+        .blog-card-content {
+            flex: 1;
+            padding: 15px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .blog-card-meta {
+            display: flex;
+            align-items: center;
+            font-size: 0.85em;
+            color: #999;
+            margin-bottom: 8px;
+        }
+
+        .blog-card-icon {
+            width: 14px;
+            height: 14px;
+            margin-right: 6px;
+            fill: #999;
+        }
+
+        .blog-card-title {
+            font-size: 1.1em;
+            font-weight: bold;
+            line-height: 1.4;
+            color: #333;
+            margin: 0;
+            max-height: 2.8em;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+        }
+
+        /* 検索結果（ドロップダウン）のアイテム設定 */
+        .search-results-item {
+            display: block;
+            padding: 8px 12px;
+            text-decoration: none;
+            color: #334155;
+            border-bottom: 1px solid #f1f5f9;
+            transition: background-color 0.2s;
+            font-size: 0.875rem;
+        }
+
+        .search-results-item:hover {
+            background-color: #f8fafc;
+        }
+
+        .search-results-item:last-child {
+            border-bottom: none;
+        }
+
+        .search-results-title {
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 2px;
+        }
+
+        .search-results-date {
+            font-size: 0.75rem;
+            color: #64748b;
+        }
+
+        .search-results-empty {
+            padding: 12px;
+            color: #64748b;
+            font-size: 0.875rem;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-to-br from-blue-50 to-gray-200 min-h-screen text-slate-800 flex flex-col">
+    <!-- Header -->
+    {{ partial "header.html" . }}
+
+    <!-- Main Container -->
+    <div class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 w-full">
+        <!-- Using a grid for main content and sidebar -->
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
+            <!-- Main Content Area -->
+            <main class="lg:col-span-3">
+                {{ block "main" . }}{{ end }}
+            </main>
+
+            <!-- Sidebar Area -->
+            <aside class="lg:col-span-1 space-y-4 {{ if .IsHome }}lg:mt-11{{ end }}">
+                {{ partial "sidebar.html" . }}
+            </aside>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    {{ partial "footer.html" . }}
+
+    <!-- ブログカード自動変換スクリプト -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // 記事本文内のリンクを探す
+            var article = document.querySelector("main article") || document.querySelector("main");
+            if (!article) return;
+
+            var links = article.getElementsByTagName("a");
+            for (var i = links.length - 1; i >= 0; i--) {
+                var link = links[i];
+                var text = link.textContent.trim();
+                var href = link.href;
+
+                // URLのみのリンクかつ画像を含まない場合
+                if ((href === text || href === text + "/" || href + "/" === text) && !link.querySelector('img')) {
+                    if (link.getAttribute('data-processed')) continue;
+                    link.setAttribute('data-processed', 'true');
+
+                    var parent = link.parentNode;
+                    // 親要素のテキストがリンクのテキストと一致（行全体がURLのみ）
+                    if (parent.textContent.trim() === text || parent.textContent.trim() === text + "/") {
+                        createBlogCard(link, parent);
+                    }
+                }
+            }
+
+            function createBlogCard(link, parent) {
+                var url = link.href;
+                var apiUrl = 'https://api.microlink.io/?url=' + encodeURIComponent(url);
+
+                fetch(apiUrl)
+                    .then(function (response) {
+                        if (!response.ok) throw new Error('Network error');
+                        return response.json();
+                    })
+                    .then(function (json) {
+                        var data = json.data;
+                        if (!data || !data.title) throw new Error('No metadata');
+
+                        var title = data.title;
+                        var image = data.image ? data.image.url : null;
+                        var dateStr = '';
+
+                        if (data.date) {
+                            var date = new Date(data.date);
+                            if (!isNaN(date.getTime())) {
+                                dateStr = date.getFullYear() + '年' + (date.getMonth() + 1) + '月' + date.getDate() + '日';
+                            }
+                        }
+                        if (!dateStr) {
+                            dateStr = data.publisher || new URL(url).hostname;
+                        }
+
+                        var card = document.createElement('a');
+                        card.className = 'blog-card';
+                        card.href = url;
+                        card.target = '_blank';
+                        card.rel = 'noopener noreferrer';
+
+                        var thumbHtml = image
+                            ? '<div class="blog-card-thumbnail" style="background-image: url(\'' + image + '\')"></div>'
+                            : '';
+
+                        card.innerHTML = thumbHtml +
+                            '<div class="blog-card-content">' +
+                            '<div class="blog-card-meta">' +
+                            '<svg class="blog-card-icon" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>' +
+                            '<span>' + dateStr + '</span>' +
+                            '</div>' +
+                            '<div class="blog-card-title">' + title + '</div>' +
+                            '</div>';
+
+                        parent.insertBefore(card, link);
+                        link.style.display = 'none';
+                    })
+                    .catch(function (error) {
+                        // エラー時はそのまま通常リンクで表示
+                        console.log('Blog card error for:', url, error);
+                    });
+            }
+        });
+    </script>
+
+    <!-- コードブロック初期化スクリプト -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Highlight.js初期化
+            hljs.highlightAll();
+
+            // 全てのpre > codeブロックにヘッダーを追加
+            document.querySelectorAll('.prose pre code, article pre code').forEach(function (codeEl) {
+                var pre = codeEl.parentElement;
+                if (pre.parentElement.classList.contains('code-block-wrapper')) return; // 既に処理済み
+
+                // 言語の検出
+                var lang = 'Code';
+                var classes = codeEl.className.split(/\s+/);
+                for (var i = 0; i < classes.length; i++) {
+                    if (classes[i].startsWith('language-')) {
+                        lang = classes[i].replace('language-', '').toUpperCase();
+                        break;
+                    } else if (classes[i].startsWith('hljs') && classes[i] !== 'hljs') {
+                        // do nothing
+                    }
+                }
+
+                // コンテンツからHTML/CSS/JS等を推測
+                var content = codeEl.textContent;
+                if (lang === 'CODE') {
+                    if (content.match(/^\s*<(!DOCTYPE|html|head|body|div|span|script|style|link|meta|a |p |img|br|h[1-6]|ul|ol|li|table|form|input|button|iframe)/im)) lang = 'HTML';
+                    else if (content.match(/^\s*(function|var |let |const |document\.|window\.|addEventListener|querySelector)/m)) lang = 'JAVASCRIPT';
+                    else if (content.match(/^\s*(\.|#|@media|@keyframes|body|html|div|span)\s*{/m)) lang = 'CSS';
+                    else if (content.match(/^\s*(import |from |def |class |print\(|if __name__)/m)) lang = 'PYTHON';
+                    else if (content.match(/<\?php|echo |function\s+\w+\s*\(/m)) lang = 'PHP';
+                    else if (content.match(/^\s*(package |import |public class |System\.out)/m)) lang = 'JAVA';
+                }
+
+                // ラッパーを作成
+                var wrapper = document.createElement('div');
+                wrapper.className = 'code-block-wrapper';
+
+                // ヘッダーを作成
+                var header = document.createElement('div');
+                header.className = 'code-block-header';
+                header.innerHTML =
+                    '<span class="code-block-lang">' + lang + '</span>' +
+                    '<button class="code-block-copy" title="コピー">' +
+                    '<svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>' +
+                    '<span>Copy</span>' +
+                    '</button>';
+
+                // コピーボタンの機能
+                var copyBtn = header.querySelector('.code-block-copy');
+                copyBtn.addEventListener('click', function () {
+                    var text = codeEl.textContent;
+                    navigator.clipboard.writeText(text).then(function () {
+                        copyBtn.classList.add('copied');
+                        copyBtn.querySelector('span').textContent = 'Copied!';
+                        setTimeout(function () {
+                            copyBtn.classList.remove('copied');
+                            copyBtn.querySelector('span').textContent = 'Copy';
+                        }, 2000);
+                    });
+                });
+
+                // DOMを組み替え
+                pre.parentNode.insertBefore(wrapper, pre);
+                wrapper.appendChild(header);
+                wrapper.appendChild(pre);
+            });
+        });
+    </script>
+
+    <!-- 目次用のスクリプト -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var tocContainer = document.getElementById("toc-container");
+            if (!tocContainer) return;
+
+            var tocContent = document.getElementById("toc-content");
+            var tocToggle = document.getElementById("toc-toggle");
+
+            // 目次にリンク(<li>)が存在するか確認
+            var listItems = tocContent.querySelectorAll("li");
+            if (listItems.length > 0) {
+                tocContainer.style.display = "block"; // 目次を表示
+
+                // 目次の位置を最初の画像（サムネイル領域）の下に移動
+                var firstImage = document.querySelector(".prose img");
+                if (firstImage) {
+                    var parentBlock = firstImage.closest("div.separator, p") || firstImage.parentNode;
+                    if (parentBlock && parentBlock !== document.querySelector(".prose")) {
+                        parentBlock.parentNode.insertBefore(tocContainer, parentBlock.nextSibling);
+                    } else {
+                        firstImage.parentNode.insertBefore(tocContainer, firstImage.nextSibling);
+                    }
+                }
+            }
+
+            // 開閉の制御
+            if (tocToggle) {
+                tocToggle.addEventListener("click", function () {
+                    if (tocContent.style.display === "none") {
+                        tocContent.style.display = "block";
+                        tocToggle.textContent = "[非表示]";
+                    } else {
+                        tocContent.style.display = "none";
+                        tocToggle.textContent = "[表示]";
+                    }
+                });
+            }
+        });
+    </script>
+
+    <!-- Fuse.js 検索ライブラリの読み込みと検索処理 -->
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var searchInput = document.getElementById('search-input');
+            var searchResults = document.getElementById('search-results');
+
+            if (!searchInput || !searchResults) return;
+
+            var fuse = null;
+
+            // JSONインデックスを取得してFuse.jsを初期化
+            fetch('/index.json')
+                .then(response => response.json())
+                .then(data => {
+                    var options = {
+                        keys: [
+                            { name: 'title', weight: 0.7 },
+                            { name: 'content', weight: 0.3 }
+                        ],
+                        threshold: 0.4, // 一致の曖昧さ（0に近いほど厳格）
+                        ignoreLocation: true, // 入力文字が文章のどこにあってもヒットさせる
+                        minMatchCharLength: 2 // 最低2文字以上で検索を開始
+                    };
+                    fuse = new Fuse(data, options);
+                })
+                .catch(error => console.error('Error loading search index:', error));
+
+            // 入力時の検索イベント
+            searchInput.addEventListener('input', function () {
+                var query = this.value.trim();
+
+                // 入力が空の場合は結果を隠す
+                if (query === '') {
+                    searchResults.innerHTML = '';
+                    searchResults.classList.add('hidden');
+                    return;
+                }
+
+                if (!fuse) return; // まだロードが終わっていない場合
+
+                var results = fuse.search(query);
+                renderResults(results);
+            });
+
+            // 検索結果の描画
+            function renderResults(results) {
+                searchResults.innerHTML = '';
+
+                if (results.length === 0) {
+                    searchResults.innerHTML = '<div class="search-results-empty">一致する記事がありません</div>';
+                } else {
+                    // 最大5件まで表示
+                    var maxResults = 5;
+                    for (var i = 0; i < Math.min(results.length, maxResults); i++) {
+                        var item = results[i].item;
+                        var a = document.createElement('a');
+                        a.href = item.permalink;
+                        a.className = 'search-results-item';
+
+                        a.innerHTML =
+                            '<div class="search-results-title">' + item.title + '</div>' +
+                            '<div class="search-results-date">' + item.date + '</div>';
+
+                        searchResults.appendChild(a);
+                    }
+                }
+                searchResults.classList.remove('hidden');
+            }
+
+            // 検索ボックス外をクリックしたら結果を閉じる
+            document.addEventListener('click', function (event) {
+                if (!searchInput.contains(event.target) && !searchResults.contains(event.target)) {
+                    searchResults.classList.add('hidden');
+                }
+            });
+
+            // 検索ボックスにフォーカスが戻ったときにすでに文字が入っていれば再表示
+            searchInput.addEventListener('focus', function () {
+                if (this.value.trim() !== '' && searchResults.innerHTML !== '') {
+                    searchResults.classList.remove('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

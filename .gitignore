@@ -1,0 +1,21 @@
+# Hugo build output
+public/
+resources/_gen/
+
+# Obsidian
+content/.obsidian/
+content/templates/
+
+# Hugo lock file
+.hugo_build.lock
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Temporary files
+*.swp
+*.bak
+
+# Images (Do not push to GitHub)
+static/images/
