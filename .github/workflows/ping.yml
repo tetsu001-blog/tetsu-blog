@@ -1,0 +1,39 @@
+name: Send Blog Ping
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'content/posts/**'
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping blog.with2.net
+        run: |
+          curl -s -X POST https://blog.with2.net/ping.php/2036293/1586940829 \
+            -H "Content-Type: text/xml" \
+            -d '<?xml version="1.0"?>
+            <methodCall>
+              <methodName>weblogUpdates.ping</methodName>
+              <params>
+                <param><value>てつblog</value></param>
+                <param><value>https://tetsu-blog.pages.dev/</value></param>
+              </params>
+            </methodCall>'
+          echo "blog.with2.net へのping送信完了"
+
+      - name: Ping blogmura
+        run: |
+          curl -s -X POST https://ping.blogmura.com/xmlrpc/hbx4wgm5qqbx/ \
+            -H "Content-Type: text/xml" \
+            -d '<?xml version="1.0"?>
+            <methodCall>
+              <methodName>weblogUpdates.ping</methodName>
+              <params>
+                <param><value>てつblog</value></param>
+                <param><value>https://tetsu-blog.pages.dev/</value></param>
+              </params>
+            </methodCall>'
+          echo "blogmura へのping送信完了"
