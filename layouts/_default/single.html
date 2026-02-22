@@ -36,7 +36,7 @@
 
     {{/* 本文 */}}
     <div class="prose prose-slate max-w-none prose-a:text-blue-500 hover:prose-a:text-blue-700" id="article-content">
-        {{ .Content }}
+        {{ .Content | replaceRE "\\*\\*(.+?)\\*\\*" "<strong>$1</strong>" | safeHTML }}
     </div>
 </article>
 
