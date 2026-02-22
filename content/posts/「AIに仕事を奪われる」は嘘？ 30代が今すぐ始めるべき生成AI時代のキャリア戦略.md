@@ -6,7 +6,7 @@ lastmod: 2025-12-11T09:30:24.332Z
 draft: false
 tags: []
 categories: []
-image: "images/img_de2b4716d062.jpg"
+image: "/images/img_de2b4716d062.jpg"
 ---
 
 <div class="separator" style="clear: both; text-align: center;"><a href="/images/img_d62f02edc2d5.jpg" style="margin-left: 1em; margin-right: 1em;"><img data-original-height="768" data-original-width="1408" height="350" src="/images/img_de2b4716d062.jpg" width="640" /></a></div><br /><p>現代のビジネスシーンで最もホットな話題の一つが「AIと仕事」の関係です。特に生成AIの進化は目覚ましく、「AIに仕事を奪われるのではないか」という不安は、キャリアの岐路に立つことが多い30代にとって切実な問題でしょう。</p>
@@ -112,3 +112,4 @@ image: "images/img_de2b4716d062.jpg"
 <li>創造性、意思決定、人間関係構築といった「非代替スキル」に集中的に時間とリソースを投資する。</li>
 </ul>
 <p>AI時代は、スキルをアップデートし続ける人にとって、これまでにないほどの大きな機会を提供してくれます。不安を力に変え、前向きにキャリア戦略を実行していきましょう。</p>
+

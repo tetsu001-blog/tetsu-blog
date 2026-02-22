@@ -6,7 +6,7 @@ lastmod: 2026-01-14T08:00:00.124Z
 draft: false
 tags: []
 categories: []
-image: "images/img_7f7cd4e2d974.jpg"
+image: "/images/img_7f7cd4e2d974.jpg"
 ---
 
 <div class="separator" style="clear: both; text-align: center;"><a href="/images/img_c5300c211dad.jpg" style="margin-left: 1em; margin-right: 1em;"><img data-original-height="768" data-original-width="1408" height="350" src="/images/img_7f7cd4e2d974.jpg" width="640" /></a></div><br /><p>皆さんはWindowsのスタートメニューでファイルを探そうとして、<b>「余計なWeb検索（Bing）が立ち上がってイライラした」</b>**経験はありませんか？</p>
@@ -40,3 +40,4 @@ image: "images/img_7f7cd4e2d974.jpg"
 
 <p>Windowsの検索機能はどんどん多機能（かつ肥大化）していますが、私たちが本当に求めているのは<b>「探しているファイルがすぐに見つかること」</b>ですよね。</p>
 <p>「Windowsの検索が遅くて使いにくい！」と悩んでいる方は、ぜひ『Everything』を試してみてください。PCライフの快適さがガラッと変わりますよ！</p><br />
+

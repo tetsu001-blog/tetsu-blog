@@ -6,7 +6,7 @@ lastmod: 2026-01-11T08:03:58.449Z
 draft: false
 tags: []
 categories: []
-image: "images/img_09e8d0556937.jpg"
+image: "/images/img_09e8d0556937.jpg"
 ---
 
 <p>&nbsp;</p><div class="separator" style="clear: both; text-align: center;"><a href="/images/img_5662d4440475.jpg" style="margin-left: 1em; margin-right: 1em;"><img data-original-height="768" data-original-width="1408" height="350" src="/images/img_09e8d0556937.jpg" width="640" /></a></div><br />2026年、PC業界に激震が走りました。これまで「AI PC」の旗振り役だったDellが、その看板を自ら下ろすような動きを見せたのです。
@@ -40,3 +40,4 @@ image: "images/img_09e8d0556937.jpg"
 <li><strong>市場の現実:</strong> 消費者はクラウドAIで満足しており、ローカルAI機能のためにPCを買い替える動機は薄い。Windows 10からの移行も停滞している。</li>
 </ul>
 <p>MicrosoftがAIゴリ押しを続ける中、ハードウェアメーカーであるDellが「ユーザー目線」に立ち返ったことは、PC市場にとって一つの転換点になるかもしれません。</p>
+

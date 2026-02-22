@@ -6,7 +6,7 @@ lastmod: 2026-02-03T00:47:34.788Z
 draft: false
 tags: []
 categories: []
-image: "images/img_21dabd69ae95.jpg"
+image: "/images/img_21dabd69ae95.jpg"
 ---
 
 <p style="text-align: left;"></p><div class="separator" style="clear: both; text-align: center;"><a href="/images/img_b0b21868128c.jpg" style="margin-left: 1em; margin-right: 1em;"><img data-original-height="559" data-original-width="1024" height="350" src="/images/img_21dabd69ae95.jpg" width="640" /></a></div><br /><div>毎月のサブスク代が気にならない（負担にならない）人ばかりではないと思います。</div><div>私は、負担になります。少しでも節約したい！</div><div><b>「毎月のAdobe代が高い…でも仕事で使うから解約できない」</b><div><div><p>
@@ -127,3 +127,4 @@ image: "images/img_21dabd69ae95.jpg"
 <p>まずは公式サイトからダウンロードしてみてください。「えっ、これが無料でいいの？」と驚くはずです。</p>
 
 <p>Adobe税から解放される日は、今日かもしれません。</p></div></div></div>
+

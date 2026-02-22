@@ -60,7 +60,7 @@
     <article class="bg-white rounded shadow-sm overflow-hidden border border-slate-100 flex flex-col group relative">
         <a href="{{ .RelPermalink }}" class="block relative aspect-video overflow-hidden">
             {{ if .Params.image }}
-            <img src="{{ .Params.image }}" alt="{{ .Title }}"
+            <img src="{{ .Params.image | absURL }}" alt="{{ .Title }}"
                 class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300">
             {{ else }}
             <div class="w-full h-full bg-slate-200 flex items-center justify-center">No Image</div>
@@ -93,7 +93,7 @@
     <article class="bg-white rounded shadow-sm overflow-hidden border border-slate-100 flex flex-col group relative">
         <a href="{{ .RelPermalink }}" class="block relative aspect-video overflow-hidden">
             {{ if .Params.image }}
-            <img src="{{ .Params.image }}" alt="{{ .Title }}"
+            <img src="{{ .Params.image | absURL }}" alt="{{ .Title }}"
                 class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300">
             {{ else }}
             <div class="w-full h-full bg-slate-200 flex items-center justify-center">No Image</div>

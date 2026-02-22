@@ -6,7 +6,7 @@ lastmod: 2026-02-11T10:16:09.681Z
 draft: false
 tags: []
 categories: []
-image: "images/img_1aaa387d7820.png"
+image: "/images/img_1aaa387d7820.png"
 ---
 
 <header class="mb-8 text-center" style="--tw-border-opacity: 1; --tw-ring-color: rgba(59, 130, 246, 0.5); --tw-ring-offset-color: #fff; --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-offset-width: 0px; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; border-color: rgb(229, 231, 235); border-style: solid; border-width: 0px; box-sizing: border-box; font-family: &quot;Noto Sans JP&quot;, sans-serif; margin-bottom: 2rem; text-align: center;">
@@ -85,4 +85,5 @@ image: "images/img_1aaa387d7820.png"
 </li>
 <li style="--tw-border-opacity: 1; --tw-ring-color: rgba(59, 130, 246, 0.5); --tw-ring-offset-color: #fff; --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-offset-width: 0px; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; --tw-space-y-reverse: 0; border-color: rgb(229, 231, 235); border-style: solid; border-width: 0px; box-sizing: border-box; margin-bottom: 0px; margin-top: 8px;">
 <span class="text-secondary-dark" style="--tw-border-opacity: 1; --tw-ring-color: rgba(59, 130, 246, 0.5); --tw-ring-offset-color: #fff; --tw-ring-offset-shadow: 0 0 #0000; --tw-ring-offset-width: 0px; --tw-ring-shadow: 0 0 #0000; --tw-shadow: 0 0 #0000; border-color: rgb(229, 231, 235); border-style: solid; border-width: 0px; box-sizing: border-box; font-weight: bolder;">公共メディアとしての役割再定義：</span>&nbsp;情報過多の時代において、NHKは検証された信頼できる情報源として、フェイクニュースと戦い、責任あるジャーナリズムの原則を堅持することで、その独自の価値を再定義する必要があります。</li></ul><div><div class="separator" style="clear: both; text-align: center;"><a href="/images/img_7cd968bdc42b.jpg" style="margin-left: 1em; margin-right: 1em;"><img data-original-height="768" data-original-width="1408" height="219" src="/images/img_55ccd6f728ef.jpg" width="400" /></a></div><br /><br /></div></section></article>
+
 

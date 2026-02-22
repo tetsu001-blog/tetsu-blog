@@ -6,7 +6,7 @@ lastmod: 2025-12-26T08:00:00.119Z
 draft: false
 tags: []
 categories: []
-image: "images/img_dd405d457404.jpg"
+image: "/images/img_dd405d457404.jpg"
 ---
 
 <p style="text-align: center;"><a href="/images/img_564d326ccfe8.jpg" style="margin-left: 1em; margin-right: 1em;"><img data-original-height="768" data-original-width="1408" height="350" src="/images/img_dd405d457404.jpg" width="640" /></a></p>
@@ -75,3 +75,4 @@ image: "images/img_dd405d457404.jpg"
 <li>物理メディアやローカルバックアップの重要性を忘れない</li>
 </ul>
 <p>デジタル技術が進化しても、形のない権利はいつか消える可能性があります。自分の資産を誰かに委ねるのではなく、自らの手で守る意識を持つことが、これからの時代には求められています。</p>
+
