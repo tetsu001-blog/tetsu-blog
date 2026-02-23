@@ -1,0 +1,5 @@
+/feed /index.xml 301
+/feeds/posts/default /index.xml 301
+/feeds/posts/default* /index.xml 301
+/atom.xml /index.xml 301
+/rss.xml /index.xml 301

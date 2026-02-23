@@ -18,6 +18,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
 
+    {{/* RSS自動発見用リンク */}}
+    {{ range .AlternativeOutputFormats -}}
+    <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}">
+    {{ end -}}
+
     <!-- OGP / Twitter Card -->
     <meta property="og:site_name" content="{{ .Site.Title }}">
     <meta property="og:type" content="{{ if .IsHome }}website{{ else }}article{{ end }}">
