@@ -10,9 +10,10 @@
     </header>
 
     {{/* サムネイル画像（目次の上に表示） */}}
-    {{ if .Params.image }}
+    {{ $thumb := partial "get-thumbnail.html" . }}
+    {{ if $thumb }}
     <div class="mb-8 rounded overflow-hidden" id="hero-thumbnail">
-        <img src="{{ .Params.image | absURL }}" alt="{{ .Title }}" class="w-full h-auto rounded">
+        <img src="{{ $thumb | absURL }}" alt="{{ .Title }}" class="w-full h-auto rounded">
     </div>
     {{ end }}
 
@@ -41,10 +42,10 @@
 </article>
 
 {{/* サムネと同じ画像が本文内にもある場合、本文内の方を非表示にする */}}
-{{ if .Params.image }}
+{{ if $thumb }}
 <script>
     (function () {
-        var thumb = '{{ .Params.image }}';
+        var thumb = '{{ $thumb }}';
         var content = document.getElementById('article-content');
         if (!content) return;
         var imgs = content.querySelectorAll('img');

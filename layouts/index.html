@@ -29,8 +29,9 @@
 {{ range $first }}
 <article class="bg-white rounded shadow-sm overflow-hidden mb-8 border border-slate-100 group">
     <a href="{{ .RelPermalink }}" class="block relative aspect-video md:aspect-[21/9] overflow-hidden">
-        {{ if .Params.image }}
-        <img src="{{ .Params.image }}" alt="{{ .Title }}"
+        {{ $thumb := partial "get-thumbnail.html" . }}
+        {{ if $thumb }}
+        <img src="{{ $thumb | absURL }}" alt="{{ .Title }}"
             class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300">
         {{ else }}
         <div class="w-full h-full bg-slate-200 flex items-center justify-center">No Image</div>
@@ -59,8 +60,9 @@
     {{ range $rest }}
     <article class="bg-white rounded shadow-sm overflow-hidden border border-slate-100 flex flex-col group relative">
         <a href="{{ .RelPermalink }}" class="block relative aspect-video overflow-hidden">
-            {{ if .Params.image }}
-            <img src="{{ .Params.image | absURL }}" alt="{{ .Title }}"
+            {{ $thumb := partial "get-thumbnail.html" . }}
+            {{ if $thumb }}
+            <img src="{{ $thumb | absURL }}" alt="{{ .Title }}"
                 class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300">
             {{ else }}
             <div class="w-full h-full bg-slate-200 flex items-center justify-center">No Image</div>
@@ -92,8 +94,9 @@
     {{ range $items }}
     <article class="bg-white rounded shadow-sm overflow-hidden border border-slate-100 flex flex-col group relative">
         <a href="{{ .RelPermalink }}" class="block relative aspect-video overflow-hidden">
-            {{ if .Params.image }}
-            <img src="{{ .Params.image | absURL }}" alt="{{ .Title }}"
+            {{ $thumb := partial "get-thumbnail.html" . }}
+            {{ if $thumb }}
+            <img src="{{ $thumb | absURL }}" alt="{{ .Title }}"
                 class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300">
             {{ else }}
             <div class="w-full h-full bg-slate-200 flex items-center justify-center">No Image</div>
