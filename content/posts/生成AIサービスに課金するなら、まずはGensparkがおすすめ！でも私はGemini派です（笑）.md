@@ -79,7 +79,7 @@ image: "/images/img_7ef4f3c86980.jpg"
     
 ### 1. NotebookLMをフル活用したいから
 
-<p>これが本当に便利なんです！<strong>NotebookLM</strong>は、自分がアップロードした資料（PDFやテキスト）に基づいて回答してくれるAIです。</p>
+<p>これが本当に便利なんです！<strong>NotebookLM</strong>は、私がアップロードした資料（PDFやテキスト）に基づいて回答してくれるAIです。</p>
 <ul>
 <li>大量の資料を読み込ませて要約させる。</li>
 <li>「この資料のここがわからない」と質問攻めにする。</li>
@@ -122,7 +122,7 @@ image: "/images/img_7ef4f3c86980.jpg"
 <th style="border: 1px solid rgb(85, 85, 85); font-weight: bold; padding: 12px; text-align: left;">サービス名</th>
 <th style="border: 1px solid rgb(85, 85, 85); font-weight: bold; padding: 12px; text-align: left;">料金プラン(個人)</th>
 <th style="border: 1px solid rgb(85, 85, 85); font-weight: bold; padding: 12px; text-align: left;">使用制限の目安</th>
-<th style="border: 1px solid rgb(85, 85, 85); font-weight: bold; padding: 12px; text-align: left;">てつの推奨ポイント</th>
+<th style="border: 1px solid rgb(85, 85, 85); font-weight: bold; padding: 12px; text-align: left;">私の推奨ポイント</th>
 </tr>
 </thead>
 <tbody>
@@ -156,7 +156,7 @@ image: "/images/img_7ef4f3c86980.jpg"
 <p style="color: #666666; font-size: 0.9em; margin-top: 5px;">※Gensparkの価格はドルベースのため、為替レートにより変動します。</p><p style="color: #666666; font-size: 0.9em; margin-top: 5px;">※Gensparkの有料プランでは、2026/12/31までAIチャット＆画像生成が使い放題です。</p>
 
     
-### てつの補足：制限についてどう考える？
+### 私の補足：制限についてどう考える？
 
 <ul>
 <li><strong>Genspark:</strong> 「毎日少しずつ使う」なら無料版で十分なことも。ガッツリ資料を作るとクレジットが一気に減るので、ヘビーユーザーは課金必須です。</li>
