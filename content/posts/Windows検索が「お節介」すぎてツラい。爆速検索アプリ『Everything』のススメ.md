@@ -11,7 +11,7 @@ image: "/images/img_7f7cd4e2d974.jpg"
 
 <div class="separator" style="clear: both; text-align: center;"><a href="/images/img_c5300c211dad.jpg" style="margin-left: 1em; margin-right: 1em;"><img data-original-height="768" data-original-width="1408" height="350" src="/images/img_7f7cd4e2d974.jpg" width="640" /></a></div><br /><p>皆さんはWindowsのスタートメニューでファイルを探そうとして、<b>「余計なWeb検索（Bing）が立ち上がってイライラした」</b>経験はありませんか？</p>
 <p>「ただPC内のアプリやファイルを開きたいだけなのに、なぜ勝手にネットの検索結果を見せられなきゃいけないんだ！」……そんな風に感じている方は、実は少なくありません。</p>
-<p>今日は、そんなWindows標準検索の「お節介」を黙らせる方法と、僕が愛用している爆速検索神アプリ<b>『Everything』</b>についてお話しします。</p>
+<p>今日は、そんなWindows標準検索の「お節介」を黙らせる方法と、私が愛用している爆速検索神アプリ<b>『Everything』</b>についてお話しします。</p>
 
 ## なぜWindowsの標準検索は「邪魔」なのか
 

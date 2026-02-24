@@ -84,14 +84,14 @@ image: "/images/img_21dabd69ae95.jpg"
 
 ### つまり、どういうこと？
 
-<p><strong></strong></p><div class="separator" style="clear: both; text-align: center;"><strong><a href="/images/img_5f5bdc43d0b0.jpg" style="margin-left: 1em; margin-right: 1em;"><img data-original-height="559" data-original-width="1024" height="219" src="/images/img_c5a4652445ad.jpg" width="400" /></a></strong></div><strong><br />「自分の手でデザインするなら、お金は一切かからない」</strong>ということです。
+<p><strong></strong></p><div class="separator" style="clear: both; text-align: center;"><strong><a href="/images/img_5f5bdc43d0b0.jpg" style="margin-left: 1em; margin-right: 1em;"><img data-original-height="559" data-original-width="1024" height="219" src="/images/img_c5a4652445ad.jpg" width="400" /></a></strong></div><strong><br />「私の手でデザインするなら、お金は一切かからない」</strong>ということです。
 
 <p>プロ仕様のペンツール、トーンカーブ、レイヤー効果、CMYK入稿データの作成……これら全てのクリエイティブ機能は<strong>タダ</strong>です。期間制限もありません。</p>
 
 <p>課金が必要なのは、<strong>「AIに画像を作らせたい時」だけ</strong>。<br />
 「生成AI機能（背景の自動生成や高度なオブジェクト削除など）」を使いたい場合のみ、親会社であるCanvaの有料プラン（Canva Proなど）への加入が必要になります。</p>
 
-<p>「AIはたまにしか使わない」「自分の腕で加工する」という職人タイプのクリエイターにとっては、<strong>実質0円でプロ環境が手に入る</strong>ことになります。</p>
+<p>「AIはたまにしか使わない」「私の腕で加工する」という職人タイプのクリエイターにとっては、<strong>実質0円でプロ環境が手に入る</strong>ことになります。</p>
 
 
 ## 操作性：Adobeユーザーは移行できる？

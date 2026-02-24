@@ -84,7 +84,7 @@ image: "/images/img_421bf202699a.png"
   
 ### 実践：ページ送りボタンの配置変更
 
-<p>実際に僕がやってみて感動したのが、ページ下部のナビゲーション（ページ送り）の修正です。</p>
+<p>実際に私がやってみて感動したのが、ページ下部のナビゲーション（ページ送り）の修正です。</p>
 <p>ブログテンプレートの初期状態だと、ただ「その他の投稿」というリンクが表示されているだけで、ちょっと不親切だったんですよね。</p>
 <p>そこで、Antigravity上でその部分を指し示して、こんな風に頼んでみました。</p>
 
@@ -94,13 +94,13 @@ image: "/images/img_421bf202699a.png"
 
 <p>すると、AIがHTML構造とCSSを解析して、サクッと修正してくれました。</p>
 
-<div class="separator" style="clear: both; text-align: center;"><a href="/images/img_5a0c684948ae.jpg" style="margin-left: 1em; margin-right: 1em;"><img data-original-height="164" data-original-width="1179" height="90" src="/images/img_8034acef41bb.jpg" width="640" /></a></div><div class="separator" style="clear: both; text-align: center;"><a href="/images/img_a25a5e31fb46.jpg" style="margin-left: 1em; margin-right: 1em;"><img data-original-height="156" data-original-width="1187" height="84" src="/images/img_bf4d5755b004.jpg" width="640" /></a></div><br /><br /><br />CSSのFlexboxを使って「左寄せ」と「右寄せ」にする記述、自分で書くと地味に面倒なんですが、AIなら「左右に配置して」の一言で通じます。この直感的な操作感はクセになりますね。
+<div class="separator" style="clear: both; text-align: center;"><a href="/images/img_5a0c684948ae.jpg" style="margin-left: 1em; margin-right: 1em;"><img data-original-height="164" data-original-width="1179" height="90" src="/images/img_8034acef41bb.jpg" width="640" /></a></div><div class="separator" style="clear: both; text-align: center;"><a href="/images/img_a25a5e31fb46.jpg" style="margin-left: 1em; margin-right: 1em;"><img data-original-height="156" data-original-width="1187" height="84" src="/images/img_bf4d5755b004.jpg" width="640" /></a></div><br /><br /><br />CSSのFlexboxを使って「左寄せ」と「右寄せ」にする記述、私で書くと地味に面倒なんですが、AIなら「左右に配置して」の一言で通じます。この直感的な操作感はクセになりますね。
 
   
 ### 実践：トップページと2ページ目で「表示記事数」を変える
 
 <p>もう一つ、Bloggerを使っている人にしか伝わらないかもしれない（笑）、地味だけど重要な調整を行いました。</p>
-<p>僕のブログでは、「トップページは10記事表示したいけど、2ページ目以降はデザインの都合上9記事にしたい（3×3で綺麗に並べたい）」というこだわりがありました。</p>
+<p>私のブログでは、「トップページは10記事表示したいけど、2ページ目以降はデザインの都合上9記事にしたい（3×3で綺麗に並べたい）」というこだわりがありました。</p>
 <p>しかし、Bloggerの標準設定で「投稿数」を変更すると、全ページ一律で変わってしまいます。トップページに合わせると2ページ目が崩れるし、その逆もまた然り…。これ、地味にストレスだったんです。</p>
 
 <blockquote style="background-color: #282a36; border-left: 5px solid rgb(255, 121, 198); border-radius: 4px; color: #f8f8f2; font-family: Consolas, monospace; padding: 15px;">
@@ -113,10 +113,10 @@ image: "/images/img_421bf202699a.png"
 <p>本来ならJavaScriptをごりごり書かないといけない場面ですが、これも「やりたいこと」を伝えただけでコードを生成されたので、本当に楽でした。</p>
 
   
-## 活用法③：ブログカードを「自分好み」に刷新
+## 活用法③：ブログカードを「私好み」に刷新
 
 <p>ブログにとって、「リンクカード（ブログカード）」のデザインは記事の印象を決める重要な要素です。</p>
-<p>僕はこれまで「はてなブログカード」を使っていましたが、iframeで読み込むためデザインのカスタマイズができませんでした。「もっとこう、画像が左にあって、タイトルが右にある、シンプルで見やすいデザインにしたい…」と思っていました。</p>
+<p>私はこれまで「はてなブログカード」を使っていましたが、iframeで読み込むためデザインのカスタマイズができませんでした。「もっとこう、画像が左にあって、タイトルが右にある、シンプルで見やすいデザインにしたい…」と思っていました。</p>
 <p>そこでAntigravityに「この画像（理想のデザイン）と同じにして！」と、完成イメージの画像を投げつけてみました。</p>
   
 <blockquote style="background-color: #282a36; border-left: 5px solid rgb(255, 121, 198); border-radius: 4px; color: #f8f8f2; font-family: Consolas, monospace; padding: 15px;">
@@ -125,7 +125,7 @@ image: "/images/img_421bf202699a.png"
 </blockquote>
 
 <p>すると、AIエージェントは驚くべき対応をしました。</p>
-<p>これまでは外部サービス（はてなブログパーツ）の枠をただ表示していただけだったのを、「APIから記事のメタデータ（タイトルや画像）を取得して、自分でHTMLを組み立てる」というJavaScriptのプログラムに丸ごと書き換えてくれたのです。</p><p>以前のブログカードデザイン</p><div class="separator" style="clear: both; text-align: center;"><a href="/images/img_84e757322a69.png" style="margin-left: 1em; margin-right: 1em;"><img border="0" data-original-height="250" data-original-width="859" height="186" src="/images/img_0a5c775e6661.png" width="640" /></a></div><p>変更後のデザイン</p><p><a href="https://antigravity.google/">https://antigravity.google/</a></p>
+<p>これまでは外部サービス（はてなブログパーツ）の枠をただ表示していただけだったのを、「APIから記事のメタデータ（タイトルや画像）を取得して、私でHTMLを組み立てる」というJavaScriptのプログラムに丸ごと書き換えてくれたのです。</p><p>以前のブログカードデザイン</p><div class="separator" style="clear: both; text-align: center;"><a href="/images/img_84e757322a69.png" style="margin-left: 1em; margin-right: 1em;"><img border="0" data-original-height="250" data-original-width="859" height="186" src="/images/img_0a5c775e6661.png" width="640" /></a></div><p>変更後のデザイン</p><p><a href="https://antigravity.google/">https://antigravity.google/</a></p>
 <p>途中で「表示が遅い」という問題が発生したときも、「データ取得APIをより高速なものに変更しましょう」と提案してくれ、最終的に読み込み速度もデザインも完璧なものが出来上がりました。</p>
 <p>しかも、「データ取得に失敗したら、元のはてなカードを表示する」という安全装置（フォールバック）まで実装済み。まさにプロの仕事です。</p><p>下記記事で、追記として変更後コードを追加しました。</p><p><a href="https://tetsu-miscellaneous.blogspot.com/2026/02/bloggerurlok.html">https://tetsu-miscellaneous.blogspot.com/2026/02/bloggerurlok.html</a></p>
 
