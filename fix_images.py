@@ -96,6 +96,27 @@ def fix_paths():
             fixed_count += 1
             print("[FIX] {}".format(os.path.basename(filepath)))
 
+        # ここから追加：サムネイル画像の自動設定
+        with open(filepath, "r", encoding="utf-8") as f:
+            updated_content = f.read()
+
+        # サムネイル用の画像タグを検索
+        thumb_match = re.search(r'<!-- thumbnail_start -->\s*!\[.*?\]\((.*?)\)\s*<!-- thumbnail_end -->', updated_content)
+        
+        if thumb_match:
+            image_path = thumb_match.group(1)
+            # imageプロパティを更新
+            final_content = re.sub(
+                r'^image:.*$',
+                f'image: "{image_path}"',
+                updated_content,
+                flags=re.MULTILINE
+            )
+            
+            if updated_content != final_content:
+                with open(filepath, "w", encoding="utf-8") as f:
+                    f.write(final_content)
+                print("[THUMBNAIL SET] {} -> {}".format(os.path.basename(filepath), image_path))
     return fixed_count
 
 
