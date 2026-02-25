@@ -1,7 +1,7 @@
 import os
 import sys
 import xml.etree.ElementTree as ET
-from urllib.request import urlopen
+from urllib.request import urlopen, Request
 from datetime import datetime, timezone, timedelta
 
 # Bluesky API用のライブラリ (atproto) をインポート。GitHub Actions側で事前にpip install atprotoされる前提
@@ -18,7 +18,9 @@ def check_new_posts():
     """RSSフィードから過去24時間以内に公開された最新の投稿を取得する"""
     print(f"Fetching RSS feed from {RSS_URL}...")
     try:
-        response = urlopen(RSS_URL)
+        # CloudflareのBot対策（403エラー）を回避するためにUser-Agentを偽装
+        req = Request(RSS_URL, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'})
+        response = urlopen(req)
         xml_data = response.read()
     except Exception as e:
         print(f"Failed to fetch RSS feed: {e}")
