@@ -1,0 +1,22 @@
+name: Daily Build (Scheduled)
+
+on:
+  schedule:
+    # 毎日 UTC 09:00 (日本時間 18:00) に実行
+    - cron: '0 9 * * *'
+  # 手動実行用 (テストなどのため)
+  workflow_dispatch:
+
+jobs:
+  trigger-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Cloudflare Pages Deploy Hook
+        # Settings > Secrets and variables > Actions で
+        # 登録した `CF_PAGES_DEPLOY_HOOK_URL` にリクエストを投げる
+        run: |
+          if [ -z "${{ secrets.CF_PAGES_DEPLOY_HOOK_URL }}" ]; then
+            echo "Error: CF_PAGES_DEPLOY_HOOK_URL is not set"
+            exit 1
+          fi
+          curl -X POST "${{ secrets.CF_PAGES_DEPLOY_HOOK_URL }}"
