@@ -1,5 +1,6 @@
 baseURL = "https://tetsu-blog.pages.dev/"
 languageCode = "ja"
+timeZone = "Asia/Tokyo"
 title = "てつblog"
 ignoreFiles = ["content/templates/"]
 
