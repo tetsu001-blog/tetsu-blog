@@ -20,3 +20,23 @@ jobs:
             exit 1
           fi
           curl -X POST "${{ secrets.CF_PAGES_DEPLOY_HOOK_URL }}"
+
+      - name: Wait for Cloudflare Pages build to finish
+        run: sleep 120
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install atproto
+
+      - name: Auto Post to Bluesky
+        env:
+          BLUESKY_HANDLE: ${{ secrets.BLUESKY_HANDLE }}
+          BLUESKY_PASSWORD: ${{ secrets.BLUESKY_PASSWORD }}
+        run: python .github/scripts/auto_bsky.py
