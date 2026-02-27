@@ -12,6 +12,13 @@ except ImportError:
     print("Error: 'atproto' library is not installed. Run 'pip install atproto'.")
     sys.exit(1)
 
+try:
+    from PIL import Image
+    import io
+except ImportError:
+    print("Error: 'Pillow' library is not installed. Run 'pip install Pillow'.")
+    sys.exit(1)
+
 RSS_URL = 'https://tetsu-blog.pages.dev/index.xml'
 
 def check_new_posts():
@@ -100,6 +107,44 @@ def post_to_bluesky(post_info):
             print(f"Downloading OGP image: {ogp['image_url']}")
             req = Request(ogp['image_url'], headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'})
             img_data = urlopen(req).read()
+            
+            # 画像データが1MB (Blueskyの制限) に近い場合、圧縮・リサイズする
+            # Bluesky API limit is 1,000,000 bytes. We use 950,000 as a safe threshold.
+            MAX_IMAGE_SIZE = 950000 
+            
+            if len(img_data) > MAX_IMAGE_SIZE:
+                print(f"Image size ({len(img_data)} bytes) exceeds limits. Compressing...")
+                try:
+                    img = Image.open(io.BytesIO(img_data))
+                    
+                    # RGBモードでない場合（透過PNGファイル等）は変換
+                    if img.mode in ("RGBA", "P"):
+                        img = img.convert("RGB")
+                    
+                    # 初期品質設定
+                    quality = 85
+                    output_io = io.BytesIO()
+                    
+                    # リサイズループ
+                    while len(img_data) > MAX_IMAGE_SIZE and quality > 10:
+                        output_io.seek(0)
+                        output_io.truncate()
+                        img.save(output_io, format="JPEG", quality=quality)
+                        img_data = output_io.getvalue()
+                        print(f"Compressed to {len(img_data)} bytes with quality {quality}")
+                        
+                        if len(img_data) > MAX_IMAGE_SIZE:
+                            # それでも大きい場合は半分のサイズに縮小
+                            new_width = int(img.width * 0.8)
+                            new_height = int(img.height * 0.8)
+                            img = img.resize((new_width, new_height), Image.Resampling.LANCZOS)
+                            quality -= 10
+                            
+                except Exception as compression_error:
+                     print(f"Failed to compress image: {compression_error}")
+                     # 圧縮に失敗した場合はそのままアップロードを試みるか、エラーにするか判断
+                     # 今回はフォールバックとして圧縮前のデータを送信し、API側でのエラーに委ねる
+            
             # Blueskyに画像データをアップロードして、ID (blob) を受け取る
             upload = client.upload_blob(img_data)
             thumb_blob = upload.blob
