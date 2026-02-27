@@ -120,17 +120,97 @@ def fix_paths():
     return fixed_count
 
 
+def compress_images():
+    """static/images/ 内のファイルサイズが950KBを超える画像を圧縮・リサイズする"""
+    try:
+        from PIL import Image
+    except ImportError:
+        print("[WARNING] Pillow is not installed. Skipping image compression.")
+        return 0
+
+    compressed_count = 0
+    max_size = 950 * 1024  # 950 KB
+
+    for filepath in glob.glob(os.path.join(STATIC_IMAGES, "*")):
+        if not os.path.isfile(filepath):
+            continue
+            
+        file_size = os.path.getsize(filepath)
+        if file_size > max_size:
+            print("[COMPRESS] {} ({:.1f} KB) is over 950KB. Compressing...".format(os.path.basename(filepath), file_size / 1024))
+            try:
+                img = Image.open(filepath)
+                if img.mode in ("RGBA", "P"):
+                    img = img.convert("RGB")
+                    
+                quality = 85
+                output_path = filepath + ".tmp.jpg"
+                
+                while True:
+                    img.save(output_path, format="JPEG", quality=quality)
+                    new_size = os.path.getsize(output_path)
+                    
+                    if new_size <= max_size or quality <= 10:
+                        break
+                        
+                    new_width = int(img.width * 0.8)
+                    new_height = int(img.height * 0.8)
+                    try:
+                        resample_filter = Image.Resampling.LANCZOS
+                    except AttributeError:
+                        resample_filter = Image.LANCZOS
+                    img = img.resize((new_width, new_height), resample_filter)
+                    quality -= 10
+                
+                orig_name = os.path.basename(filepath)
+                new_name = os.path.splitext(orig_name)[0] + ".jpg"
+                new_filepath = os.path.join(STATIC_IMAGES, new_name)
+                
+                if orig_name.lower().endswith((".jpg", ".jpeg")):
+                    shutil.move(output_path, filepath)
+                else:
+                    shutil.move(output_path, new_filepath)
+                    os.remove(filepath)
+                    replace_image_in_markdown(orig_name, new_name)
+                
+                compressed_count += 1
+                print("[COMPRESS] Successfully compressed to {:.1f} KB".format(new_size / 1024))
+
+            except Exception as e:
+                print("[ERROR] Failed to compress {}: {}".format(filepath, e))
+                if os.path.exists(filepath + ".tmp.jpg"):
+                    os.remove(filepath + ".tmp.jpg")
+                    
+    return compressed_count
+
+
+def replace_image_in_markdown(old_name, new_name):
+    posts = glob.glob("content/posts/*.md")
+    for filepath in posts:
+        with open(filepath, "r", encoding="utf-8") as f:
+            content = f.read()
+        
+        if old_name in content:
+            new_content = content.replace(old_name, new_name)
+            with open(filepath, "w", encoding="utf-8") as f:
+                f.write(new_content)
+            print("[RENAME] Updated {} -> {} in {}".format(old_name, new_name, os.path.basename(filepath)))
+
+
 if __name__ == "__main__":
     print("--- fix_images start ---\n")
 
     moved = move_images()
+    compressed = compress_images()
     fixed = fix_paths()
 
     print("\n--- result ---")
     if moved > 0:
         print("{} images moved to static/images/".format(moved))
+    if compressed > 0:
+        print("{} images compressed and resized".format(compressed))
     if fixed > 0:
         print("{} posts fixed".format(fixed))
-    if moved == 0 and fixed == 0:
+    if moved == 0 and fixed == 0 and compressed == 0:
         print("Nothing to fix!")
     print("Done! Now run: git add . && git commit && git push")

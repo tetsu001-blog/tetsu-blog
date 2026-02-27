@@ -5,7 +5,7 @@ slug: 2026-02-22
 tags:
   - ブログ運営
   - AI
-image: /images/20260222-1.png
+image: /images/20260222-1.jpg
 ---
 
 

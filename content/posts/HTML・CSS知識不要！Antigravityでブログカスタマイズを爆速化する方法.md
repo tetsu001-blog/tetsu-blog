@@ -10,7 +10,7 @@ image: "/images/img_421bf202699a.png"
 ---
 
 <article>
-<div class="separator" style="clear: both; text-align: center;"><a href="/images/img_cc5916a395bd.png" style="margin-left: 1em; margin-right: 1em;"><img border="0" data-original-height="1536" data-original-width="2816" height="350" src="/images/img_421bf202699a.png" width="640" /></a></div><br />こんにちは、てつです！
+<div class="separator" style="clear: both; text-align: center;"><a href="/images/img_cc5916a395bd.jpg" style="margin-left: 1em; margin-right: 1em;"><img border="0" data-original-height="1536" data-original-width="2816" height="350" src="/images/img_421bf202699a.png" width="640" /></a></div><br />こんにちは、てつです！
 <p>2月も後半に入り、少しずつ春の気配を感じるようになってきましたね。みなさんいかがお過ごしでしょうか？</p>
 <p>さて、みなさんはブログ書いてますか？</p>
 <p>Googleがリリースした新しいコードエディタ<b>「Antigravity（アンチグラビティ）」</b>をご存知でしょうか？ 直訳すると<b>「反重力」</b>。名前がもう中二病心をくすぐりますが（笑）、これがブログ運営やWebデザインにおいて、まさに重力から解放されたような軽快さをもたらしてくれるんです。</p>
