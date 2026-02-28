@@ -38,8 +38,10 @@ image: "/images/img_06c18ab94cd6.jpg"
 
 <p>※2026/02/19 ブログカードデザインを変更したため、現在ブログで表示されるデザインは違います。<br />
 
-</p><p>現在のブログカードデザイン</p><p><a href="https://tetsu-miscellaneous.blogspot.com/2026/02/htmlcssantigravity.html">https://tetsu-miscellaneous.blogspot.com/2026/02/htmlcssantigravity.html</a></p>
+</p><p>現在のブログカードデザイン</p><p><a href="https://tetsu-blog.pages.dev/posts/2026-02-19/">https://tetsu-blog.pages.dev/posts/2026-02-19/</a></p>
+
 ## 導入手順
+
 
 <p>作業はBloggerのテーマ（HTML）にコードを追記するだけです。</p>
 <p>※念のため、作業前にテーマのバックアップ（XMLのダウンロード）を取っておくことをおすすめします。</p>

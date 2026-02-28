@@ -127,7 +127,7 @@ image: "/images/img_421bf202699a.png"
 <p>すると、AIエージェントは驚くべき対応をしました。</p>
 <p>これまでは外部サービス（はてなブログパーツ）の枠をただ表示していただけだったのを、「APIから記事のメタデータ（タイトルや画像）を取得して、私でHTMLを組み立てる」というJavaScriptのプログラムに丸ごと書き換えてくれたのです。</p><p>以前のブログカードデザイン</p><div class="separator" style="clear: both; text-align: center;"><a href="/images/img_84e757322a69.png" style="margin-left: 1em; margin-right: 1em;"><img border="0" data-original-height="250" data-original-width="859" height="186" src="/images/img_0a5c775e6661.png" width="640" /></a></div><p>変更後のデザイン</p><p><a href="https://antigravity.google/">https://antigravity.google/</a></p>
 <p>途中で「表示が遅い」という問題が発生したときも、「データ取得APIをより高速なものに変更しましょう」と提案してくれ、最終的に読み込み速度もデザインも完璧なものが出来上がりました。</p>
-<p>しかも、「データ取得に失敗したら、元のはてなカードを表示する」という安全装置（フォールバック）まで実装済み。まさにプロの仕事です。</p><p>下記記事で、追記として変更後コードを追加しました。</p><p><a href="https://tetsu-miscellaneous.blogspot.com/2026/02/bloggerurlok.html">https://tetsu-miscellaneous.blogspot.com/2026/02/bloggerurlok.html</a></p>
+<p>しかも、「データ取得に失敗したら、元のはてなカードを表示する」という安全装置（フォールバック）まで実装済み。まさにプロの仕事です。</p><p>下記記事で、追記として変更後コードを追加しました。</p><p><a href="https://tetsu-blog.pages.dev/posts/2026-02-03/">https://tetsu-blog.pages.dev/posts/2026-02-03/</a></p>
 
 
   
