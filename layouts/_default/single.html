@@ -11,7 +11,7 @@
 
     {{/* サムネイル画像（目次の上に表示） */}}
     {{ $thumb := partial "get-thumbnail.html" . }}
-    {{ if $thumb }}
+    {{ if and $thumb (ne .Slug "about") }}
     <div class="mb-8 rounded overflow-hidden" id="hero-thumbnail">
         <img src="{{ $thumb | absURL }}" alt="{{ .Title }}" class="w-full h-auto rounded">
     </div>
@@ -42,7 +42,7 @@
 </article>
 
 {{/* サムネと同じ画像が本文内にもある場合、本文内の方を非表示にする */}}
-{{ if $thumb }}
+{{ if and $thumb (ne .Slug "about") }}
 <script>
     (function () {
         var thumb = '{{ $thumb }}';
