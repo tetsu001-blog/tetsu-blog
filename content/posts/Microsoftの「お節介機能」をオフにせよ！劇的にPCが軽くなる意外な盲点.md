@@ -8,176 +8,101 @@ tags: ["デジタル"]
 categories: []
 image: "/images/img_8d6e7a2413e5.jpg"
 ---
+「最近、何もしていないのにパソコンのファンがうるさい」「動作がもっさりして重い」と感じていませんか？
 
-
-<div class="separator" style="clear: both; text-align: center;">
-<a href="/images/img_b0f860a87bad.jpg" style="margin-left: 1em; margin-right: 1em;"><img data-original-height="572" data-original-width="1024" height="358" src="/images/img_8d6e7a2413e5.jpg" width="640" /></a>
-</div>
-<br />
-
-<p>
-  「最近、何もしていないのにパソコンのファンがうるさい」「動作がもっさりして重い」と感じていませんか？
-</p>
-<p>
-  パソコンの価格が高騰している今、数年前なら10万円で買えたスペックが、今では15〜20万円ほどすることもあり、簡単に買い替えるのは難しいですよね。そこで今回は、今あるパソコンを少しでも長く、快適に使うために、Windowsの動作を重くしている「原因」と、誰でもできる「軽量化設定」をご紹介します。
-</p>
-
+パソコンの価格が高騰している今、数年前なら10万円で買えたスペックが、今では15〜20万円ほどすることもあり、簡単に買い替えるのは難しいですよね。そこで今回は、今あるパソコンを少しでも長く、快適に使うために、Windowsの動作を重くしている「原因」と、誰でもできる「軽量化設定」をご紹介します。
 
 ## まずは現状を確認：メモリ使用率をチェック
 
-<p>
-  設定を変更する前に、あなたのパソコンがどれくらいピンチなのか確認してみましょう。
-</p>
-<ol>
-<li>タスクバーの上で右クリックし、「タスクマネージャー」を起動します。</li>
-<li>「パフォーマンス」をクリックし、「メモリ」を選びます。</li>
-</ol>
-<p>
-  もし、重い作業をしていないのに使用率が<strong>60%を超えていたら危険な状態</strong>、<strong>80%を超えていたらパソコンが悲鳴を上げている状態</strong>です。
-</p>
-<p>
-  以下で紹介する設定を行うことで、メモリやCPUの無駄遣いを減らし、パソコンを爆速化できる可能性があります。
-</p>
-<hr />
+設定を変更する前に、あなたのパソコンがどれくらいピンチなのか確認してみましょう。
+
+1.  タスクバーの上で右クリックし、「タスクマネージャー」を起動します。
+2.  「パフォーマンス」をクリックし、「メモリ」を選びます。
+
+もし、重い作業をしていないのに使用率が**60%を超えていたら危険な状態**、**80%を超えていたらパソコンが悲鳴を上げている状態**です。
+
+以下で紹介する設定を行うことで、メモリやCPUの無駄遣いを減らし、パソコンを爆速化できる可能性があります。
+
+* * *
 
 ## 原因1：2026年最新の「強制自動化」プログラム (KB5072033)
 
-<p>
-  2026年の年明け以降、急激に重くなった場合は、Windows
-  Update（KB5072033）が原因の可能性があります。
-</p>
+2026年の年明け以降、急激に重くなった場合は、Windows Update（KB5072033）が原因の可能性があります。
 
 ### 犯人は「AppXSVC」
 
-<p>
-  これまで必要な時だけ動いていた「AppXSVC（AppX Deployment
-  Service）」というプログラムが、OS起動と同時に強制的にフル稼働する仕様に変更されました。これにより、通常時は20MB程度のメモリ消費だったものが、暴走すると800MB〜数GBも消費し、CPUやディスク使用率を圧迫することがあります。
-</p>
-<p>
-<b>これはMicrosoft
-    Storeアプリの管理やAI連携のための変更ですが、ユーザーにとってはPCを重くする原因になりかねません。</b>
-</p><p><b><br /></b></p>
+これまで必要な時だけ動いていた「AppXSVC（AppX Deployment Service）」というプログラムが、OS起動と同時に強制的にフル稼働する仕様に変更されました。これにより、通常時は20MB程度のメモリ消費だったものが、暴走すると800MB〜数GBも消費し、CPUやディスク使用率を圧迫することがあります。
+
+**これはMicrosoft Storeアプリの管理やAI連携のための変更ですが、ユーザーにとってはPCを重くする原因になりかねません。**
 
 ### 対処法：レジストリで無効化する
 
-<p>
-  この機能は通常の「サービス」画面からは無効化できないようロックされています。そのため、レジストリエディターを使用します。
-</p>
+この機能は通常の「サービス」画面からは無効化できないようロックされています。そのため、レジストリエディターを使用します。
 
-<div class="separator" style="clear: both; text-align: center;">
-<a href="/images/img_57b490144571.jpg" style="margin-left: 1em; margin-right: 1em;"><img data-original-height="768" data-original-width="1408" height="219" src="/images/img_4c642e350b94.jpg" width="400" /></a>
-</div>
+[![img_4c642e350b94](/images/img_4c642e350b94.jpg)](/images/img_57b490144571.jpg)
 
+  **※レジストリ操作はリスクを伴うため、システムの復元ポイントを作成するなど、自己責任で行ってください。**
 
-<p>
-<span><span style="font-size: large;">&nbsp;<span style="color: #ffe599;">
-</span></span><b><span style="color: #ffe599; font-size: x-large;">※レジストリ操作はリスクを伴うため、システムの復元ポイントを作成するなど、自己責任で行ってください。</span></b></span>
-</p>
-<p>
-<span style="font-size: medium;"><b><br /></b></span>
-</p>
+#### 
 
-#### <ul style="text-align: left;"><li>検索ボックスに「regedit」と入力し、<strong>レジストリエディター</strong>を起動します。</li></ul>
-<ol style="text-align: left;">
-</ol>
-<div>
-<div class="separator" style="clear: both; text-align: center;">
-<a href="/images/img_31eec729f8a5.jpg" style="margin-left: 1em; margin-right: 1em;"><img data-original-height="515" data-original-width="757" height="272" src="/images/img_b80686bcc06b.jpg" width="400" /></a>
-</div>
-<br />
-</div>
+*   検索ボックスに「regedit」と入力し、**レジストリエディター**を起動します。
 
-#### <ul style="text-align: left;"><li>画面上部にあるアドレスバーにアドレスを入力します。[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\AppXSVC]</li></ul>
-<ol style="text-align: left;">
-</ol>
-<div>
-<div class="separator" style="clear: both; text-align: center;">
-<a href="/images/img_fc130e4ad1f2.jpg" style="margin-left: 1em; margin-right: 1em;"><img data-original-height="450" data-original-width="1426" height="126" src="/images/img_3cb100d39d54.jpg" width="400" /></a>
-</div>
-<br /><br />
-</div>
+[![img_b80686bcc06b](/images/img_b80686bcc06b.jpg)](/images/img_31eec729f8a5.jpg)
 
-#### <ul style="text-align: left;"><li>画面右側の「Start」という項目をダブルクリックします。</li></ul>
-<ol style="text-align: left;">
-</ol>
+  
 
-#### <ul style="text-align: left;"><li>数値を<b>「2（自動）」から「3（手動）」</b>に書き換えてOKを押し、PCを再起動します。</li></ul>
-<ol style="text-align: left;">
-</ol>
-<div>
-<div class="separator" style="clear: both; text-align: center;">
-<a href="/images/img_32ce0fed11ad.jpg" style="margin-left: 1em; margin-right: 1em;"><img data-original-height="311" data-original-width="961" height="130" src="/images/img_29f2ebd7f1df.jpg" width="400" /></a>
-</div>
-<br /><br />
-</div>
-<div></div>
+#### 
+
+*   画面上部にあるアドレスバーにアドレスを入力します。\[HKEY\_LOCAL\_MACHINE\\SYSTEM\\CurrentControlSet\\Services\\AppXSVC\]
+
+[![img_3cb100d39d54](/images/img_3cb100d39d54.jpg)](/images/img_fc130e4ad1f2.jpg)
+
+  
+  
+
+#### 
+
+*   画面右側の「Start」という項目をダブルクリックします。
+
+#### 
+
+*   数値を**「2（自動）」から「3（手動）」**に書き換えてOKを押し、PCを再起動します。
+
+[![img_29f2ebd7f1df](/images/img_29f2ebd7f1df.jpg)](/images/img_32ce0fed11ad.jpg)
+
+  
+  
 
 ## 原因2：Windowsの「メモリ泥棒」機能（基本の軽量化）
 
-<p>
-  最新の更新以外にも、Windowsには以前からメモリを無駄食いする<b>「隠れ犯人」</b>が存在します。以下の2つを見直すだけで、軽くなることがあります。
-</p>
-
+最新の更新以外にも、Windowsには以前からメモリを無駄食いする**「隠れ犯人」**が存在します。以下の2つを見直すだけで、軽くなることがあります。
 
 ### ① 配信の最適化
 
-<p>
-  これは、あなたのPC内のアップデートファイルを、インターネット上の「他の誰かのPC」に配るために使われる機能です。勝手に通信を行い、メモリを消費します。
-</p>
+これは、あなたのPC内のアップデートファイルを、インターネット上の「他の誰かのPC」に配るために使われる機能です。勝手に通信を行い、メモリを消費します。
 
-#### <strong>【無効化の手順】</strong>
+#### **【無効化の手順】**
 
-<ul>
-<li>
-<strong>Windows 11：</strong> 設定 &gt; Windows Update &gt; 詳細オプション
-    &gt; 配信の最適化 &gt;
-    「他のデバイスからのダウンロードを許可する」を<strong>オフ</strong>にする。
-</li>
-<li>
-<strong>Windows 10：</strong> 設定 &gt; 更新とセキュリティ &gt; 配信の最適化
-    &gt; 「他のPCからのダウンロードを許可する」を<strong>オフ</strong>にする。
-</li>
-</ul>
-<p>
-  これを行っても、Microsoftから直接ダウンロードする通常の状態に戻るだけなので問題ありません。
-</p>
+*   **Windows 11：** 設定 > Windows Update > 詳細オプション > 配信の最適化 > 「他のデバイスからのダウンロードを許可する」を**オフ**にする。
+*   **Windows 10：** 設定 > 更新とセキュリティ > 配信の最適化 > 「他のPCからのダウンロードを許可する」を**オフ**にする。
 
+これを行っても、Microsoftから直接ダウンロードする通常の状態に戻るだけなので問題ありません。
 
 ### ② SysMain (旧 SuperFetch)
 
-<p>
-  あなたが次によく使うアプリを予測して、あらかじめメモリに読み込んでおく機能です。メモリ容量が少ないPCやHDD搭載機では、この「先読み」作業自体が重荷になり、動作を遅くする本末転倒な状態になることがあります。
-</p>
+あなたが次によく使うアプリを予測して、あらかじめメモリに読み込んでおく機能です。メモリ容量が少ないPCやHDD搭載機では、この「先読み」作業自体が重荷になり、動作を遅くする本末転倒な状態になることがあります。
 
+#### **【無効化の手順】**
 
-#### <strong>【無効化の手順】</strong>
-
-<ol>
-<li>検索ボックスに<b>「サービス」</b>と入力して起動。</li>
-<li>一覧から<b>「SysMain」</b>を探してダブルクリック。</li>
-<li>「スタートアップの種類」を<b>「無効」</b>に変更。</li>
-<li>
-    「サービスの状態」が実行中なら<b>「停止」</b>を押し、最後に<b>「適用」→「OK」</b>をクリック。
-</li>
-</ol>
-
-
+1.  検索ボックスに**「サービス」**と入力して起動。
+2.  一覧から**「SysMain」**を探してダブルクリック。
+3.  「スタートアップの種類」を**「無効」**に変更。
+4.  「サービスの状態」が実行中なら**「停止」**を押し、最後に**「適用」→「OK」**をクリック。
 
 ## まとめ：設定を見直してPCを延命しよう
 
-<p>
-  今回紹介した<b>「配信の最適化」</b>や<b>「SysMain」</b>を停止するだけで、メモリ使用率が15%（約2GB）も下がったケースがあります。特にスペックが低めのパソコンほど効果を実感しやすいはずです。
-</p>
-<p>
-  「重いから買い替えなきゃ…」と諦める前に、まずはこれらの設定を試して、愛用のPCのポテンシャルを取り戻してみてください！
-</p>
+今回紹介した**「配信の最適化」**や**「SysMain」**を停止するだけで、メモリ使用率が15%（約2GB）も下がったケースがあります。特にスペックが低めのパソコンほど効果を実感しやすいはずです。
 
-<div class="separator" style="clear: both; text-align: center;">
-<a href="/images/img_c283d79dc2b6.jpg" style="margin-left: 1em; margin-right: 1em;"><img data-original-height="768" data-original-width="1408" height="219" src="/images/img_582c004894fd.jpg" width="400" /></a>
-</div>
-<br /><br />
+「重いから買い替えなきゃ…」と諦める前に、まずはこれらの設定を試して、愛用のPCのポテンシャルを取り戻してみてください！
 
-
-
-
-
+[![img_582c004894fd](/images/img_582c004894fd.jpg)](/images/img_c283d79dc2b6.jpg)

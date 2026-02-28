@@ -8,31 +8,135 @@ tags: ["AI"]
 categories: []
 image: "/images/img_18a802189672.jpg"
 ---
-
-<div style="font-family: &quot;Google Sans&quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; text-align: left;"><div class="separator" style="clear: both; text-align: center;"><a href="/images/img_f1827cfc9609.jpg" style="margin-left: 1em; margin-right: 1em;"><img data-original-height="768" data-original-width="1408" height="350" src="/images/img_18a802189672.jpg" width="640" /></a></div><br /><br /></div>
 ## はじめに：熱狂の終わりか、選別の始まりか
-<p style="font-family: &quot;Google Sans Text&quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important;"></p><p data-path-to-node="5" style="font-family: &quot;Google Sans Text&quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important;">2022年末のChatGPT登場以来、世界を席巻してきた生成AIブーム。しかし最近、市場では不穏な空気が流れています。</p><p data-path-to-node="6" style="font-family: &quot;Google Sans Text&quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important;">「AIバブルは崩壊した」「過剰投資だ」――。</p><p data-path-to-node="7" style="font-family: &quot;Google Sans Text&quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important;">ニュースやSNSでこのような言葉を見かけることが増えました。NVIDIAなどの半導体株の乱高下や、大手金融機関による懐疑的なレポートがその引き金となっています。</p><p data-path-to-node="8" style="font-family: &quot;Google Sans Text&quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important;">果たして、AIバブルは本当に終了してしまったのでしょうか？ それとも、これは健全な調整局面なのでしょうか？ 本記事では、<b style="line-height: 1.15 !important; margin-top: 0px !important;">「AIバブル終了説」の根拠</b>と、<b style="line-height: 1.15 !important; margin-top: 0px !important;">今後の展望</b>について、主要な市場レポートを交えて冷静に分析します。</p><hr data-path-to-node="9" style="font-family: &quot;Google Sans Text&quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important;" /><p data-path-to-node="10" style="font-family: &quot;Google Sans Text&quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important;"></p>
-## 1. なぜ「AIバブル終了」と言われるようになったのか？
-<p style="font-family: &quot;Google Sans Text&quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important;"></p><p data-path-to-node="11" style="font-family: &quot;Google Sans Text&quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important;">これまで右肩上がりだったAIへの期待に、なぜ急ブレーキがかかったような言説が増えたのでしょうか。主な理由は以下の3点に集約されます。</p><p data-path-to-node="12" style="font-family: &quot;Google Sans Text&quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important;"></p>
+
+2022年末のChatGPT登場以来、世界を席巻してきた生成AIブーム。しかし最近、市場では不穏な空気が流れています。
+
+「AIバブルは崩壊した」「過剰投資だ」――。
+
+ニュースやSNSでこのような言葉を見かけることが増えました。NVIDIAなどの半導体株の乱高下や、大手金融機関による懐疑的なレポートがその引き金となっています。
+
+果たして、AIバブルは本当に終了してしまったのでしょうか？ それとも、これは健全な調整局面なのでしょうか？ 本記事では、**「AIバブル終了説」の根拠**と、**今後の展望**について、主要な市場レポートを交えて冷静に分析します。
+
+* * *
+
+## なぜ「AIバブル終了」と言われるようになったのか？
+
+これまで右肩上がりだったAIへの期待に、なぜ急ブレーキがかかったような言説が増えたのでしょうか。主な理由は以下の3点に集約されます。
+
 ### ① 莫大なコストと見合わない収益（ROIの欠如）
-<p style="font-family: &quot;Google Sans Text&quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important;"></p><p data-path-to-node="13" style="font-family: &quot;Google Sans Text&quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important;">現在、GoogleやMicrosoftなどの巨大テック企業は、AIインフラ（データセンターやGPU）に数兆円規模の投資を行っています。しかし、<b>「それに見合うだけの売上がまだ立っていない」</b>という指摘が強まっています。</p><p data-path-to-node="13" style="font-family: &quot;Google Sans Text&quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important;"></p><div class="separator" style="clear: both; text-align: center;"><a href="/images/img_2fb77529fec4.jpg" style="margin-left: 1em; margin-right: 1em;"><img data-original-height="768" data-original-width="1408" height="219" src="/images/img_a407ca78138f.jpg" width="400" /></a></div><br /><p data-path-to-node="14" style="font-family: &quot;Google Sans Text&quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important;">例えば、米セコイア・キャピタルのパートナーDavid Cahn氏は、2024年6月のレポートで<b>「AI's $600B Question（AIの6000億ドルの問い）」</b>を発表しました。これは、AIインフラへの投資を正当化するには年間6000億ドル（約90兆円）の収益が必要だが、実際の収益とは大きなギャップがあるという指摘です。</p><p data-path-to-node="15" style="font-family: &quot;Google Sans Text&quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important;">また、ゴールドマン・サックスも同時期に<b>「Gen AI: too much spend, too little benefit?（生成AI：投資過多で利益はわずか？）」</b>と題したレポートを発表し、コスト対効果への懸念を表明しています。</p><p data-path-to-node="16" style="font-family: &quot;Google Sans Text&quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important;"></p>
+
+現在、GoogleやMicrosoftなどの巨大テック企業は、AIインフラ（データセンターやGPU）に数兆円規模の投資を行っています。しかし、**「それに見合うだけの売上がまだ立っていない」**という指摘が強まっています。
+
+[![img_a407ca78138f](/images/img_a407ca78138f.jpg)](/images/img_2fb77529fec4.jpg)
+
+  
+
+例えば、米セコイア・キャピタルのパートナーDavid Cahn氏は、2024年6月のレポートで**「AI's $600B Question（AIの6000億ドルの問い）」**を発表しました。これは、AIインフラへの投資を正当化するには年間6000億ドル（約90兆円）の収益が必要だが、実際の収益とは大きなギャップがあるという指摘です。
+
+また、ゴールドマン・サックスも同時期に**「Gen AI: too much spend, too little benefit?（生成AI：投資過多で利益はわずか？）」**と題したレポートを発表し、コスト対効果への懸念を表明しています。
+
 ### ② 「キラーアプリ」の不在
-<p style="font-family: &quot;Google Sans Text&quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important;"></p><p data-path-to-node="17" style="font-family: &quot;Google Sans Text&quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important;">ChatGPTは確かに革命的でしたが、それに続く「生活やビジネスを根底から変える、誰もが使うアプリ」が意外と出てきていないという失望感があります。多くのAIツールが「あれば便利」の域を出ておらず、「なくてはならない」インフラになりきれていないという意見です。</p><p data-path-to-node="18" style="font-family: &quot;Google Sans Text&quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important;"></p>
+
+ChatGPTは確かに革命的でしたが、それに続く「生活やビジネスを根底から変える、誰もが使うアプリ」が意外と出てきていないという失望感があります。多くのAIツールが「あれば便利」の域を出ておらず、「なくてはならない」インフラになりきれていないという意見です。
+
 ### ③ ガートナーの「ハイプ・サイクル」による幻滅期
-<p style="font-family: &quot;Google Sans Text&quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important;"></p><p data-path-to-node="19" style="font-family: &quot;Google Sans Text&quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important;">テクノロジーの成熟度を示すIT調査会社ガートナーの「ハイプ・サイクル（2024年版）」において、生成AIは<b>「過度な期待のピーク期」を過ぎ、「幻滅期（Trough of Disillusionment）」に入りつつある</b>と示されました。これは、過熱した期待が一度冷え込み、現実的な評価が下される時期を指します。</p><p data-path-to-node="19" style="font-family: &quot;Google Sans Text&quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important;"></p><div class="separator" style="clear: both; text-align: center;"><a href="/images/img_66734292c145.jpg" style="margin-left: 1em; margin-right: 1em;"><img data-original-height="768" data-original-width="1408" height="219" src="/images/img_7762fb734bbf.jpg" width="400" /></a></div><br /><blockquote data-path-to-node="20" style="font-family: &quot;Google Sans Text&quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important;"><p data-path-to-node="20,0" style="line-height: 1.15 !important; margin-top: 0px !important;"><b style="line-height: 1.15 !important; margin-top: 0px !important;">ポイント:</b> つまり、「AIという技術そのもの」が否定されたのではなく、「過剰すぎた期待とお金の動き」に修正が入っているのです。</p></blockquote><hr data-path-to-node="21" style="font-family: &quot;Google Sans Text&quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important;" /><p data-path-to-node="22" style="font-family: &quot;Google Sans Text&quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important;"></p>
-## 2. バブル崩壊ではなく「選別」のフェーズへ
-<p style="font-family: &quot;Google Sans Text&quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important;"></p><p data-path-to-node="23" style="font-family: &quot;Google Sans Text&quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important;">しかし、これを「終わった」と判断するのは早計です。過去のインターネット・バブル（ドットコムバブル）と比較すると、現在の状況が「終わり」ではない理由が見えてきます。</p><ul data-path-to-node="24" style="font-family: &quot;Google Sans Text&quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; padding-inline-start: 32px;"><li style="line-height: 1.15 !important; margin-top: 0px !important;"><p data-path-to-node="24,0,0" style="line-height: 1.15 !important; margin-top: 0px !important;"><b style="line-height: 1.15 !important; margin-top: 0px !important;">実需の存在:</b> ドットコムバブル当時は、実態のない企業に株価がつきました。しかし、現在のAIは実際にコーディングの補助、画像生成、議事録作成など、現場で<b style="line-height: 1.15 !important; margin-top: 0px !important;">実質的な生産性向上</b>を生み出しています。</p></li></ul><div class="separator" style="clear: both; text-align: center;"><a href="/images/img_41191279d705.jpg" style="margin-left: 1em; margin-right: 1em;"><img data-original-height="768" data-original-width="1408" height="219" src="/images/img_2107f0c26d8f.jpg" width="400" /></a></div><br /><br /><ul data-path-to-node="24" style="font-family: &quot;Google Sans Text&quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; padding-inline-start: 32px;"><li style="line-height: 1.15 !important; margin-top: 0px !important;"><p data-path-to-node="24,1,0" style="line-height: 1.15 !important; margin-top: 0px !important;"><b style="line-height: 1.15 !important; margin-top: 0px !important;">インフラへの投資:</b> 電力が普及する前に発電所が必要だったように、現在はAI時代のための「道路工事」を行っている段階です。このインフラが整った後にこそ、本当のサービスが生まれます。</p></li></ul><p data-path-to-node="25" style="font-family: &quot;Google Sans Text&quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important;"></p>
+
+テクノロジーの成熟度を示すIT調査会社ガートナーの「ハイプ・サイクル（2024年版）」において、生成AIは**「過度な期待のピーク期」を過ぎ、「幻滅期（Trough of Disillusionment）」に入りつつある**と示されました。これは、過熱した期待が一度冷え込み、現実的な評価が下される時期を指します。
+
+[![img_7762fb734bbf](/images/img_7762fb734bbf.jpg)](/images/img_66734292c145.jpg)
+
+  
+
+> **ポイント:** つまり、「AIという技術そのもの」が否定されたのではなく、「過剰すぎた期待とお金の動き」に修正が入っているのです。
+
+* * *
+
+## バブル崩壊ではなく「選別」のフェーズへ
+
+しかし、これを「終わった」と判断するのは早計です。過去のインターネット・バブル（ドットコムバブル）と比較すると、現在の状況が「終わり」ではない理由が見えてきます。
+
+*   **実需の存在:** ドットコムバブル当時は、実態のない企業に株価がつきました。しかし、現在のAIは実際にコーディングの補助、画像生成、議事録作成など、現場で**実質的な生産性向上**を生み出しています。
+    
+
+[![img_2107f0c26d8f](/images/img_2107f0c26d8f.jpg)](/images/img_41191279d705.jpg)
+
+  
+  
+
+*   **インフラへの投資:** 電力が普及する前に発電所が必要だったように、現在はAI時代のための「道路工事」を行っている段階です。このインフラが整った後にこそ、本当のサービスが生まれます。
+    
+
 ### これから起こること：本物だけが生き残る
-<p style="font-family: &quot;Google Sans Text&quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important;"></p><p data-path-to-node="26" style="font-family: &quot;Google Sans Text&quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important;">「AIと名前がつけば何でも株価が上がる」というボーナスタイムは確かに終了しました。これからは、<b>「AIを使って具体的にどう利益を出すか（How）」</b>が問われる「実力テスト」のフェーズに入ります。</p><table data-path-to-node="27" style="font-family: &quot;Google Sans Text&quot;, sans-serif !important; line-height: 1.15 !important; margin-bottom: 32px; margin-top: 0px !important;"><thead style="line-height: 1.15 !important; margin-top: 0px !important;"><tr style="line-height: 1.15 !important; margin-top: 0px !important;"><td style="border: 1px solid; line-height: 1.15 !important; margin-top: 0px !important; text-align: center;"><strong style="line-height: 1.15 !important; margin-bottom: 0px !important; margin-top: 0px !important;">バブル期 (〜2024前半)</strong></td><td style="border: 1px solid; line-height: 1.15 !important; margin-top: 0px !important; text-align: center;"><strong style="line-height: 1.15 !important; margin-bottom: 0px !important; margin-top: 0px !important;">これから (2025〜)</strong></td></tr></thead><tbody style="line-height: 1.15 !important; margin-top: 0px !important;"><tr style="line-height: 1.15 !important; margin-top: 0px !important;"><td data-path-to-node="27,1,0,0" style="border: 1px solid; line-height: 1.15 !important; margin-top: 0px !important; text-align: center;">期待だけで資金が集まる</td><td data-path-to-node="27,1,1,0" style="border: 1px solid; line-height: 1.15 !important; margin-top: 0px !important; text-align: center;">具体的な収益モデルが必須</td></tr><tr style="line-height: 1.15 !important; margin-top: 0px !important;"><td data-path-to-node="27,2,0,0" style="border: 1px solid; line-height: 1.15 !important; margin-top: 0px !important; text-align: center;">AIを作ること自体が目的</td><td data-path-to-node="27,2,1,0" style="border: 1px solid; line-height: 1.15 !important; margin-top: 0px !important; text-align: center;">課題解決の手段としてAIを使う</td></tr><tr style="line-height: 1.15 !important; margin-top: 0px !important;"><td data-path-to-node="27,3,0,0" style="border: 1px solid; line-height: 1.15 !important; margin-top: 0px !important; text-align: center;">「すごい技術」が評価される</td><td data-path-to-node="27,3,1,0" style="border: 1px solid; line-height: 1.15 !important; margin-top: 0px !important; text-align: center;">「使いやすい体験」が評価される</td></tr></tbody></table><hr data-path-to-node="28" style="font-family: &quot;Google Sans Text&quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important;" /><p data-path-to-node="29" style="font-family: &quot;Google Sans Text&quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important;"></p>
+
+「AIと名前がつけば何でも株価が上がる」というボーナスタイムは確かに終了しました。これからは、**「AIを使って具体的にどう利益を出すか（How）」**が問われる「実力テスト」のフェーズに入ります。
+
+**バブル期 (〜2024前半)**
+
+**これから (2025〜)**
+
+期待だけで資金が集まる
+
+具体的な収益モデルが必須
+
+AIを作ること自体が目的
+
+課題解決の手段としてAIを使う
+
+「すごい技術」が評価される
+
+「使いやすい体験」が評価される
+
+* * *
+
 ## 3. 私たちがとるべきスタンスと今後の展望
-<p style="font-family: &quot;Google Sans Text&quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important;"></p><p data-path-to-node="30" style="font-family: &quot;Google Sans Text&quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important;">「AIバブル終了」という言葉に惑わされず、私たちはどう動くべきでしょうか。</p><p data-path-to-node="31" style="font-family: &quot;Google Sans Text&quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important;"></p>
+
+「AIバブル終了」という言葉に惑わされず、私たちはどう動くべきでしょうか。
+
 ### ビジネスパーソン・経営者の場合
-<p style="font-family: &quot;Google Sans Text&quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important;"></p><p style="font-family: &quot;Google Sans Text&quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; padding-bottom: 0px; padding-top: 0px;">「ブームが終わったからAI活用はやめる」というのは最悪手です。幻滅期を抜けた後、AIは電気やインターネットのように<b>「あって当たり前のもの（コモディティ）」</b>になります。</p><p style="font-family: &quot;Google Sans Text&quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; padding-bottom: 0px; padding-top: 0px;"></p><div class="separator" style="clear: both; text-align: center;"><a href="/images/img_58725d2c1861.jpg" style="margin-left: 1em; margin-right: 1em;"><img data-original-height="768" data-original-width="1408" height="219" src="/images/img_f78434d75e95.jpg" width="400" /></a></div><br /><p style="font-family: &quot;Google Sans Text&quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; padding-bottom: 0px; padding-top: 0px;">今のうちに、自社の業務フローにAIを組み込み、地道な効率化を進めていた企業だけが、次の「啓蒙活動期（普及期）」で大きな差をつけることができます。</p><p data-path-to-node="33" style="font-family: &quot;Google Sans Text&quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important;"></p>
+
+「ブームが終わったからAI活用はやめる」というのは最悪手です。幻滅期を抜けた後、AIは電気やインターネットのように**「あって当たり前のもの（コモディティ）」**になります。
+
+[![img_f78434d75e95](/images/img_f78434d75e95.jpg)](/images/img_58725d2c1861.jpg)
+
+  
+
+今のうちに、自社の業務フローにAIを組み込み、地道な効率化を進めていた企業だけが、次の「啓蒙活動期（普及期）」で大きな差をつけることができます。
+
 ### 投資家・個人の場合
-<p style="font-family: &quot;Google Sans Text&quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important;"></p><p data-path-to-node="34" style="font-family: &quot;Google Sans Text&quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important;">短期的な株価の上下動に一喜一憂するフェーズは終わりました。これからは、GPU（ハードウェア）だけでなく、その上で動く<b style="line-height: 1.15 !important; margin-top: 0px !important;">ソフトウェア（SaaS）や、AIを活用して独自のデータを蓄積している企業</b>に注目が集まるでしょう。</p><hr data-path-to-node="35" style="font-family: &quot;Google Sans Text&quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important;" /><p data-path-to-node="36" style="font-family: &quot;Google Sans Text&quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important;"></p>
+
+短期的な株価の上下動に一喜一憂するフェーズは終わりました。これからは、GPU（ハードウェア）だけでなく、その上で動く**ソフトウェア（SaaS）や、AIを活用して独自のデータを蓄積している企業**に注目が集まるでしょう。
+
+* * *
+
 ## まとめ：宴は終わったが、時代は続く
-<p style="font-family: &quot;Google Sans Text&quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important;"></p><p data-path-to-node="37" style="font-family: &quot;Google Sans Text&quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important;">「AIバブル終了」というキーワードは、<b style="line-height: 1.15 !important; margin-top: 0px !important;">「過剰な熱狂（ハイプ）の終了」を意味しますが、「AI技術の進歩の終了」ではありません。</b></p><p style="font-family: &quot;Google Sans Text&quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; padding-bottom: 0px; padding-top: 0px;">むしろ、騒がしいお祭りが終わり、ここからが本当のビジネスとしての勝負が始まります。</p><p style="font-family: &quot;Google Sans Text&quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; padding-bottom: 0px; padding-top: 0px;">悲観的になりすぎず、かといって盲目的に信じすぎず、<b>「実用性」</b>にフォーカスしてAIと付き合っていくのが、これからの正解と言えるでしょう。</p><hr data-path-to-node="39" style="font-family: &quot;Google Sans Text&quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important;" /><p data-path-to-node="40" style="font-family: &quot;Google Sans Text&quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important;"></p>
+
+「AIバブル終了」というキーワードは、**「過剰な熱狂（ハイプ）の終了」を意味しますが、「AI技術の進歩の終了」ではありません。**
+
+むしろ、騒がしいお祭りが終わり、ここからが本当のビジネスとしての勝負が始まります。
+
+悲観的になりすぎず、かといって盲目的に信じすぎず、**「実用性」**にフォーカスしてAIと付き合っていくのが、これからの正解と言えるでしょう。
+
+* * *
+
 ## 参考文献・出典
-<p style="font-family: &quot;Google Sans Text&quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important;"></p><p data-path-to-node="41" style="font-family: &quot;Google Sans Text&quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important;">本記事の執筆にあたり、以下のレポートやデータを参考にしました。</p><ol data-path-to-node="42" start="1" style="font-family: &quot;Google Sans Text&quot;, sans-serif !important; line-height: 1.15 !important; margin-top: 0px !important; padding-inline-start: 32px;"><li style="line-height: 1.15 !important; margin-top: 0px !important;"><p style="line-height: 1.15 !important; margin-top: 0px !important; padding-bottom: 0px; padding-top: 0px;">Sequoia Capital: David Cahn, "AI’s $600B Question" (June 20, 2024).</p><p style="line-height: 1.15 !important; margin-top: 0px !important; padding-bottom: 0px; padding-top: 0px;">AIインフラへの投資額と、実際の収益見込みの乖離について指摘した記事。</p><p style="line-height: 1.15 !important; margin-top: 0px !important; padding-bottom: 0px; padding-top: 0px;"><a href="https://gemini.google.com/app/8e2d29077d21a6fd?hl=ja#:~:text=%E8%A8%98%E4%BA%8B%E3%82%92%E8%AA%AD%E3%82%80%20(Sequoia%E5%85%AC%E5%BC%8F%E3%82%B5%E3%82%A4%E3%83%88)" target="_blank">記事を読む (Sequoia公式サイト)</a></p></li><li style="line-height: 1.15 !important; margin-top: 0px !important;"><p style="line-height: 1.15 !important; margin-top: 0px !important; padding-bottom: 0px; padding-top: 0px;">Goldman Sachs: "Gen AI: too much spend, too little benefit?" (June 2024).</p><p style="line-height: 1.15 !important; margin-top: 0px !important; padding-bottom: 0px; padding-top: 0px;">生成AIへの巨額投資に対する経済的リターンへの懐疑論をまとめたレポート。</p><p style="line-height: 1.15 !important; margin-top: 0px !important; padding-bottom: 0px; padding-top: 0px;"><a href="https://www.goldmansachs.com/intelligence/pages/gen-ai-too-much-spend-too-little-benefit.html" target="_blank">レポート概要 (Goldman Sachs公式サイト)</a></p></li><li style="line-height: 1.15 !important; margin-top: 0px !important;"><p style="line-height: 1.15 !important; margin-top: 0px !important; padding-bottom: 0px; padding-top: 0px;">Gartner: "Hype Cycle for Artificial Intelligence, 2024"</p><p style="line-height: 1.15 !important; margin-top: 0px !important; padding-bottom: 0px; padding-top: 0px;">生成AIが「過度な期待」のピークを越え、幻滅期に入ったことを示すハイプ・サイクル図。</p><p style="line-height: 1.15 !important; margin-top: 0px !important; padding-bottom: 0px; padding-top: 0px;"><a href="https://www.google.com/search?q=https://www.gartner.com/en/newsroom/press-releases/2024-06-17-gartner-identifies-top-5-trends-in-artificial-intelligence-for-2024" target="_blank">プレスリリース (Gartner公式サイト)</a></p></li></ol>
 
+本記事の執筆にあたり、以下のレポートやデータを参考にしました。
 
+1.  Sequoia Capital: David Cahn, "AI’s $600B Question" (June 20, 2024).
+    
+    AIインフラへの投資額と、実際の収益見込みの乖離について指摘した記事。
+    
+    [記事を読む (Sequoia公式サイト)](https://gemini.google.com/app/8e2d29077d21a6fd?hl=ja#:~:text=%E8%A8%98%E4%BA%8B%E3%82%92%E8%AA%AD%E3%82%80%20(Sequoia%E5%85%AC%E5%BC%8F%E3%82%B5%E3%82%A4%E3%83%88))
+    
+2.  Goldman Sachs: "Gen AI: too much spend, too little benefit?" (June 2024).
+    
+    生成AIへの巨額投資に対する経済的リターンへの懐疑論をまとめたレポート。
+    
+    [レポート概要 (Goldman Sachs公式サイト)](https://www.goldmansachs.com/intelligence/pages/gen-ai-too-much-spend-too-little-benefit.html)
+    
+3.  Gartner: "Hype Cycle for Artificial Intelligence, 2024"
+    
+    生成AIが「過度な期待」のピークを越え、幻滅期に入ったことを示すハイプ・サイクル図。
+    
+    [プレスリリース (Gartner公式サイト)](https://www.google.com/search?q=https://www.gartner.com/en/newsroom/press-releases/2024-06-17-gartner-identifies-top-5-trends-in-artificial-intelligence-for-2024)
