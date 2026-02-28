@@ -646,6 +646,7 @@
 
     <!-- コードブロック初期化スクリプト -->
     <script>
+        //<![CDATA[
         document.addEventListener("DOMContentLoaded", function () {
             // Highlight.js初期化
             hljs.highlightAll();
@@ -672,7 +673,7 @@
                 if (lang === 'CODE') {
                     if (content.match(/^\s*<(!DOCTYPE|html|head|body|div|span|script|style|link|meta|a |p |img|br|h[1-6]|ul|ol|li|table|form|input|button|iframe)/im)) lang = 'HTML';
                     else if (content.match(/^\s*(function|var |let |const |document\.|window\.|addEventListener|querySelector)/m)) lang = 'JAVASCRIPT';
-                    else if (content.match(/^\s*(\.|#|@media|@keyframes|body|html|div|span)\s*{/m)) lang = 'CSS';
+                    else if (content.match(/^\s*(\.|#|@media|@keyframes|body|html|div|span)\s*\{/m)) lang = 'CSS';
                     else if (content.match(/^\s*(import |from |def |class |print\(|if __name__)/m)) lang = 'PYTHON';
                     else if (content.match(/<\?php|echo |function\s+\w+\s*\(/m)) lang = 'PHP';
                     else if (content.match(/^\s*(package |import |public class |System\.out)/m)) lang = 'JAVA';
@@ -712,6 +713,7 @@
                 wrapper.appendChild(pre);
             });
         });
+        //]]>
     </script>
 
 
