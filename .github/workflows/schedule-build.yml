@@ -1,9 +1,12 @@
 name: Daily Build (Scheduled)
 
 on:
+  push:
+    paths:
+      - '.github/workflows/schedule-build.yml'
   schedule:
-    # 毎日 UTC 08:30 (日本時間 17:30) に実行
-    - cron: '30 8 * * *'
+    # 毎日 UTC 08:15 (日本時間 17:15) に実行
+    - cron: '15 8 * * *'
   # 手動実行用 (テストなどのため)
   workflow_dispatch:
 
@@ -22,7 +25,7 @@ jobs:
           curl -X POST "${{ secrets.CF_PAGES_DEPLOY_HOOK_URL }}"
 
       - name: Wait for Cloudflare Pages build to finish
-        run: sleep 120
+        run: sleep 180
 
       - name: Checkout repository
         uses: actions/checkout@v4
