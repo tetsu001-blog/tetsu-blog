@@ -47,25 +47,42 @@ image: "/images/adversarial_result.png"
 
 Geminiはマルチモーダルネイティブ（最初からテキストと画像を同時に学習している）であるため、画像の文脈理解に強みを持つ反面、視覚的な攻撃の影響も受けやすい側面があります。
 
-- **対策：** 「敵対的トレーニング（Adversarial Training）」を強化しています。開発段階でわざと攻撃的な画像を大量に学習させ、「このようなノイズが含まれる場合は命令を無視する」ようモデルを調整しています。また、画像内のテキストをOCR（文字認識）として読み取る際、それが「命令」なのか単なる「風景の一部」なのかを区別する重み付けを行っています。
+- **Googleが行っている対策：** 「敵対的トレーニング（Adversarial Training）」を強化しています。開発段階でわざと攻撃的な画像を大量に学習させ、「このようなノイズが含まれる場合は命令を無視する」ようモデルを調整しています。また、画像内のテキストをOCR（文字認識）として読み取る際、それが「命令」なのか単なる「風景の一部」なのかを区別する重み付けを行っています。
 
 - **実践結果：** ![](/images/Pasted-image-20260302190647.png)
+参考　公式出典
+> https://cloud.google.com/blog/topics/threat-intelligence/adversarial-misuse-generative-ai?hl=en
 
-### OpenAI (ChatGPT / GPT-4V)
+> https://services.google.com/fh/files/misc/ociso_2025_saif_cloud_paper.pdf
+
+
+### OpenAI (ChatGPT)
 
 GPT-4Vは、リリース前のレッドチーミング（専門家による模擬攻撃）で、視覚的プロンプトインジェクションのリスクを徹底的に洗い出しました。
 
-- **対策：** 画像内のテキスト認識（OCR）に対し、「命令権限」を低く設定しています。システムプロンプト（開発者が設定した絶対的なルール）と、画像内のテキスト（ユーザー入力）が矛盾する場合、システムプロンプトを優先するようガードレールが敷かれています。また、人物特定やCAPTCHA解読の拒否など、視覚入力に対する特定カテゴリの拒否機能が強力です。
+- **OpenAIが行っている対策：** 画像内のテキスト認識（OCR）に対し、「命令権限」を低く設定しています。システムプロンプト（開発者が設定した絶対的なルール）と、画像内のテキスト（ユーザー入力）が矛盾する場合、システムプロンプトを優先するようガードレールが敷かれています。また、人物特定やCAPTCHA解読の拒否など、視覚入力に対する特定カテゴリの拒否機能が強力です。
 
 - **実践結果：** ![](/images/Pasted-image-20260302190801.png)
+参考　公式出典
+> https://openai.com/index/gpt-4v-system-card/
+
+> https://cdn.openai.com/papers/openais-approach-to-external-red-teaming.pdf
+
 
 ### Anthropic (Claude)
 
 Claudeは「Constitutional AI（憲法AI）」というアプローチを取り、安全性に特化しています。
 
-- **対策：** 入力された画像に有害な意図が含まれていないか、多層的なフィルタリングを行います。特にClaude 3シリーズでは、画像内のテキストが倫理規定（Constitution）に違反する命令を含んでいた場合、その命令部分のみを「無害化して無視」し、画像の描写内容のみを回答するような挙動を示す傾向があります。
+- **Anthropicが行っている対策：** 入力された画像に有害な意図が含まれていないか、多層的なフィルタリングを行います。特にClaude 3シリーズでは、画像内のテキストが倫理規定（Constitution）に違反する命令を含んでいた場合、その命令部分のみを「無害化して無視」し、画像の描写内容のみを回答するような挙動を示す傾向があります。
 
 - **実践結果：** ![](/images/Pasted-image-20260302190848.png)
+参考　公式出典
+> https://www.anthropic.com/research/constitutional-ai-harmlessness-from-ai-feedback
+
+> https://www.anthropic.com/news/claudes-constitution
+
+> https://assets.anthropic.com/m/61e7d27f8c8f5919/original/Claude-3-Model-Card.pdf
+
 
 ## 4. 私たちができる防御策
 
