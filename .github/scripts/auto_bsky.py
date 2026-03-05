@@ -2,6 +2,7 @@ import os
 import sys
 import xml.etree.ElementTree as ET
 import re
+import mimetypes
 from urllib.request import urlopen, Request
 from datetime import datetime, timezone, timedelta
 
@@ -106,7 +107,19 @@ def post_to_bluesky(post_info):
         try:
             print(f"Downloading OGP image: {ogp['image_url']}")
             req = Request(ogp['image_url'], headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'})
-            img_data = urlopen(req).read()
+            resp = urlopen(req)
+            img_data = resp.read()
+
+            # MIMEタイプを判定（Cloudflare Pagesが */* を返す場合への対策）
+            content_type = resp.headers.get('Content-Type', '')
+            if not content_type or content_type.startswith('*/*') or 'image/' not in content_type:
+                # URLの拡張子からMIMEタイプを推定
+                guessed_type, _ = mimetypes.guess_type(ogp['image_url'])
+                if guessed_type and guessed_type.startswith('image/'):
+                    content_type = guessed_type
+                else:
+                    content_type = 'image/jpeg'  # フォールバック
+            print(f"Image MIME type: {content_type}")
             
             # 画像データが1MB (Blueskyの制限) に近い場合、圧縮・リサイズする
             # Bluesky API limit is 1,000,000 bytes. We use 950,000 as a safe threshold.
@@ -114,6 +127,7 @@ def post_to_bluesky(post_info):
             
             if len(img_data) > MAX_IMAGE_SIZE:
                 print(f"Image size ({len(img_data)} bytes) exceeds limits. Compressing...")
+                content_type = 'image/jpeg'  # 圧縮後はJPEGになる
                 try:
                     img = Image.open(io.BytesIO(img_data))
                     
@@ -146,7 +160,8 @@ def post_to_bluesky(post_info):
                      # 今回はフォールバックとして圧縮前のデータを送信し、API側でのエラーに委ねる
             
             # Blueskyに画像データをアップロードして、ID (blob) を受け取る
-            upload = client.upload_blob(img_data)
+            # content_type を明示的に指定することで InvalidMimeType エラーを回避
+            upload = client.upload_blob(img_data, headers={'Content-Type': content_type})
             thumb_blob = upload.blob
         except Exception as e:
             print(f"Failed to upload image blob: {e}")
