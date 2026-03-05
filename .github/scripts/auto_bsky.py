@@ -161,7 +161,8 @@ def post_to_bluesky(post_info):
             
             # Blueskyに画像データをアップロードして、ID (blob) を受け取る
             # content_type を明示的に指定することで InvalidMimeType エラーを回避
-            upload = client.upload_blob(img_data, headers={'Content-Type': content_type})
+            # atproto Python SDKでは client.upload_blob が kwargs を受け入れないため、直接メソッドを呼び出す
+            upload = client.com.atproto.repo.upload_blob(img_data, headers={'Content-Type': content_type})
             thumb_blob = upload.blob
         except Exception as e:
             print(f"Failed to upload image blob: {e}")
