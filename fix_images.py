@@ -201,8 +201,8 @@ if __name__ == "__main__":
     print("--- fix_images start ---\n")
 
     moved = move_images()
-    compressed = compress_images()
     fixed = fix_paths()
+    compressed = compress_images()
 
     print("\n--- result ---")
     if moved > 0:
