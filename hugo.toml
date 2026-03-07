@@ -3,6 +3,7 @@ languageCode = "ja"
 timeZone = "Asia/Tokyo"
 title = "てつblog"
 ignoreFiles = ["content/templates/"]
+enableRobotsTXT = true
 
 [params]
   author = "てつ"
@@ -21,5 +22,6 @@ ignoreFiles = ["content/templates/"]
   hardWraps = true
 
 [outputs]
-  home = ["HTML", "RSS", "JSON"]
+  home = ["HTML", "RSS", "JSON", "sitemap", "robots"]
   section = ["HTML", "RSS"]
+  page = ["HTML"]
