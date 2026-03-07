@@ -1,6 +1,6 @@
 ---
 title: "【大炎上】Microsoftの「AIゴリ押し」はなぜユーザーを激怒させ、Windowsを「オワコン」へと追いやっているのか？"
-slug: "2025-11-19"
+
 date: 2025-11-19T08:00:00Z
 lastmod: 2025-11-23T05:56:48.876Z
 draft: false

@@ -1,6 +1,6 @@
 ---
 title: "Windowsからの脱却を決意！「Lepton」「Linux」が実現するPCとスマホの境界線がなくなる未来"
-slug: "2025-12-07"
+
 date: 2025-12-07T09:35:00Z
 lastmod: 2025-12-11T09:30:37.712Z
 draft: false

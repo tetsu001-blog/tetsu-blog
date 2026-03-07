@@ -1,6 +1,6 @@
 ---
 title: "【Blogger】URLを貼るだけで自動的にブログカード化する方法（コピペでOK）"
-slug: "2026-02-03"
+
 date: 2026-02-03T08:00:00Z
 lastmod: 2026-02-19T11:26:59.325Z
 draft: false

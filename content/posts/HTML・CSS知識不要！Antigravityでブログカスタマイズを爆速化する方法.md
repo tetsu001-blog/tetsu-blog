@@ -1,6 +1,6 @@
 ---
 title: "HTML・CSS知識不要！Antigravityでブログカスタマイズを爆速化する方法"
-slug: "2026-02-19"
+
 date: 2026-02-19T08:00:00Z
 lastmod: 2026-02-19T12:11:25.825Z
 draft: false

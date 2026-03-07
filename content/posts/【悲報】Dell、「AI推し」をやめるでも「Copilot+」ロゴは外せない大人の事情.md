@@ -1,6 +1,6 @@
 ---
 title: "【悲報】Dell、「AI推し」をやめる?でも「Copilot+」ロゴは外せない大人の事情"
-slug: "2026-01-11"
+
 date: 2026-01-11T08:03:00Z
 lastmod: 2026-01-11T08:03:58.449Z
 draft: false

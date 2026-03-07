@@ -1,6 +1,6 @@
 ---
 title: 【完全無料】Googleの神AIツール「Mixboard」がすごすぎる！使い方や実例を徹底解説
-slug: 2026-02-24
+
 date: 2026-02-24T20:13:37+09:00
 draft: false
 tags:

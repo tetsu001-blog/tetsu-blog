@@ -14,7 +14,7 @@ ignoreFiles = ["content/templates/"]
 
 [permalinks]
   [permalinks.page]
-    posts = "/posts/:slug/"
+    posts = "/posts/:year-:month-:day/"
 
 [markup.goldmark.renderer]
   unsafe = true

@@ -1,6 +1,6 @@
 ---
 title: "生成AIサービスに課金するなら、まずはGensparkがおすすめ！でも私はGemini派です（笑）"
-slug: "2026-01-29"
+
 date: 2026-01-29T08:00:00.001Z
 lastmod: 2026-02-19T11:33:01.673Z
 draft: false

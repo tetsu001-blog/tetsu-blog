@@ -1,6 +1,6 @@
 ---
 title: "ブラウザはChrome一択ではない！Microsoft Edgeをおすすめする理由"
-slug: "2025-11-25"
+
 date: 2025-11-25T11:16:00Z
 lastmod: 2026-02-11T10:15:26.197Z
 draft: false

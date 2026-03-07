@@ -1,6 +1,6 @@
 ---
 title: "Google AI Plusが登場！月額1,200円でGemini 3 Proが使える「ちょうどいい」新プランを徹底比較"
-slug: "2026-02-11"
+
 date: 2026-02-11T08:43:00Z
 lastmod: 2026-02-11T11:36:48.531Z
 draft: false

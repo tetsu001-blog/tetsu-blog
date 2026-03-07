@@ -1,6 +1,6 @@
 ---
 title: ブログの紹介用4コマ漫画をAIで作成！最新モデル「Nano Banana 2」の実力と作成手順
-slug: 2026-03-06
+
 date: 2026-03-06T17:00:00
 draft: false
 tags:
