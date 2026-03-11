@@ -389,13 +389,11 @@
             padding-left: 0;
             list-style: none;
             margin: 0;
-            counter-reset: toc-counter;
         }
 
         .toc-content nav ul ul {
             list-style: none;
             padding-left: 1.5em;
-            counter-reset: toc-subcounter;
         }
 
         .toc-content nav li {
@@ -404,21 +402,7 @@
             line-height: 1.5;
         }
 
-        .toc-content nav>ul>li::before {
-            counter-increment: toc-counter;
-            content: counter(toc-counter) ". ";
-            color: #0284c7;
-            font-weight: 500;
-            margin-right: 0.3em;
-        }
 
-        .toc-content nav ul ul>li::before {
-            counter-increment: toc-subcounter;
-            content: counter(toc-counter) "." counter(toc-subcounter) ". ";
-            color: #0284c7;
-            font-weight: 500;
-            margin-right: 0.3em;
-        }
 
         .toc-content nav a {
             color: #0284c7;
