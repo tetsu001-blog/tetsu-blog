@@ -1,3 +1,9 @@
+<script>
+    // pages.dev から独自ドメインへリダイレクト
+    if (window.location.hostname === "tetsu-blog.pages.dev") {
+        window.location.replace("https://tetsu-blog.net" + window.location.pathname + window.location.search);
+    }
+</script>
 <style>
     /* Custom Background Image */
     html,
