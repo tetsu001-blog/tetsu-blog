@@ -18,8 +18,7 @@
     {{ end }}
 
     {{/* 目次（サムネの下、本文の上に表示） */}}
-    {{ if and (not .IsHome) (ne .Slug "about") (ne .Slug "swap") (ne .Slug "privacy") (ne .Slug "contact") (ne .Slug
-    "thanks") }}
+    {{ if eq .Section "posts" }}
     {{ if .TableOfContents }}
     <div class="toc-container" id="toc-container">
         <div class="toc-header">
