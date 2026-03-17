@@ -19,7 +19,7 @@ jobs:
               <methodName>weblogUpdates.ping</methodName>
               <params>
                 <param><value>てつblog</value></param>
-                <param><value>https://tetsu-blog.pages.dev/</value></param>
+                <param><value>https://tetsu-blog.net/</value></param>
               </params>
             </methodCall>'
           echo "blog.with2.net へのping送信完了"
@@ -33,7 +33,7 @@ jobs:
               <methodName>weblogUpdates.ping</methodName>
               <params>
                 <param><value>てつblog</value></param>
-                <param><value>https://tetsu-blog.pages.dev/</value></param>
+                <param><value>https://tetsu-blog.net/</value></param>
               </params>
             </methodCall>'
           echo "blogmura へのping送信完了"
