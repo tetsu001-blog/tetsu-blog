@@ -5,7 +5,7 @@ draft: false
 tags:
   - FX
 categories: []
-image: /images/Pasted-image-20260314150457.png
+image: "/images/Pasted-image-20260314150457.png"
 ---
 
 <!-- thumbnail_start -->
