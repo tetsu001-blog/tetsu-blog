@@ -5,7 +5,7 @@ draft: false
 tags:
   - AI
 categories: []
-image: ""
+image: "/images/Pasted-image-20260317102010.jpg"
 ---
 <!-- thumbnail_start -->
 ![](/images/Pasted-image-20260317102010.jpg)
