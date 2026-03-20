@@ -8,7 +8,7 @@
         {{ range .Pages }}
         <article
             class="bg-white rounded shadow-sm overflow-hidden border border-slate-100 flex flex-col group relative post-card"
-            data-date="{{ .Date.Format " 2006-01" }}">
+            data-date="{{ .Date.Format "2006-01" }}">
             <a href="{{ .RelPermalink }}" class="block relative aspect-video overflow-hidden">
                 {{ $thumb := partial "get-thumbnail.html" . }}
                 {{ if $thumb }}
