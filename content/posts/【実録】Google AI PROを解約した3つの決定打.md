@@ -1,13 +1,12 @@
 ---
-title: 【実録】Google AI PROを解約した3つの決定打
-date: 2026-03-17T17:00:00
+title: "【実録】Google AI PROを解約した3つの決定打"
+date: 2026-03-17T12:00:00+09:00
 draft: false
 tags:
   - AI
 categories: []
-image: "/images/Pasted-image-20260317102010.jpg"
+image: ""
 ---
-
 <!-- thumbnail_start -->
 ![](/images/Pasted-image-20260317102010.jpg)
 <!-- thumbnail_end -->
@@ -80,7 +79,7 @@ Flash以外のモデルはすぐに制限がかかり、Flashはとにかく、*
 |**作業の快適性**|常にストレス|ノンストレス|
 
 料金はほぼ同等ですが、得られる「心の平穏」と「作業時間」を考えれば、どちらに価値があるかは明白でした。
-画像や動画などのクリエイティブな生成は、Googl AI PROの圧勝ですが、Claudeに
+画像や動画などのクリエイティブな生成は、Google AI PROの圧勝です。
 ## 結論：Claudeに変えてみての感想
 
 乗り換えてみて驚いたのは、**「あんなに苦労したエラーが、Claudeなら一瞬で解決した」** という事実です。
