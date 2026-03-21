@@ -72,10 +72,14 @@ image: /images/img_ca3dd4cb02e5.jpg
 
 「名前をつけて保存」ダイアログを出して、場所を選んで、ファイル名を入力して……という手間がゼロ。直感的に「このメモ、デスクトップに置いておこう」ができるんです。
 
-<video controls style="width: 100%; max-width: 100%; height: auto; border-radius: 8px; display: block; margin: 2em auto; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
-  <source src="/images/memo.mp4" type="video/mp4">
-  お使いのブラウザは動画タグをサポートしていません。
-</video>
+<iframe 
+  src="https://www.youtube.com/embed/vmuyYmRpn9Y" 
+  title="YouTube video player" 
+  frameborder="0" 
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+  allowfullscreen
+  style="width: 100%; aspect-ratio: 16/9; max-width: 100%; border-radius: 8px; display: block; margin: 2em auto; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
+</iframe>
 
 ## 開発の裏話：アイコン設定でのつまづき
 
