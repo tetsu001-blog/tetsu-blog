@@ -6,11 +6,11 @@ tags:
   - FX
   - AI
 categories: []
-image: "/images/Pasted-image-20260320154619.png"
+image: "/images/Pasted-image-20260320154619.jpg"
 ---
 
 <!-- thumbnail_start -->
-![](/images/Pasted-image-20260320154619.png)
+![](/images/Pasted-image-20260320154619.jpg)
 <!-- thumbnail_end -->
 
 FXのスワップポイント運用って、基本的に「待ち」の運用です。 毎日チャリンチャリンと口座にお金が入ってくるのは嬉しいんですが……ぶっちゃけ、**ただ数字を眺めているだけだと暇じゃないですか？（笑）**
