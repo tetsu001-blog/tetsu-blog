@@ -81,11 +81,10 @@ def fetch_myfxbook_data():
 
         if daily_gain_data.get('error'):
             print(f"Data Fetch Error: {daily_gain_data.get('message')}")
-            sys.exit(1)
-
-        with open(DAILY_GAIN_FILE, 'w', encoding='utf-8') as f:
-            json.dump(daily_gain_data['dailyData'], f, ensure_ascii=False, indent=4)
-        print(f"日次データ保存完了: {DAILY_GAIN_FILE}")
+        else:
+            with open(DAILY_GAIN_FILE, 'w', encoding='utf-8') as f:
+                json.dump(daily_gain_data.get('dailyData', []), f, ensure_ascii=False, indent=4)
+            print(f"日次データ保存完了: {DAILY_GAIN_FILE}")
 
         # 残高推移データ取得（get-data-points）
         points_url = (
