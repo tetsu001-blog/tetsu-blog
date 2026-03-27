@@ -67,7 +67,14 @@ def fetch_myfxbook_data():
         print(f"サマリー保存完了: {SUMMARY_FILE}")
 
         # Daily Gainデータ取得
-        data_url = f"{API_BASE_URL}/get-daily-gain.json?session={session_id}&id={ACCOUNT_ID}"
+        from datetime import datetime, timedelta
+        end_date   = datetime.now().strftime('%m/%d/%Y')
+        start_date = (datetime.now() - timedelta(days=365)).strftime('%m/%d/%Y')
+        data_url = (
+            f"{API_BASE_URL}/get-daily-gain.json"
+            f"?session={session_id}&id={ACCOUNT_ID}"
+            f"&start={start_date}&end={end_date}"
+        )
         response = requests.get(data_url)
         response.raise_for_status()
         daily_gain_data = response.json()
@@ -81,9 +88,6 @@ def fetch_myfxbook_data():
         print(f"日次データ保存完了: {DAILY_GAIN_FILE}")
 
         # 残高推移データ取得（get-data-points）
-        from datetime import datetime, timedelta
-        end_date = datetime.now().strftime('%m/%d/%Y')
-        start_date = (datetime.now() - timedelta(days=365)).strftime('%m/%d/%Y')
         points_url = (
             f"{API_BASE_URL}/get-data-points.json"
             f"?session={session_id}&id={ACCOUNT_ID}"
