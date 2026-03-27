@@ -13,6 +13,8 @@ on:
 jobs:
   trigger-build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     steps:
@@ -38,7 +40,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add static/data/myfxbook-data.json
+          git add static/data/
           git diff --cached --quiet || git commit -m "chore: update myfxbook data [skip ci]"
           git push
 
