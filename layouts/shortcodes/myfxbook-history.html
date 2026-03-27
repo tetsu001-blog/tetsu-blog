@@ -75,7 +75,7 @@
         <td>${t.closeTime || '--'}</td>
         <td><strong>${t.symbol || '--'}</strong></td>
         <td class="${isBuy ? 'myfx-buy' : 'myfx-sell'}">${isBuy ? '買' : '売'}</td>
-        <td>${parseFloat(t.sizing || 0).toFixed(2)}</td>
+        <td>${parseFloat(t.sizing?.value ?? t.sizing ?? 0).toFixed(2)}</td>
         <td>${t.openPrice || '--'}</td>
         <td>${t.closePrice || '--'}</td>
         <td class="${pips >= 0 ? 'myfx-pos' : 'myfx-neg'}">${pips >= 0 ? '+' : ''}${pips.toFixed(1)}</td>
