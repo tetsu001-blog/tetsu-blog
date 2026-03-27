@@ -16,7 +16,7 @@
 <script>
 (async function() {
   try {
-    const res = await fetch('/data/myfxbook-balance-points.json');
+    const res = await fetch('/data/myfxbook-data.json');
     const data = await res.json();
     if (!data || data.length === 0) return;
 

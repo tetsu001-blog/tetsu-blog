@@ -2,50 +2,49 @@ import os
 import requests
 import json
 import sys
+from datetime import datetime, timedelta
 
-MYFXBOOK_EMAIL = os.environ.get('MYFXBOOK_EMAIL')
+MYFXBOOK_EMAIL    = os.environ.get('MYFXBOOK_EMAIL')
 MYFXBOOK_PASSWORD = os.environ.get('MYFXBOOK_PASSWORD')
-ACCOUNT_ID = os.environ.get('MYFXBOOK_ACCOUNT_ID')
+ACCOUNT_ID        = os.environ.get('MYFXBOOK_ACCOUNT_ID')
 
+SUMMARY_FILE    = './static/data/myfxbook-summary.json'
 DAILY_GAIN_FILE = './static/data/myfxbook-data.json'
-SUMMARY_FILE = './static/data/myfxbook-summary.json'
-DATA_POINTS_FILE = './static/data/myfxbook-balance-points.json'
-HISTORY_FILE = './static/data/myfxbook-history.json'
-API_BASE_URL = 'https://www.myfxbook.com/api'
+HISTORY_FILE    = './static/data/myfxbook-history.json'
+API_BASE_URL    = 'https://www.myfxbook.com/api'
+
+def api_get(url):
+    """GETリクエストを送り、JSONを返す。失敗時はNoneを返す。"""
+    try:
+        res = requests.get(url, timeout=30)
+        res.raise_for_status()
+        return res.json()
+    except Exception as e:
+        print(f"  警告: {e}")
+        return None
 
 def fetch_myfxbook_data():
     if not all([MYFXBOOK_EMAIL, MYFXBOOK_PASSWORD, ACCOUNT_ID]):
         print("Error: MYFXBOOK_EMAIL, MYFXBOOK_PASSWORD, MYFXBOOK_ACCOUNT_ID が設定されていません")
         sys.exit(1)
 
-    session_id = None
+    # --- ログイン（必須） ---
+    login_data = api_get(f"{API_BASE_URL}/login.json?email={MYFXBOOK_EMAIL}&password={MYFXBOOK_PASSWORD}")
+    if not login_data or login_data.get('error'):
+        print(f"Login Error: {login_data.get('message') if login_data else '接続失敗'}")
+        sys.exit(1)
+
+    session_id = login_data['session']
+    print("ログイン成功")
+    os.makedirs('./static/data', exist_ok=True)
+
     try:
-        # ログイン
-        login_url = f"{API_BASE_URL}/login.json?email={MYFXBOOK_EMAIL}&password={MYFXBOOK_PASSWORD}"
-        response = requests.get(login_url)
-        response.raise_for_status()
-        login_data = response.json()
-
-        if login_data.get('error'):
-            print(f"Login Error: {login_data.get('message')}")
+        # --- アカウントサマリー（必須） ---
+        accounts_data = api_get(f"{API_BASE_URL}/get-my-accounts.json?session={session_id}")
+        if not accounts_data or accounts_data.get('error'):
+            print(f"Accounts Error: {accounts_data.get('message') if accounts_data else '取得失敗'}")
             sys.exit(1)
 
-        session_id = login_data['session']
-        print("ログイン成功")
-
-        os.makedirs('./static/data', exist_ok=True)
-
-        # アカウントサマリー取得
-        accounts_url = f"{API_BASE_URL}/get-my-accounts.json?session={session_id}"
-        response = requests.get(accounts_url)
-        response.raise_for_status()
-        accounts_data = response.json()
-
-        if accounts_data.get('error'):
-            print(f"Accounts Fetch Error: {accounts_data.get('message')}")
-            sys.exit(1)
-
-        # 対象アカウントを抽出
         account = next(
             (a for a in accounts_data.get('accounts', []) if str(a.get('id')) == str(ACCOUNT_ID)),
             None
@@ -55,83 +54,46 @@ def fetch_myfxbook_data():
             sys.exit(1)
 
         summary = {
-            "name":    account.get('name', ''),
-            "balance": account.get('balance', 0),
+            "name":     account.get('name', ''),
+            "balance":  account.get('balance', 0),
             "currency": account.get('currency', 'USD'),
-            "growth":  account.get('gain', 0),
+            "growth":   account.get('gain', 0),
             "drawdown": account.get('drawdown', 0),
-            "monthly": account.get('monthly', 0),
+            "monthly":  account.get('monthly', 0),
         }
         with open(SUMMARY_FILE, 'w', encoding='utf-8') as f:
             json.dump(summary, f, ensure_ascii=False, indent=4)
         print(f"サマリー保存完了: {SUMMARY_FILE}")
 
-        # Daily Gainデータ取得
-        from datetime import datetime, timedelta
+        # --- Daily Gain（任意） ---
         end_date   = datetime.now().strftime('%m/%d/%Y')
         start_date = (datetime.now() - timedelta(days=365)).strftime('%m/%d/%Y')
-        data_url = (
+        daily_data = api_get(
             f"{API_BASE_URL}/get-daily-gain.json"
             f"?session={session_id}&id={ACCOUNT_ID}"
             f"&start={start_date}&end={end_date}"
         )
-        response = requests.get(data_url)
-        response.raise_for_status()
-        daily_gain_data = response.json()
-
-        if daily_gain_data.get('error'):
-            print(f"Data Fetch Error: {daily_gain_data.get('message')}")
-        else:
+        if daily_data and not daily_data.get('error'):
             with open(DAILY_GAIN_FILE, 'w', encoding='utf-8') as f:
-                json.dump(daily_gain_data.get('dailyData', []), f, ensure_ascii=False, indent=4)
+                json.dump(daily_data.get('dailyData', []), f, ensure_ascii=False, indent=4)
             print(f"日次データ保存完了: {DAILY_GAIN_FILE}")
+        else:
+            print(f"Daily Gain スキップ: {daily_data.get('message') if daily_data else '取得失敗'}")
 
-        # 残高推移データ取得（get-data-points）
-        points_url = (
-            f"{API_BASE_URL}/get-data-points.json"
-            f"?session={session_id}&id={ACCOUNT_ID}"
-            f"&start={start_date}&end={end_date}"
+        # --- 取引履歴（任意） ---
+        history_data = api_get(
+            f"{API_BASE_URL}/get-history.json?session={session_id}&id={ACCOUNT_ID}"
         )
-        response = requests.get(points_url)
-        response.raise_for_status()
-        points_data = response.json()
-
-        if points_data.get('error'):
-            print(f"Data Points Error: {points_data.get('message')}")
-        else:
-            # [[datetime, balance, equity], ...] → [{date, balance, equity}, ...]
-            formatted = [
-                {"date": p[0], "balance": p[1], "equity": p[2]}
-                for p in points_data.get('dataPoints', [])
-            ]
-            with open(DATA_POINTS_FILE, 'w', encoding='utf-8') as f:
-                json.dump(formatted, f, ensure_ascii=False, indent=4)
-            print(f"残高推移データ保存完了: {DATA_POINTS_FILE}")
-
-        # 取引履歴取得
-        history_url = f"{API_BASE_URL}/get-history.json?session={session_id}&id={ACCOUNT_ID}"
-        response = requests.get(history_url)
-        response.raise_for_status()
-        history_data = response.json()
-
-        if history_data.get('error'):
-            print(f"History Error: {history_data.get('message')}")
-        else:
+        if history_data and not history_data.get('error'):
             with open(HISTORY_FILE, 'w', encoding='utf-8') as f:
                 json.dump(history_data.get('history', []), f, ensure_ascii=False, indent=4)
             print(f"取引履歴保存完了: {HISTORY_FILE}")
+        else:
+            print(f"取引履歴 スキップ: {history_data.get('message') if history_data else '取得失敗'}")
 
-    except requests.exceptions.RequestException as e:
-        print(f"Request Error: {e}")
-        sys.exit(1)
-    except json.JSONDecodeError:
-        print("Error: JSONのデコードに失敗しました")
-        sys.exit(1)
     finally:
-        if session_id:
-            logout_url = f"{API_BASE_URL}/logout.json?session={session_id}"
-            requests.get(logout_url)
-            print("ログアウト完了")
+        api_get(f"{API_BASE_URL}/logout.json?session={session_id}")
+        print("ログアウト完了")
 
 if __name__ == "__main__":
     fetch_myfxbook_data()
