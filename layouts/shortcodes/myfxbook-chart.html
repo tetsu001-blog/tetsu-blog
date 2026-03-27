@@ -1,0 +1,64 @@
+<div style="max-width: 800px; margin: 2rem auto;">
+  <canvas id="myfxbookChart"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+(async function() {
+  try {
+    const res = await fetch('/data/myfxbook-data.json');
+    const data = await res.json();
+
+    // 累積gainを計算
+    let cumulative = 0;
+    const labels = [];
+    const gains = [];
+    data.forEach(d => {
+      cumulative += d.gain;
+      labels.push(d.date);
+      gains.push(parseFloat(cumulative.toFixed(2)));
+    });
+
+    const ctx = document.getElementById('myfxbookChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: '累積損益率 (%)',
+          data: gains,
+          borderColor: '#0024ff',
+          backgroundColor: 'rgba(0, 36, 255, 0.08)',
+          borderWidth: 2,
+          pointRadius: 2,
+          fill: true,
+          tension: 0.3
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: true },
+          tooltip: {
+            callbacks: {
+              label: ctx => ` ${ctx.parsed.y.toFixed(2)}%`
+            }
+          }
+        },
+        scales: {
+          x: {
+            ticks: { maxTicksLimit: 10 }
+          },
+          y: {
+            ticks: {
+              callback: val => val + '%'
+            }
+          }
+        }
+      }
+    });
+  } catch (e) {
+    console.error('MyFXbook データ読み込みエラー:', e);
+  }
+})();
+</script>
