@@ -27,6 +27,14 @@
 .myfx-pos  { color: #1a7f3c; }
 .myfx-neg  { color: #c0392b; }
 
+/* 入出金行 */
+.myfx-deposit td   { background: #eaf4ff; }
+.myfx-withdraw td  { background: #fff0f0; }
+.myfx-deposit td,
+.myfx-withdraw td  { font-style: italic; }
+.myfx-deposit-label  { color: #1565c0; font-weight: bold; }
+.myfx-withdraw-label { color: #c0392b; font-weight: bold; }
+
 .myfx-history-loading { color: #999; font-size: 0.9rem; }
 </style>
 
@@ -37,7 +45,7 @@
     <table class="myfx-history-table" id="myfx-history-table" style="display:none;">
       <thead>
         <tr>
-          <th>決済日時</th>
+          <th>決済日時 (JST)</th>
           <th>通貨ペア</th>
           <th>売買</th>
           <th>ロット</th>
@@ -53,34 +61,65 @@
 </div>
 
 <script>
+// MyFXbook の時刻文字列 "MM/DD/YYYY HH:MM" をJST（UTC+9）に変換
+function toJST(timeStr) {
+  if (!timeStr || timeStr === '--') return '--';
+  // "03/27/2026 07:25" → Date として解釈（UTC扱い）
+  const [datePart, timePart] = timeStr.split(' ');
+  if (!datePart) return timeStr;
+  const [month, day, year] = datePart.split('/');
+  const [hour, min] = (timePart || '00:00').split(':');
+  const utc = new Date(Date.UTC(year, month - 1, day, hour, min));
+  const jst = new Date(utc.getTime() + 9 * 60 * 60 * 1000);
+  const pad = n => String(n).padStart(2, '0');
+  return `${jst.getUTCFullYear()}/${pad(jst.getUTCMonth()+1)}/${pad(jst.getUTCDate())} ${pad(jst.getUTCHours())}:${pad(jst.getUTCMinutes())}`;
+}
+
 (async function() {
   try {
     const res = await fetch('/data/myfxbook-history.json');
     const data = await res.json();
 
     document.getElementById('myfx-history-loading').style.display = 'none';
-
     if (!data || data.length === 0) return;
 
     const tbody = document.getElementById('myfx-history-body');
 
-    // 新しい順に表示
     [...data].reverse().forEach(t => {
       const profit = parseFloat(t.profit);
       const pips   = parseFloat(t.pips);
       const isBuy  = (t.action || '').toLowerCase() === 'buy';
+      const symbol = t.symbol || '';
+
+      // 入出金判定：通貨ペアが "--" または空
+      const isDeposit  = (!symbol || symbol === '--') && profit > 0;
+      const isWithdraw = (!symbol || symbol === '--') && profit < 0;
+      const isFunding  = isDeposit || isWithdraw;
 
       const tr = document.createElement('tr');
-      tr.innerHTML = `
-        <td>${t.closeTime || '--'}</td>
-        <td><strong>${t.symbol || '--'}</strong></td>
-        <td class="${isBuy ? 'myfx-buy' : 'myfx-sell'}">${isBuy ? '買' : '売'}</td>
-        <td>${parseFloat(t.sizing?.value ?? t.sizing ?? 0).toFixed(2)}</td>
-        <td>${t.openPrice || '--'}</td>
-        <td>${t.closePrice || '--'}</td>
-        <td class="${pips >= 0 ? 'myfx-pos' : 'myfx-neg'}">${pips >= 0 ? '+' : ''}${pips.toFixed(1)}</td>
-        <td class="${profit >= 0 ? 'myfx-pos' : 'myfx-neg'}">${profit >= 0 ? '+' : ''}${profit.toFixed(2)}</td>
-      `;
+      if (isDeposit)  tr.className = 'myfx-deposit';
+      if (isWithdraw) tr.className = 'myfx-withdraw';
+
+      if (isFunding) {
+        tr.innerHTML = `
+          <td>${toJST(t.closeTime)}</td>
+          <td colspan="6" class="${isDeposit ? 'myfx-deposit-label' : 'myfx-withdraw-label'}">
+            ${isDeposit ? '入金' : '出金'}
+          </td>
+          <td class="${profit >= 0 ? 'myfx-pos' : 'myfx-neg'}">${profit >= 0 ? '+' : ''}${profit.toFixed(0)}</td>
+        `;
+      } else {
+        tr.innerHTML = `
+          <td>${toJST(t.closeTime)}</td>
+          <td><strong>${symbol || '--'}</strong></td>
+          <td class="${isBuy ? 'myfx-buy' : 'myfx-sell'}">${isBuy ? '買' : '売'}</td>
+          <td>${parseFloat(t.sizing?.value ?? t.sizing ?? 0).toFixed(2)}</td>
+          <td>${t.openPrice || '--'}</td>
+          <td>${t.closePrice || '--'}</td>
+          <td class="${pips >= 0 ? 'myfx-pos' : 'myfx-neg'}">${pips >= 0 ? '+' : ''}${pips.toFixed(1)}</td>
+          <td class="${profit >= 0 ? 'myfx-pos' : 'myfx-neg'}">${profit >= 0 ? '+' : ''}${profit.toFixed(2)}</td>
+        `;
+      }
       tbody.appendChild(tr);
     });
 
