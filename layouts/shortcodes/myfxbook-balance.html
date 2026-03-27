@@ -1,0 +1,67 @@
+<style>
+.myfx-balance-wrap { max-width: 720px; margin: 1rem auto 2rem; font-family: sans-serif; }
+.myfx-balance-wrap h4 {
+  font-size: 1rem;
+  color: #444;
+  margin: 0 0 0.8rem;
+}
+</style>
+
+<div class="myfx-balance-wrap">
+  <h4>口座残高の推移</h4>
+  <canvas id="myfxBalanceChart" style="display:none;"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+(async function() {
+  try {
+    const res = await fetch('/data/myfxbook-balance-points.json');
+    const data = await res.json();
+    if (!data || data.length === 0) return;
+
+    const labels   = data.map(d => d.date);
+    const balances = data.map(d => parseFloat(d.balance));
+
+    const chartEl = document.getElementById('myfxBalanceChart');
+    chartEl.style.display = '';
+    const ctx = chartEl.getContext('2d');
+
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: '口座残高',
+          data: balances,
+          borderColor: '#1a7f3c',
+          backgroundColor: 'rgba(26, 127, 60, 0.1)',
+          borderWidth: 2,
+          pointRadius: 1,
+          fill: true,
+          tension: 0.3
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: true },
+          tooltip: {
+            callbacks: {
+              label: ctx => ` ${ctx.parsed.y.toLocaleString()} USD`
+            }
+          }
+        },
+        scales: {
+          x: { ticks: { maxTicksLimit: 10 } },
+          y: {
+            ticks: { callback: val => val.toLocaleString() }
+          }
+        }
+      }
+    });
+  } catch(e) {
+    console.error('残高グラフ読み込みエラー:', e);
+  }
+})();
+</script>

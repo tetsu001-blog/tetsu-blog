@@ -1,15 +1,109 @@
-<div style="max-width: 800px; margin: 2rem auto;">
-  <canvas id="myfxbookChart"></canvas>
+<style>
+.myfx-wrap { max-width: 720px; margin: 2rem auto; font-family: sans-serif; }
+
+.myfx-card {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 1.2rem 1.8rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.myfx-card h3 {
+  margin: 0 0 1rem;
+  font-size: 1.1rem;
+  text-align: center;
+  color: #333;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.6rem;
+}
+.myfx-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem 1.5rem;
+}
+.myfx-stat { display: flex; justify-content: space-between; align-items: center; }
+.myfx-stat .label { color: #666; font-size: 0.9rem; }
+.myfx-stat .value { font-weight: bold; font-size: 1rem; color: #222; }
+.myfx-stat .value.positive { color: #1a7f3c; }
+.myfx-stat .value.negative { color: #c0392b; }
+
+.myfx-verified {
+  text-align: center;
+  font-size: 0.75rem;
+  color: #999;
+  margin-top: 0.8rem;
+}
+</style>
+
+<div class="myfx-wrap">
+  <div class="myfx-card">
+    <h3 id="myfx-name">てつFX</h3>
+    <div class="myfx-stats">
+      <div class="myfx-stat">
+        <span class="label">口座残高</span>
+        <span class="value" id="myfx-balance">--</span>
+      </div>
+      <div class="myfx-stat">
+        <span class="label">成長率</span>
+        <span class="value" id="myfx-growth">--</span>
+      </div>
+      <div class="myfx-stat">
+        <span class="label">最大DD</span>
+        <span class="value" id="myfx-drawdown">--</span>
+      </div>
+      <div class="myfx-stat">
+        <span class="label">月次損益</span>
+        <span class="value" id="myfx-monthly">--</span>
+      </div>
+    </div>
+    <div class="myfx-verified">VERIFIED BY MYFXBOOK.COM</div>
+  </div>
+
+  <canvas id="myfxbookChart" style="display:none;"></canvas>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
 (async function() {
   try {
+    // サマリー表示
+    const sumRes = await fetch('/data/myfxbook-summary.json');
+    const sum = await sumRes.json();
+
+    document.getElementById('myfx-name').textContent = 'てつFX';
+    document.getElementById('myfx-balance').textContent =
+      Number(sum.balance).toLocaleString() + ' ' + (sum.currency || 'USD');
+
+    function pct(val) {
+      const n = parseFloat(val);
+      const el_id = arguments[1];
+      return (n >= 0 ? '+' : '') + n.toFixed(2) + '%';
+    }
+
+    const growthEl = document.getElementById('myfx-growth');
+    const g = parseFloat(sum.growth);
+    growthEl.textContent = (g >= 0 ? '+' : '') + g.toFixed(2) + '%';
+    growthEl.classList.add(g >= 0 ? 'positive' : 'negative');
+
+    const ddEl = document.getElementById('myfx-drawdown');
+    ddEl.textContent = parseFloat(sum.drawdown).toFixed(2) + '%';
+    ddEl.classList.add('negative');
+
+    const moEl = document.getElementById('myfx-monthly');
+    const mo = parseFloat(sum.monthly);
+    moEl.textContent = (mo >= 0 ? '+' : '') + mo.toFixed(2) + '%';
+    moEl.classList.add(mo >= 0 ? 'positive' : 'negative');
+
+  } catch(e) {
+    console.error('サマリー読み込みエラー:', e);
+  }
+
+  try {
+    // グラフ描画
     const res = await fetch('/data/myfxbook-data.json');
     const data = await res.json();
 
-    // 累積gainを計算
     let cumulative = 0;
     const labels = [];
     const gains = [];
@@ -19,7 +113,9 @@
       gains.push(parseFloat(cumulative.toFixed(2)));
     });
 
-    const ctx = document.getElementById('myfxbookChart').getContext('2d');
+    const chartEl = document.getElementById('myfxbookChart');
+    chartEl.style.display = '';
+    const ctx = chartEl.getContext('2d');
     new Chart(ctx, {
       type: 'line',
       data: {
@@ -46,19 +142,13 @@
           }
         },
         scales: {
-          x: {
-            ticks: { maxTicksLimit: 10 }
-          },
-          y: {
-            ticks: {
-              callback: val => val + '%'
-            }
-          }
+          x: { ticks: { maxTicksLimit: 10 } },
+          y: { ticks: { callback: val => val + '%' } }
         }
       }
     });
-  } catch (e) {
-    console.error('MyFXbook データ読み込みエラー:', e);
+  } catch(e) {
+    console.error('グラフ読み込みエラー:', e);
   }
 })();
 </script>

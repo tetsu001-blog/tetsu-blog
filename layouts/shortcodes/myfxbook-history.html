@@ -1,0 +1,93 @@
+<style>
+.myfx-history-wrap { max-width: 720px; margin: 1.5rem auto 2rem; font-family: sans-serif; }
+.myfx-history-wrap h4 { font-size: 1rem; color: #444; margin: 0 0 0.8rem; }
+
+.myfx-history-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+.myfx-history-table th {
+  background: #f5f5f5;
+  color: #555;
+  font-weight: 600;
+  padding: 0.5rem 0.6rem;
+  text-align: center;
+  border-bottom: 2px solid #ddd;
+  white-space: nowrap;
+}
+.myfx-history-table td {
+  padding: 0.45rem 0.6rem;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+}
+.myfx-history-table tr:hover td { background: #fafafa; }
+.myfx-buy  { color: #1a7f3c; font-weight: bold; }
+.myfx-sell { color: #c0392b; font-weight: bold; }
+.myfx-pos  { color: #1a7f3c; }
+.myfx-neg  { color: #c0392b; }
+
+.myfx-history-loading { color: #999; font-size: 0.9rem; }
+</style>
+
+<div class="myfx-history-wrap">
+  <h4>取引履歴</h4>
+  <p class="myfx-history-loading" id="myfx-history-loading">読み込み中...</p>
+  <div style="overflow-x:auto;">
+    <table class="myfx-history-table" id="myfx-history-table" style="display:none;">
+      <thead>
+        <tr>
+          <th>決済日時</th>
+          <th>通貨ペア</th>
+          <th>売買</th>
+          <th>ロット</th>
+          <th>開始値</th>
+          <th>決済値</th>
+          <th>Pips</th>
+          <th>損益</th>
+        </tr>
+      </thead>
+      <tbody id="myfx-history-body"></tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+(async function() {
+  try {
+    const res = await fetch('/data/myfxbook-history.json');
+    const data = await res.json();
+
+    document.getElementById('myfx-history-loading').style.display = 'none';
+
+    if (!data || data.length === 0) return;
+
+    const tbody = document.getElementById('myfx-history-body');
+
+    // 新しい順に表示
+    [...data].reverse().forEach(t => {
+      const profit = parseFloat(t.profit);
+      const pips   = parseFloat(t.pips);
+      const isBuy  = (t.action || '').toLowerCase() === 'buy';
+
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${t.closeTime || '--'}</td>
+        <td><strong>${t.symbol || '--'}</strong></td>
+        <td class="${isBuy ? 'myfx-buy' : 'myfx-sell'}">${isBuy ? '買' : '売'}</td>
+        <td>${parseFloat(t.sizing || 0).toFixed(2)}</td>
+        <td>${t.openPrice || '--'}</td>
+        <td>${t.closePrice || '--'}</td>
+        <td class="${pips >= 0 ? 'myfx-pos' : 'myfx-neg'}">${pips >= 0 ? '+' : ''}${pips.toFixed(1)}</td>
+        <td class="${profit >= 0 ? 'myfx-pos' : 'myfx-neg'}">${profit >= 0 ? '+' : ''}${profit.toFixed(2)}</td>
+      `;
+      tbody.appendChild(tr);
+    });
+
+    document.getElementById('myfx-history-table').style.display = '';
+  } catch(e) {
+    document.getElementById('myfx-history-loading').textContent = 'データを取得できませんでした';
+    console.error('取引履歴読み込みエラー:', e);
+  }
+})();
+</script>
