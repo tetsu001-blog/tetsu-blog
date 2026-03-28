@@ -1,0 +1,19 @@
+{{- $url := .Get 0 -}}
+{{- $videoID := "" -}}
+{{- if findRE "youtu\\.be/" $url -}}
+  {{- $videoID = replaceRE ".*youtu\\.be/([^?&/]+).*" "$1" $url -}}
+{{- else if findRE "[?&]v=" $url -}}
+  {{- $videoID = replaceRE ".*[?&]v=([^&]+).*" "$1" $url -}}
+{{- else if findRE "/embed/" $url -}}
+  {{- $videoID = replaceRE ".*/embed/([^?&/]+).*" "$1" $url -}}
+{{- else -}}
+  {{- $videoID = $url -}}
+{{- end -}}
+<iframe
+  src="https://www.youtube.com/embed/{{ $videoID }}"
+  title="YouTube video player"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen
+  style="width: 100%; aspect-ratio: 16/9; max-width: 100%; border-radius: 8px; display: block; margin: 2em auto; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
+</iframe>
