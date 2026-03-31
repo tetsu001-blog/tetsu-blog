@@ -70,7 +70,7 @@
     <table class="myfx-history-table" id="myfx-history-table" style="display:none;">
       <thead>
         <tr>
-          <th>決済日時 (JST)</th>
+          <th id="myfx-sort-toggle" style="cursor:pointer; user-select:none;">決済日時 (JST) <span id="myfx-sort-icon">▼</span></th>
           <th>通貨ペア</th>
           <th>売買</th>
           <th>ロット</th>
@@ -121,18 +121,21 @@ function toJST(timeStr) {
     const PER_PAGE = 25;
     const tbody = document.getElementById('myfx-history-body');
 
-    // 新しい→古い順（JSONは既に新しい順なのでそのまま）
-    const trades = [...data];
-
-    // 現在残高から逆算して各行の残高を算出
+    // 元データ（新しい→古い順）と残高を事前計算
+    const tradesDesc = [...data];
     let bal = parseFloat(sum.balance) || 0;
-    const balanceMap = [];
-    for (let i = 0; i < trades.length; i++) {
-      balanceMap[i] = Math.round(bal);
-      const t = trades[i];
+    const balanceMapDesc = [];
+    for (let i = 0; i < tradesDesc.length; i++) {
+      balanceMapDesc[i] = Math.round(bal);
+      const t = tradesDesc[i];
       const impact = (parseFloat(t.profit) || 0) + (parseFloat(t.commission) || 0) + (parseFloat(t.interest) || 0);
       bal -= impact;
     }
+
+    // 表示用の配列（並び順切り替え対応）
+    let trades = [...tradesDesc];
+    let balanceMap = [...balanceMapDesc];
+    let sortDesc = true; // true=新→古, false=古→新
 
     function buildRow(t, idx) {
       const profit = parseFloat(t.profit);
@@ -173,11 +176,12 @@ function toJST(timeStr) {
       return tr;
     }
 
-    const totalPages = Math.ceil(trades.length / PER_PAGE);
+    let totalPages = Math.ceil(trades.length / PER_PAGE);
     let currentPage = 1;
 
     function renderPage(page) {
       currentPage = page;
+      totalPages = Math.ceil(trades.length / PER_PAGE);
       tbody.innerHTML = '';
       const start = (page - 1) * PER_PAGE;
       const end = Math.min(start + PER_PAGE, trades.length);
@@ -192,8 +196,24 @@ function toJST(timeStr) {
         document.getElementById('myfx-pager-info').textContent = `${page} / ${totalPages} ページ`;
         document.getElementById('myfx-prev').disabled = (page <= 1);
         document.getElementById('myfx-next').disabled = (page >= totalPages);
+      } else {
+        pager.style.display = 'none';
       }
     }
+
+    // 並び順切り替え
+    document.getElementById('myfx-sort-toggle').addEventListener('click', () => {
+      sortDesc = !sortDesc;
+      if (sortDesc) {
+        trades = [...tradesDesc];
+        balanceMap = [...balanceMapDesc];
+      } else {
+        trades = [...tradesDesc].reverse();
+        balanceMap = [...balanceMapDesc].reverse();
+      }
+      document.getElementById('myfx-sort-icon').textContent = sortDesc ? '▼' : '▲';
+      renderPage(1);
+    });
 
     document.getElementById('myfx-prev').addEventListener('click', () => {
       if (currentPage > 1) renderPage(currentPage - 1);
