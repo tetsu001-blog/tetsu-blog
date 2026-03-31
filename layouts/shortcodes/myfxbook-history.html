@@ -36,6 +36,31 @@
 .myfx-withdraw-label { color: #c0392b; font-weight: bold; }
 
 .myfx-history-loading { color: #999; font-size: 0.9rem; }
+
+.myfx-pager {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+.myfx-pager button {
+  padding: 0.35rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #fff;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+.myfx-pager button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.myfx-pager button:not(:disabled):hover {
+  background: #f0f0f0;
+}
+.myfx-pager-info { color: #666; }
 </style>
 
 <div class="myfx-history-wrap">
@@ -57,6 +82,11 @@
       </thead>
       <tbody id="myfx-history-body"></tbody>
     </table>
+    <div class="myfx-pager" id="myfx-pager" style="display:none;">
+      <button id="myfx-prev">← 前へ</button>
+      <span class="myfx-pager-info" id="myfx-pager-info"></span>
+      <button id="myfx-next">次へ →</button>
+    </div>
   </div>
 </div>
 
@@ -83,15 +113,18 @@ function toJST(timeStr) {
     document.getElementById('myfx-history-loading').style.display = 'none';
     if (!data || data.length === 0) return;
 
+    const PER_PAGE = 25;
     const tbody = document.getElementById('myfx-history-body');
 
-    [...data].reverse().forEach(t => {
+    // 新しい→古い順（JSONは既に新しい順なのでそのまま）
+    const trades = [...data];
+
+    function buildRow(t) {
       const profit = parseFloat(t.profit);
       const pips   = parseFloat(t.pips);
       const isBuy  = (t.action || '').toLowerCase() === 'buy';
       const symbol = t.symbol || '';
 
-      // 入出金判定：通貨ペアが "--" または空
       const isDeposit  = (!symbol || symbol === '--') && profit > 0;
       const isWithdraw = (!symbol || symbol === '--') && profit < 0;
       const isFunding  = isDeposit || isWithdraw;
@@ -120,9 +153,39 @@ function toJST(timeStr) {
           <td class="${profit >= 0 ? 'myfx-pos' : 'myfx-neg'}">${profit >= 0 ? '+' : ''}${profit.toFixed(2)}</td>
         `;
       }
-      tbody.appendChild(tr);
+      return tr;
+    }
+
+    const totalPages = Math.ceil(trades.length / PER_PAGE);
+    let currentPage = 1;
+
+    function renderPage(page) {
+      currentPage = page;
+      tbody.innerHTML = '';
+      const start = (page - 1) * PER_PAGE;
+      const end = Math.min(start + PER_PAGE, trades.length);
+      for (let i = start; i < end; i++) {
+        tbody.appendChild(buildRow(trades[i]));
+      }
+
+      // ページャー表示（2ページ以上ある場合のみ）
+      const pager = document.getElementById('myfx-pager');
+      if (totalPages > 1) {
+        pager.style.display = '';
+        document.getElementById('myfx-pager-info').textContent = `${page} / ${totalPages} ページ`;
+        document.getElementById('myfx-prev').disabled = (page <= 1);
+        document.getElementById('myfx-next').disabled = (page >= totalPages);
+      }
+    }
+
+    document.getElementById('myfx-prev').addEventListener('click', () => {
+      if (currentPage > 1) renderPage(currentPage - 1);
+    });
+    document.getElementById('myfx-next').addEventListener('click', () => {
+      if (currentPage < totalPages) renderPage(currentPage + 1);
     });
 
+    renderPage(1);
     document.getElementById('myfx-history-table').style.display = '';
   } catch(e) {
     document.getElementById('myfx-history-loading').textContent = 'データを取得できませんでした';

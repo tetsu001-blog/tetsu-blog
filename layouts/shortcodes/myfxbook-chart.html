@@ -104,14 +104,53 @@
     const res = await fetch('/data/myfxbook-data.json');
     const data = await res.json();
 
-    let cumulative = 0;
     const labels = [];
     const gains = [];
-    data.forEach(d => {
-      cumulative += d.gain;
-      labels.push(d.date);
-      gains.push(parseFloat(cumulative.toFixed(2)));
-    });
+
+    if (data && data.length > 0) {
+      // Daily Gain APIデータを使用
+      let cumulative = 0;
+      data.forEach(d => {
+        cumulative += d.gain;
+        labels.push(d.date);
+        gains.push(parseFloat(cumulative.toFixed(2)));
+      });
+    } else {
+      // フォールバック: 取引履歴から累積損益率を算出
+      const histRes = await fetch('/data/myfxbook-history.json');
+      const history = await histRes.json();
+      if (!history || history.length === 0) return;
+
+      const sorted = [...history].reverse();
+      let totalDeposits = 0;
+      let cumulativeProfit = 0;
+      const dailyMap = new Map();
+
+      sorted.forEach(t => {
+        const profit = parseFloat(t.profit) || 0;
+        const action = (t.action || '').toLowerCase();
+
+        if (action === 'deposit') {
+          totalDeposits += profit;
+        } else if (action !== 'withdrawal') {
+          cumulativeProfit += profit;
+        }
+
+        if (totalDeposits > 0) {
+          const dateStr = (t.closeTime || '').split(' ')[0];
+          if (dateStr) {
+            dailyMap.set(dateStr, parseFloat(((cumulativeProfit / totalDeposits) * 100).toFixed(2)));
+          }
+        }
+      });
+
+      dailyMap.forEach((val, key) => {
+        labels.push(key);
+        gains.push(val);
+      });
+    }
+
+    if (labels.length === 0) return;
 
     const chartEl = document.getElementById('myfxbookChart');
     chartEl.style.display = '';
