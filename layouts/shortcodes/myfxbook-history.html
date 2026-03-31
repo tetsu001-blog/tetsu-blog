@@ -151,7 +151,7 @@ function toJST(timeStr) {
       if (isFunding) {
         tr.innerHTML = `
           <td>${toJST(t.closeTime)}</td>
-          <td colspan="7" class="${isDeposit ? 'myfx-deposit-label' : 'myfx-withdraw-label'}">
+          <td colspan="6" class="${isDeposit ? 'myfx-deposit-label' : 'myfx-withdraw-label'}">
             ${isDeposit ? '入金' : '出金'}
           </td>
           <td class="${profit >= 0 ? 'myfx-pos' : 'myfx-neg'}">${profit >= 0 ? '+' : ''}${profit.toFixed(0)}</td>
