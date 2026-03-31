@@ -78,6 +78,7 @@
           <th>決済値</th>
           <th>Pips</th>
           <th>損益</th>
+          <th>残高</th>
         </tr>
       </thead>
       <tbody id="myfx-history-body"></tbody>
@@ -107,8 +108,12 @@ function toJST(timeStr) {
 
 (async function() {
   try {
-    const res = await fetch('/data/myfxbook-history.json');
-    const data = await res.json();
+    const [histRes, sumRes] = await Promise.all([
+      fetch('/data/myfxbook-history.json'),
+      fetch('/data/myfxbook-summary.json')
+    ]);
+    const data = await histRes.json();
+    const sum  = await sumRes.json();
 
     document.getElementById('myfx-history-loading').style.display = 'none';
     if (!data || data.length === 0) return;
@@ -119,7 +124,17 @@ function toJST(timeStr) {
     // 新しい→古い順（JSONは既に新しい順なのでそのまま）
     const trades = [...data];
 
-    function buildRow(t) {
+    // 現在残高から逆算して各行の残高を算出
+    let bal = parseFloat(sum.balance) || 0;
+    const balanceMap = [];
+    for (let i = 0; i < trades.length; i++) {
+      balanceMap[i] = Math.round(bal);
+      const t = trades[i];
+      const impact = (parseFloat(t.profit) || 0) + (parseFloat(t.commission) || 0) + (parseFloat(t.interest) || 0);
+      bal -= impact;
+    }
+
+    function buildRow(t, idx) {
       const profit = parseFloat(t.profit);
       const pips   = parseFloat(t.pips);
       const isBuy  = (t.action || '').toLowerCase() === 'buy';
@@ -136,10 +151,11 @@ function toJST(timeStr) {
       if (isFunding) {
         tr.innerHTML = `
           <td>${toJST(t.closeTime)}</td>
-          <td colspan="6" class="${isDeposit ? 'myfx-deposit-label' : 'myfx-withdraw-label'}">
+          <td colspan="7" class="${isDeposit ? 'myfx-deposit-label' : 'myfx-withdraw-label'}">
             ${isDeposit ? '入金' : '出金'}
           </td>
           <td class="${profit >= 0 ? 'myfx-pos' : 'myfx-neg'}">${profit >= 0 ? '+' : ''}${profit.toFixed(0)}</td>
+          <td>${balanceMap[idx].toLocaleString()}</td>
         `;
       } else {
         tr.innerHTML = `
@@ -151,6 +167,7 @@ function toJST(timeStr) {
           <td>${t.closePrice || '--'}</td>
           <td class="${pips >= 0 ? 'myfx-pos' : 'myfx-neg'}">${pips >= 0 ? '+' : ''}${pips.toFixed(1)}</td>
           <td class="${profit >= 0 ? 'myfx-pos' : 'myfx-neg'}">${profit >= 0 ? '+' : ''}${profit.toFixed(2)}</td>
+          <td>${balanceMap[idx].toLocaleString()}</td>
         `;
       }
       return tr;
@@ -165,7 +182,7 @@ function toJST(timeStr) {
       const start = (page - 1) * PER_PAGE;
       const end = Math.min(start + PER_PAGE, trades.length);
       for (let i = start; i < end; i++) {
-        tbody.appendChild(buildRow(trades[i]));
+        tbody.appendChild(buildRow(trades[i], i));
       }
 
       // ページャー表示（2ページ以上ある場合のみ）
