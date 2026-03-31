@@ -1,11 +1,11 @@
 ---
 title: 話題の自律型AIエージェント「OpenClaw」とは？ 活用法と危険性、そして私が使わない理由
-
+description: "GitHubで話題の自律型AIエージェント「OpenClaw」の概要と活用法、そしてPCを自律操作できるがゆえの深刻なセキュリティリスクを解説。筆者が利用を見送った理由も語ります。"
 date: 2026-02-27T17:00:00
 draft: false
 tags:
   - AI
-categories: []
+categories: ["AI"]
 image: "/images/Pasted-image-20260227144130.jpg"
 ---
 

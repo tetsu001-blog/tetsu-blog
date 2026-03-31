@@ -1,10 +1,12 @@
 ---
 title: AIに丸投げ！？BloggerからHugoへ「てつblog」を完全リニューアルした全記録（大惨事あり…）
+description: "プログラミング知識ゼロの筆者がAI「Antigravity」に全作業を丸投げし、BloggerからHugoへブログを完全移行した全記録。途中の大惨事や試行錯誤のリアルな体験談をお届けします。"
 date: 2026-02-22
 
 tags:
   - ブログ運営
   - AI
+categories: ["ブログ運営"]
 image: /images/20260222-1.jpg
 ---
 

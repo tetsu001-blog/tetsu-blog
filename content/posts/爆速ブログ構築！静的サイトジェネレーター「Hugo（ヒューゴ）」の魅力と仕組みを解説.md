@@ -1,11 +1,11 @@
 ---
 title: 爆速ブログ構築！静的サイトジェネレーター「Hugo（ヒューゴ）」の魅力と仕組みを解説
-
+description: "当ブログの裏側で使っている静的サイトジェネレーター「Hugo」の仕組みと魅力を解説。WordPressとの違いや、表示速度が爆速になる理由を分かりやすく紹介します。"
 date: 2026-03-07T17:00:00
 draft: false
 tags:
   - ブログ運営
-categories: []
+categories: ["ブログ運営"]
 image: "/images/Pasted-image-20260306201303.png"
 ---
 

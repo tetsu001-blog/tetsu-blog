@@ -1,11 +1,11 @@
 ---
 title: 【保存版】Gemini 3.1移行期の罠！「無限ループ」で回数制限を溶かさないための防衛策
-
+description: "Gemini 3.1 Pro移行期に多発する「無限トークンループ」バグで利用制限を一瞬で消費してしまう問題の原因と、3大モードの賢い使い分けによる防衛策を解説します。"
 date: 2026-03-05T17:00:00+09:00
 draft: false
 tags:
   - AI
-categories: []
+categories: ["AI"]
 image: "/images/Pasted-image-20260304174244.jpg"
 ---
 

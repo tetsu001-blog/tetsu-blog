@@ -1,11 +1,11 @@
 ---
 title: "ブラウザはChrome一択ではない！Microsoft Edgeをおすすめする理由"
-
+description: "ブラウザはChrome一択と思っていませんか？Edgeをメインで使う筆者が、メモリ消費の少なさやセキュリティの強さなど、Chromeにはない独自の強みを詳しく紹介します。"
 date: 2025-11-25T11:16:00Z
 lastmod: 2026-02-11T10:15:26.197Z
 draft: false
 tags: ["雑記"]
-categories: []
+categories: ["デジタル"]
 image: "/images/img_15ac5dd1ec14.png"
 ---
 Microsoft Edgeは、Google ChromeやFirefoxなどと並ぶ主要なWebブラウザですが、特に近年は大幅な進化を遂げ、他のブラウザにはない独自の強みを持っています。Edgeをメインとして使用している私が単なる「Windows標準ブラウザ」ではない、Edgeの**真の価値**をご紹介します。

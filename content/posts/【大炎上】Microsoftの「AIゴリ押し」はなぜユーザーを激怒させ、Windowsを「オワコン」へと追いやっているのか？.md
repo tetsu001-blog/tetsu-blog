@@ -1,11 +1,11 @@
 ---
 title: "【大炎上】Microsoftの「AIゴリ押し」はなぜユーザーを激怒させ、Windowsを「オワコン」へと追いやっているのか？"
-
+description: "MicrosoftのAIネイティブOS構想がユーザーの猛反発を招いている理由を分析。個人ファイル監視への懸念やCopilotの無能さなど、Windowsが「オワコン」化する危機に迫ります。"
 date: 2025-11-19T08:00:00Z
 lastmod: 2025-11-23T05:56:48.876Z
 draft: false
 tags: ["AI"]
-categories: []
+categories: ["AI"]
 image: "/images/img_9a65b204fc11.jpg"
 ---
 Microsoftが推進する「AIネイティブOS」への転換が、忠実なユーザーや開発者コミュニティからの猛反発を招き、深刻な危機に瀕しています。本記事では、ソースの情報に基づき、MicrosoftのAI戦略が抱える危険性と、Windowsが「オワコン」と捉えられ始めている現実を分析します。

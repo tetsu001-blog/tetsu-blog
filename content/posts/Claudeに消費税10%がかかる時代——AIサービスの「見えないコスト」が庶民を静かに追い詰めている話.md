@@ -1,10 +1,11 @@
 ---
 title: Claudeに消費税10%がかかる時代——AIサービスの「見えないコスト」が庶民を静かに追い詰めている話
+description: "Claude全プランに消費税10%が加算される発表を受け、複数のAIサービスに課金する時代の「見えないコスト」の実態と家計への影響を本音で語ります。"
 date: 2026-03-23T17:00:00
 draft: false
 tags:
   - AI
-categories: []
+categories: ["AI"]
 image: "/images/Pasted-image-20260323162100.jpg"
 ---
 

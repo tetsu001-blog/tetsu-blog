@@ -1,11 +1,11 @@
 ---
 title: "【スマホ・PC】WEBサイトをアプリ化してホーム画面やデスクトップに追加する方法"
-
+description: "よく使うWebサイトをスマホやPCのアプリのようにホーム画面やデスクトップに追加する方法を解説。iPhone・Android・PCそれぞれの手順と便利な活用例を紹介します。"
 date: 2025-12-11T08:00:00Z
 lastmod: 2025-12-11T09:30:47.414Z
 draft: false
 tags: ["雑記"]
-categories: []
+categories: ["デジタル"]
 image: "/images/img_99b94de82ad5.jpg"
 ---
 普段よく使うWEBサイトやサービスを、毎回ブラウザを開いて検索したり、ブックマークから探したりしていませんか。

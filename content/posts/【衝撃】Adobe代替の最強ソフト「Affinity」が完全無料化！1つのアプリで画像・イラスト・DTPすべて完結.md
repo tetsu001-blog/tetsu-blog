@@ -1,11 +1,11 @@
 ---
 title: "【衝撃】Adobe代替の最強ソフト「Affinity」が完全無料化！1つのアプリで画像・イラスト・DTPすべて完結"
-
+description: "Adobe代替として人気のAffinityが基本機能を完全無料化し、3つのソフトを1つに統合。写真加工・ベクター描画・DTPがすべて無料でできる新Affinityの実力を徹底解説します。"
 date: 2026-01-19T08:00:00Z
 lastmod: 2026-02-03T00:47:34.788Z
 draft: false
 tags: ["デジタル"]
-categories: []
+categories: ["デジタル"]
 image: "/images/img_21dabd69ae95.jpg"
 ---
 毎月のサブスク代が気にならない（負担にならない）人ばかりではないと思います。

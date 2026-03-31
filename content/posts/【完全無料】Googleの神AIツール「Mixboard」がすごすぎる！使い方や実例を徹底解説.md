@@ -1,11 +1,11 @@
 ---
 title: 【完全無料】Googleの神AIツール「Mixboard」がすごすぎる！使い方や実例を徹底解説
-
+description: "Google発の無料AI画像生成ツール「Mixboard」を徹底解説。プロンプト不要で直感的に画像を生成・編集できる魔法のホワイトボードの使い方と実際に作った作例を紹介します。"
 date: 2026-02-24T20:13:37+09:00
 draft: false
 tags:
   - AI
-categories: []
+categories: ["AI"]
 image: "/images/mixboard_thumbnail.png"
 ---
 こんにちは！てつです。

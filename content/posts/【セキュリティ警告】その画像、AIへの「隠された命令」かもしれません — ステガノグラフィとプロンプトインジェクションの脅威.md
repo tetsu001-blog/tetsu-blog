@@ -1,11 +1,11 @@
 ---
 title: 【セキュリティ警告】その画像、AIへの「隠された命令」かもしれません — ステガノグラフィとプロンプトインジェクションの脅威
-
+description: "普通の画像に見えてもAIには攻撃命令が隠されている可能性が。画像ステガノグラフィと視覚的プロンプトインジェクションの仕組みと、主要AIの対策状況を解説します。"
 date: 2026-03-03T17:00:00
 draft: false
 tags:
   - AI
-categories: []
+categories: ["AI"]
 image: "/images/adversarial_result.png"
 ---
 

@@ -1,11 +1,11 @@
 ---
 title: "Windowsからの脱却を決意！「Lepton」「Linux」が実現するPCとスマホの境界線がなくなる未来"
-
+description: "MicrosoftのAIゴリ押し戦略に嫌気がさし、Windows脱却を決意。軽量OS「Lepton」やLinuxが実現する、PCとスマホの境界がなくなる新しいコンピューティングの未来を探ります。"
 date: 2025-12-07T09:35:00Z
 lastmod: 2025-12-11T09:30:37.712Z
 draft: false
 tags: ["雑記"]
-categories: []
+categories: ["デジタル"]
 image: "/images/img_85631adc10fc.jpg"
 ---
 ## Microsoftの「AIごり押し」戦略に辟易、高まるWindows脱却の機運

@@ -1,11 +1,11 @@
 ---
 title: ブログの紹介用4コマ漫画をAIで作成！最新モデル「Nano Banana 2」の実力と作成手順
-
+description: "Geminiの最新画像生成モデル「Nano Banana 2」を使ってブログ紹介用の4コマ漫画を作成。新旧モデルの比較と、実際の作成手順を分かりやすく解説します。"
 date: 2026-03-06T17:00:00
 draft: false
 tags:
   - AI
-categories: []
+categories: ["AI"]
 image: "/images/Pasted-image-20260306143637.jpg"
 ---
 

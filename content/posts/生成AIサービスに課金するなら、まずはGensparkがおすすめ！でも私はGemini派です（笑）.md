@@ -1,11 +1,11 @@
 ---
 title: "生成AIサービスに課金するなら、まずはGensparkがおすすめ！でも私はGemini派です（笑）"
-
+description: "生成AIに初めて課金するなら複数モデルを使えるGensparkがおすすめ。ただし筆者自身はGemini派。その理由と主要AIサービスの比較をゆるく真面目に語ります。"
 date: 2026-01-29T08:00:00.001Z
 lastmod: 2026-02-19T11:33:01.673Z
 draft: false
 tags: ["AI"]
-categories: []
+categories: ["AI"]
 image: "/images/img_7ef4f3c86980.jpg"
 ---
 こんにちは、てつです！

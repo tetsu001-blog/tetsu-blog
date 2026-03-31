@@ -1,11 +1,11 @@
 ---
 title: "Google AI Plusが登場！月額1,200円でGemini 3 Proが使える「ちょうどいい」新プランを徹底比較"
-
+description: "月額1,200円でGemini 3 Proや200GBストレージが使える新プラン「Google AI Plus」を徹底比較。無料版・Pro・Ultraとの違いを表で分かりやすく解説します。"
 date: 2026-02-11T08:43:00Z
 lastmod: 2026-02-11T11:36:48.531Z
 draft: false
 tags: ["AI"]
-categories: []
+categories: ["AI"]
 image: "/images/img_eb586a93a859.png"
 ---
 2026年1月、GoogleのAIサブスクリプションに待望の新しい選択肢が登場しました。その名も**「Google AI Plus」**。月額1,200円という手頃な価格で、最新の高性能AIモデルとクラウドストレージを利用できるこのプランは、多くのユーザーにとって「ちょうどいい」選択肢となりそうです。本記事では、新プラン「Google AI Plus」のメリットを、無料版や上位プラン（Pro/Ultra）と比較しながら詳しく解説します。

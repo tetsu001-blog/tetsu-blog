@@ -1,10 +1,11 @@
 ---
 title: "【実録】Google AI PROを解約した3つの決定打"
+description: "Google AI PRO（Gemini）を解約しClaudeへ完全移行した3つの決定的理由を忖度なしで共有。指示の無視やトークン浪費など、スペックでは見えない現場のストレスを語ります。"
 date: 2026-03-17T12:00:00+09:00
 draft: false
 tags:
   - AI
-categories: []
+categories: ["AI"]
 image: "/images/Pasted-image-20260317102010.jpg"
 ---
 <!-- thumbnail_start -->

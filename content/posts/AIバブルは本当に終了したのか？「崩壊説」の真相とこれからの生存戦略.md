@@ -1,11 +1,11 @@
 ---
 title: "AIバブルは本当に終了したのか？「崩壊説」の真相とこれからの生存戦略"
-
+description: "AIバブル崩壊説の根拠を主要な市場レポートから冷静に分析し、今後の展望と生き残り戦略を解説。NVIDIA株の乱高下やROI不足の実態から、AIブームの行方を読み解きます。"
 date: 2025-11-23T05:56:00Z
 lastmod: 2025-12-11T09:29:27.338Z
 draft: false
 tags: ["AI"]
-categories: []
+categories: ["AI"]
 image: "/images/img_18a802189672.jpg"
 ---
 ## はじめに：熱狂の終わりか、選別の始まりか

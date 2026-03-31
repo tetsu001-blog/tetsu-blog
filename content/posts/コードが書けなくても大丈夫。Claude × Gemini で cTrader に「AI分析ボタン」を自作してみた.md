@@ -1,11 +1,12 @@
 ---
 title: コードが書けなくても大丈夫。Claude × Gemini で cTrader に「AI分析ボタン」を自作してみた
+description: "プログラミング経験ゼロでもAIの力でトレードツールが作れた。ClaudeにコードをGeminiに市場分析を任せ、cTraderにワンクリックAI分析ボタンを実装した全過程を共有します。"
 date: 2026-03-28T17:00:00
 draft: false
 tags:
   - FX
   - AI
-categories: []
+categories: ["FX・投資", "AI"]
 image: "/images/Pasted-image-20260328151949.png"
 ---
 

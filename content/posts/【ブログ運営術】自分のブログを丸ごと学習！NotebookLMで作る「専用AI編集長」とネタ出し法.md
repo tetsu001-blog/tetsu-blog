@@ -1,10 +1,11 @@
 ---
 title: 【ブログ運営術】自分のブログを丸ごと学習！NotebookLMで作る「専用AI編集長」とネタ出し法
+description: "ブログのネタ切れに悩む方必見。NotebookLMに自分の過去記事を全て学習させ、カスタムGemと組み合わせて「専用AI編集長」を作るネタ出し術を具体的な手順付きで公開します。"
 date: 2026-03-09T17:00:00
 draft: false
 tags:
   - ブログ運営
-categories: []
+categories: ["ブログ運営"]
 image: "/images/Pasted-image-20260308194514.jpg"
 ---
 

@@ -1,11 +1,11 @@
 ---
 title: "Windows検索が「お節介」すぎてツラい。爆速検索アプリ『Everything』のススメ"
-
+description: "Windows標準検索の余計なBing連携やAI化に悩んでいませんか？Web検索を無効化する方法と、瞬時にファイルを見つけられる神アプリ「Everything」の導入手順を紹介します。"
 date: 2026-01-14T08:00:00Z
 lastmod: 2026-01-14T08:00:00.124Z
 draft: false
 tags: ["デジタル"]
-categories: []
+categories: ["デジタル"]
 image: "/images/img_7f7cd4e2d974.jpg"
 ---
 皆さんはWindowsのスタートメニューでファイルを探そうとして、**「余計なWeb検索（Bing）が立ち上がってイライラした」**経験はありませんか？

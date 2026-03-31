@@ -1,10 +1,11 @@
 ---
 title: 【FX失敗談】初トレードで貯めた1万円が全滅！ロスカットから学ぶ「リアル」の厳しさ
+description: "半年かけてスワップで貯めた1万円が初トレードで全滅。高レバレッジの罠にハマり強制ロスカットを食らった失敗体験と、そこから学んだ教訓を赤裸々に公開します。"
 date: 2026-03-14T17:00:00
 draft: false
 tags:
   - FX
-categories: []
+categories: ["FX・投資"]
 image: "/images/Pasted-image-20260314150457.png"
 ---
 

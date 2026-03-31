@@ -1,11 +1,11 @@
 ---
 title: "NHKは公共放送として必要？"
-
+description: "NHKのクルド人特集を巡る偏向報道・音声改ざん疑惑を検証し、公共放送としてのNHKの在り方と信頼性について、過去の問題も踏まえて考察します。"
 date: 2025-11-15T06:37:00Z
 lastmod: 2026-02-11T10:16:09.681Z
 draft: false
 tags: ["政治"]
-categories: []
+categories: ["政治・社会"]
 image: "/images/img_1aaa387d7820.png"
 ---
 ## はじめに：揺らぐ公共放送の信頼性

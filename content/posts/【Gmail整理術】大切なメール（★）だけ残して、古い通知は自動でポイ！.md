@@ -1,11 +1,11 @@
 ---
 title: "【Gmail整理術】大切なメール（★）だけ残して、古い通知は自動でポイ！"
-
+description: "Gmailの容量不足を解消する自動整理術。Google Apps Scriptで3ヶ月以上前のメールを自動削除し、スター付きの大切なメールだけ残す設定をコピペだけで実現できます。"
 date: 2026-02-16T10:11:00Z
 lastmod: 2026-02-16T10:11:33.503Z
 draft: false
 tags: ["デジタル"]
-categories: []
+categories: ["デジタル"]
 image: "/images/img_9d3d739fa36e.jpg"
 ---
 Gmailを長く使っていると、メルマガや通知メールが溜まりに溜まって「保存容量が少なくなっています」という警告が出ること、ありませんか？

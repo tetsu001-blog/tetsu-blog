@@ -1,11 +1,11 @@
 ---
 title: "ChatGPTが円建てにより実質値引き！月額3,000円の新料金体系と既存ユーザーの注意点"
-
+description: "ChatGPT Plusが日本円建て月額3,000円に変更され実質値下げに。ただし既存ユーザーは自動適用されない落とし穴も。新料金の詳細と切り替え方法を解説します。"
 date: 2026-02-01T04:24:00Z
 lastmod: 2026-02-01T04:25:24.570Z
 draft: false
 tags: ["AI"]
-categories: []
+categories: ["AI"]
 image: "/images/img_921514736c85.jpg"
 ---
 ChatGPTユーザー、特に有料版「ChatGPT Plus」を利用している皆様に朗報であり、同時に注意が必要なニュースが飛び込んできました。

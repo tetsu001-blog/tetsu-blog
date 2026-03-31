@@ -1,11 +1,11 @@
 ---
 title: "【悲報】Dell、「AI推し」をやめる?でも「Copilot+」ロゴは外せない大人の事情"
-
+description: "「AI PCでは売れない」と認めたDellがXPSブランドを復活させた背景と、MicrosoftのCopilot+ロゴを外せない大人の事情。AI PC市場の不都合な真実に迫ります。"
 date: 2026-01-11T08:03:00Z
 lastmod: 2026-01-11T08:03:58.449Z
 draft: false
 tags: ["雑記", "デジタル"]
-categories: []
+categories: ["AI", "デジタル"]
 image: "/images/img_09e8d0556937.jpg"
 ---
 2026年、PC業界に激震が走りました。これまで「AI PC」の旗振り役だったDellが、その看板を自ら下ろすような動きを見せたのです。

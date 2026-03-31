@@ -1,11 +1,11 @@
 ---
 title: "Microsoftの「お節介機能」をオフにせよ！劇的にPCが軽くなる意外な盲点"
-
+description: "PCが重い原因はWindowsの「お節介機能」かも。2026年最新のWindows Updateによる強制自動化やバックグラウンド処理を無効化し、パソコンを劇的に軽くする設定方法を紹介します。"
 date: 2026-01-05T08:37:00Z
 lastmod: 2026-02-03T00:43:38.346Z
 draft: false
 tags: ["デジタル"]
-categories: []
+categories: ["デジタル"]
 image: "/images/img_8d6e7a2413e5.jpg"
 ---
 「最近、何もしていないのにパソコンのファンがうるさい」「動作がもっさりして重い」と感じていませんか？

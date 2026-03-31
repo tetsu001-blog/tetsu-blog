@@ -1,11 +1,11 @@
 ---
 title: Bloggerが検索に出ない絶望から脱却！AIと創り上げた完全無料の爆速ブログ「Hugo×Cloudflare Pages」移行全記録
-
+description: "Bloggerで記事がGoogleにインデックスされない絶望から脱却し、AIの力だけでHugo×Cloudflare Pagesの完全無料ブログ環境を構築した全過程を詳しく解説します。"
 date: 2026-03-04T17:00:00+09:00
 draft: false
 tags:
   - AI
-categories: []
+categories: ["ブログ運営"]
 image: "/images/Pasted-image-20260304161343.png"
 ---
 

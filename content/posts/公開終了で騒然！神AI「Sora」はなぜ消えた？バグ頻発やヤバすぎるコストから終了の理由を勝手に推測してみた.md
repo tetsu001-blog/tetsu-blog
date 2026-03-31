@@ -1,10 +1,11 @@
 ---
 title: 公開終了で騒然！神AI「Sora」はなぜ消えた？バグ頻発やヤバすぎるコストから終了の理由を勝手に推測してみた
+description: "OpenAIの動画生成AI「Sora」が公開からわずか半年で突然終了。1日20億円超の維持費やIPOに向けた大人の事情、次世代モデル「Spud」への布石など終了理由を独自に推測します。"
 date: 2026-03-25T17:00:00
 draft: false
 tags:
   - AI
-categories: []
+categories: ["AI"]
 image: "/images/Pasted-image-20260325113654.jpg"
 ---
 
