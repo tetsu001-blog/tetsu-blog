@@ -7,11 +7,11 @@ tags:
   - FX
   - AI
 categories: ["FX・投資", "AI"]
-image: "/images/Pasted-image-20260328151949.png"
+image: "/images/Pasted-image-20260328151949.jpg"
 ---
 
 <!-- thumbnail_start -->
-![](/images/Pasted-image-20260328151949.png)
+![](/images/Pasted-image-20260328151949.jpg)
 <!-- thumbnail_end -->
 ## はじめに ── AI が AI のためのコードを書く時代
 
