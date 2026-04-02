@@ -1,5 +1,62 @@
 [
     {
+        "openTime": "04/01/2026 10:06",
+        "closeTime": "04/01/2026 10:06",
+        "symbol": "",
+        "action": "Deposit",
+        "sizing": {
+            "type": "lots",
+            "value": ""
+        },
+        "openPrice": 0,
+        "closePrice": 0,
+        "tp": 0,
+        "sl": 0,
+        "pips": 0,
+        "profit": 17,
+        "comment": "protooachangebalancetype",
+        "interest": 0,
+        "commission": 0
+    },
+    {
+        "openTime": "04/01/2026 08:15",
+        "closeTime": "04/01/2026 10:06",
+        "symbol": "GBPUSD_Z",
+        "action": "Sell",
+        "sizing": {
+            "type": "lots",
+            "value": "0.01"
+        },
+        "openPrice": 1.32691,
+        "closePrice": 1.33039,
+        "tp": 1.32239,
+        "sl": 0,
+        "pips": -34.8,
+        "profit": -568,
+        "comment": "",
+        "interest": 0,
+        "commission": -16
+    },
+    {
+        "openTime": "04/01/2026 08:00",
+        "closeTime": "04/01/2026 10:06",
+        "symbol": "GBPUSD_Z",
+        "action": "Sell",
+        "sizing": {
+            "type": "lots",
+            "value": "0.01"
+        },
+        "openPrice": 1.3263,
+        "closePrice": 1.33039,
+        "tp": 1.32237,
+        "sl": 0,
+        "pips": -40.9,
+        "profit": -665,
+        "comment": "",
+        "interest": 0,
+        "commission": -16
+    },
+    {
         "openTime": "04/01/2026 07:35",
         "closeTime": "04/01/2026 07:56",
         "symbol": "GBPUSD_Z",
