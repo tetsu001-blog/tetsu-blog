@@ -100,16 +100,18 @@
   }
 
   try {
-    // グラフ描画
-    const res = await fetch('/data/myfxbook-data.json');
-    const data = await res.json();
+    // グラフ描画（口座残高 + 累積損益率の統合チャート）
+    const [res, histRes2, sumRes2] = await Promise.all([
+      fetch('/data/myfxbook-data.json'),
+      fetch('/data/myfxbook-history.json'),
+      fetch('/data/myfxbook-summary.json')
+    ]);
+    const data    = await res.json();
+    const history = await histRes2.json();
+    const sum2    = await sumRes2.json();
+    const currency = sum2.currency || 'JPY';
 
-    const labels = [];
-    const gains = [];
-
-    // 直近入金日を取得（Daily Gain フィルタ用）
-    const histRes = await fetch('/data/myfxbook-history.json');
-    const history = await histRes.json();
+    // --- 直近入金日を取得 ---
     let depositDate = null;
     if (history && history.length > 0) {
       const deposit = history.find(t => (t.action || '').toLowerCase() === 'deposit');
@@ -129,8 +131,11 @@
       return new Date(str);
     }
 
+    // === 累積損益率 ===
+    const labels = [];
+    const gains  = [];
+
     if (data && data.length > 0) {
-      // Daily Gain APIデータを使用（入金日以降のみ）
       let cumulative = 0;
       data.forEach(d => {
         if (depositDate) {
@@ -142,10 +147,7 @@
         gains.push(parseFloat(cumulative.toFixed(2)));
       });
     } else if (history && history.length > 0) {
-      // フォールバック: 取引履歴から累積損益率を算出（直近入金以降のみ）
       const sorted = [...history].reverse();
-
-      // 直近入金のインデックスを探す（oldest-first）
       let lastDepositIdx = -1;
       sorted.forEach((t, i) => {
         if ((t.action || '').toLowerCase() === 'deposit') lastDepositIdx = i;
@@ -159,13 +161,11 @@
       filtered.forEach(t => {
         const profit = parseFloat(t.profit) || 0;
         const action = (t.action || '').toLowerCase();
-
         if (action === 'deposit') {
           totalDeposits += profit;
         } else if (action !== 'withdrawal' && totalDeposits > 0) {
           cumulativeProfit += profit;
         }
-
         if (totalDeposits > 0) {
           const dateStr = (t.closeTime || '').split(' ')[0];
           if (dateStr) {
@@ -182,6 +182,37 @@
 
     if (labels.length === 0) return;
 
+    // === 口座残高 ===
+    const balanceMap = new Map();
+    if (history && history.length > 0) {
+      const sorted = [...history].reverse();
+      let lastDepositIdx = -1;
+      sorted.forEach((t, i) => {
+        if ((t.action || '').toLowerCase() === 'deposit') lastDepositIdx = i;
+      });
+      const filtered = lastDepositIdx >= 0 ? sorted.slice(lastDepositIdx) : sorted;
+
+      let runningBalance = 0;
+      filtered.forEach(t => {
+        const profit = parseFloat(t.profit) || 0;
+        runningBalance += profit;
+        const dateStr = (t.closeTime || '').split(' ')[0];
+        if (dateStr) {
+          balanceMap.set(dateStr, Math.round(runningBalance));
+        }
+      });
+    }
+
+    const balanceValues = [];
+    let lastBalance = null;
+    labels.forEach(date => {
+      if (balanceMap.has(date)) {
+        lastBalance = balanceMap.get(date);
+      }
+      balanceValues.push(lastBalance);
+    });
+
+    // === 統合チャート描画 ===
     const chartEl = document.getElementById('myfxbookChart');
     chartEl.style.display = '';
     const ctx = chartEl.getContext('2d');
@@ -189,30 +220,67 @@
       type: 'line',
       data: {
         labels: labels,
-        datasets: [{
-          label: '累積損益率 (%)',
-          data: gains,
-          borderColor: '#0024ff',
-          backgroundColor: 'rgba(0, 36, 255, 0.08)',
-          borderWidth: 2,
-          pointRadius: 2,
-          fill: true,
-          tension: 0.3
-        }]
+        datasets: [
+          {
+            label: `口座残高 (${currency})`,
+            data: balanceValues,
+            borderColor: '#1a7f3c',
+            backgroundColor: 'rgba(26, 127, 60, 0.1)',
+            borderWidth: 2,
+            pointRadius: 3,
+            fill: true,
+            tension: 0.3,
+            yAxisID: 'y'
+          },
+          {
+            label: '累積損益率 (%)',
+            data: gains,
+            borderColor: '#0024ff',
+            backgroundColor: 'rgba(0, 36, 255, 0.05)',
+            borderWidth: 2,
+            pointRadius: 3,
+            fill: false,
+            tension: 0.3,
+            borderDash: [5, 3],
+            yAxisID: 'y1'
+          }
+        ]
       },
       options: {
         responsive: true,
+        interaction: {
+          mode: 'index',
+          intersect: false
+        },
         plugins: {
           legend: { display: true },
           tooltip: {
+            mode: 'index',
+            intersect: false,
             callbacks: {
-              label: ctx => ` ${ctx.parsed.y.toFixed(2)}%`
+              label: function(ctx) {
+                if (ctx.dataset.yAxisID === 'y') {
+                  return ` 口座残高: ${ctx.parsed.y != null ? ctx.parsed.y.toLocaleString() : '--'} ${currency}`;
+                } else {
+                  return ` 累積損益率: ${ctx.parsed.y != null ? ctx.parsed.y.toFixed(2) : '--'}%`;
+                }
+              }
             }
           }
         },
         scales: {
           x: { ticks: { maxTicksLimit: 10 } },
-          y: { ticks: { callback: val => val + '%' } }
+          y: {
+            type: 'linear',
+            position: 'left',
+            ticks: { callback: val => val.toLocaleString() }
+          },
+          y1: {
+            type: 'linear',
+            position: 'right',
+            ticks: { callback: val => val + '%' },
+            grid: { drawOnChartArea: false }
+          }
         }
       }
     });
