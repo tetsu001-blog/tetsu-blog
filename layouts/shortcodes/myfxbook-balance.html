@@ -16,26 +16,55 @@
 <script>
 (async function() {
   try {
-    const [sumRes, dataRes] = await Promise.all([
+    const [sumRes, dataRes, histRes] = await Promise.all([
       fetch('/data/myfxbook-summary.json'),
-      fetch('/data/myfxbook-data.json')
+      fetch('/data/myfxbook-data.json'),
+      fetch('/data/myfxbook-history.json')
     ]);
-    const sum  = await sumRes.json();
-    const data = await dataRes.json();
+    const sum     = await sumRes.json();
+    const data    = await dataRes.json();
+    const history = await histRes.json();
 
     const currentBalance = parseFloat(sum.balance);
     const currency       = sum.currency || 'JPY';
 
-    const labels   = [];
-    const balances = [];
+    // --- 直近入金日を取得 ---
+    let depositDate = null;
+    if (history && history.length > 0) {
+      const deposit = history.find(t => (t.action || '').toLowerCase() === 'deposit');
+      if (deposit) {
+        const ds = (deposit.closeTime || '').split(' ')[0];
+        const [m, d, y] = ds.split('/');
+        if (y) depositDate = new Date(y, m - 1, d);
+      }
+    }
+
+    function parseFlexDate(str) {
+      if (!str) return null;
+      const parts = str.split('/');
+      if (parts.length === 3 && parts[2] && parts[2].length === 4) {
+        return new Date(parts[2], parts[0] - 1, parts[1]);
+      }
+      return new Date(str);
+    }
+
+    // --- 有効証拠金（Equity）: Daily Gainデータから逆算（入金日以降のみ） ---
+    const equityLabels = [];
+    const equityValues = [];
 
     if (data && data.length > 0) {
-      // Daily Gain APIデータから逆算
+      const filteredData = depositDate
+        ? data.filter(d => {
+            const dd = parseFlexDate(d.date);
+            return dd && dd >= depositDate;
+          })
+        : data;
+
       let balance = currentBalance;
-      const reversed = [...data].reverse();
+      const reversed = [...filteredData].reverse();
       reversed.forEach(d => {
-        labels.unshift(d.date);
-        balances.unshift(parseFloat(balance.toFixed(0)));
+        equityLabels.unshift(d.date);
+        equityValues.unshift(parseFloat(balance.toFixed(0)));
         const profit = parseFloat(d.profit);
         if (!isNaN(profit)) {
           balance -= profit;
@@ -43,32 +72,84 @@
           balance = balance / (1 + parseFloat(d.gain) / 100);
         }
       });
-    } else {
-      // フォールバック: 取引履歴から残高推移を算出
-      const histRes = await fetch('/data/myfxbook-history.json');
-      const history = await histRes.json();
-      if (!history || history.length === 0) return;
+    }
 
-      const sorted = [...history].reverse();
+    // --- 確定残高（Balance）: 取引履歴から算出（直近入金以降のみ） ---
+    const balanceMap = new Map();
+
+    if (history && history.length > 0) {
+      const sorted = [...history].reverse(); // oldest first
+
+      // 直近入金のインデックスを探す
+      let lastDepositIdx = -1;
+      sorted.forEach((t, i) => {
+        if ((t.action || '').toLowerCase() === 'deposit') lastDepositIdx = i;
+      });
+      const filtered = lastDepositIdx >= 0 ? sorted.slice(lastDepositIdx) : sorted;
+
       let runningBalance = 0;
-      const dailyMap = new Map();
-
-      sorted.forEach(t => {
+      filtered.forEach(t => {
         const profit = parseFloat(t.profit) || 0;
         runningBalance += profit;
         const dateStr = (t.closeTime || '').split(' ')[0];
         if (dateStr) {
-          dailyMap.set(dateStr, Math.round(runningBalance));
+          balanceMap.set(dateStr, Math.round(runningBalance));
         }
-      });
-
-      dailyMap.forEach((val, key) => {
-        labels.push(key);
-        balances.push(val);
       });
     }
 
-    if (labels.length === 0) return;
+    // --- 共通の日付ラベルを作成 ---
+    let labels = [];
+    if (equityLabels.length > 0) {
+      labels = equityLabels;
+    } else if (balanceMap.size > 0) {
+      labels = Array.from(balanceMap.keys());
+    } else {
+      return;
+    }
+
+    // 確定残高を共通ラベルに合わせる
+    const balanceValues = [];
+    let lastBalance = null;
+    labels.forEach(date => {
+      if (balanceMap.has(date)) {
+        lastBalance = balanceMap.get(date);
+      }
+      balanceValues.push(lastBalance);
+    });
+
+    // 有効証拠金データがない場合は確定残高のみ表示
+    const hasEquity  = equityValues.length > 0;
+    const hasBalance = balanceValues.some(v => v !== null);
+
+    const datasets = [];
+    if (hasEquity) {
+      datasets.push({
+        label: `有効証拠金 (${currency})`,
+        data: equityValues,
+        borderColor: '#1a7f3c',
+        backgroundColor: 'rgba(26, 127, 60, 0.1)',
+        borderWidth: 2,
+        pointRadius: 2,
+        fill: true,
+        tension: 0.3
+      });
+    }
+    if (hasBalance) {
+      datasets.push({
+        label: `確定残高 (${currency})`,
+        data: balanceValues,
+        borderColor: '#0024ff',
+        backgroundColor: 'rgba(0, 36, 255, 0.05)',
+        borderWidth: 2,
+        pointRadius: 2,
+        fill: false,
+        tension: 0.3,
+        borderDash: [5, 3]
+      });
+    }
+
+    if (datasets.length === 0) return;
 
     const chartEl = document.getElementById('myfxBalanceChart');
     chartEl.style.display = '';
@@ -76,19 +157,7 @@
 
     new Chart(ctx, {
       type: 'line',
-      data: {
-        labels: labels,
-        datasets: [{
-          label: `口座残高 (${currency})`,
-          data: balances,
-          borderColor: '#1a7f3c',
-          backgroundColor: 'rgba(26, 127, 60, 0.1)',
-          borderWidth: 2,
-          pointRadius: 2,
-          fill: true,
-          tension: 0.3
-        }]
-      },
+      data: { labels, datasets },
       options: {
         responsive: true,
         plugins: {

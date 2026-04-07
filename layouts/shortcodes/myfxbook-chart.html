@@ -107,26 +107,56 @@
     const labels = [];
     const gains = [];
 
+    // 直近入金日を取得（Daily Gain フィルタ用）
+    const histRes = await fetch('/data/myfxbook-history.json');
+    const history = await histRes.json();
+    let depositDate = null;
+    if (history && history.length > 0) {
+      const deposit = history.find(t => (t.action || '').toLowerCase() === 'deposit');
+      if (deposit) {
+        const ds = (deposit.closeTime || '').split(' ')[0];
+        const [m, d, y] = ds.split('/');
+        if (y) depositDate = new Date(y, m - 1, d);
+      }
+    }
+
+    function parseFlexDate(str) {
+      if (!str) return null;
+      const parts = str.split('/');
+      if (parts.length === 3 && parts[2] && parts[2].length === 4) {
+        return new Date(parts[2], parts[0] - 1, parts[1]);
+      }
+      return new Date(str);
+    }
+
     if (data && data.length > 0) {
-      // Daily Gain APIデータを使用
+      // Daily Gain APIデータを使用（入金日以降のみ）
       let cumulative = 0;
       data.forEach(d => {
+        if (depositDate) {
+          const dd = parseFlexDate(d.date);
+          if (dd && dd < depositDate) return;
+        }
         cumulative += d.gain;
         labels.push(d.date);
         gains.push(parseFloat(cumulative.toFixed(2)));
       });
-    } else {
-      // フォールバック: 取引履歴から累積損益率を算出
-      const histRes = await fetch('/data/myfxbook-history.json');
-      const history = await histRes.json();
-      if (!history || history.length === 0) return;
-
+    } else if (history && history.length > 0) {
+      // フォールバック: 取引履歴から累積損益率を算出（直近入金以降のみ）
       const sorted = [...history].reverse();
+
+      // 直近入金のインデックスを探す（oldest-first）
+      let lastDepositIdx = -1;
+      sorted.forEach((t, i) => {
+        if ((t.action || '').toLowerCase() === 'deposit') lastDepositIdx = i;
+      });
+      const filtered = lastDepositIdx >= 0 ? sorted.slice(lastDepositIdx) : sorted;
+
       let totalDeposits = 0;
       let cumulativeProfit = 0;
       const dailyMap = new Map();
 
-      sorted.forEach(t => {
+      filtered.forEach(t => {
         const profit = parseFloat(t.profit) || 0;
         const action = (t.action || '').toLowerCase();
 

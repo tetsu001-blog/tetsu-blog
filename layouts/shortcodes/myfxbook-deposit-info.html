@@ -1,0 +1,40 @@
+<p id="myfx-deposit-note" style="font-size: 0.85rem; color: #666; display: none;">
+※ロスカットした場合、グラフ描画が不自然になるため入金処理が行われるとグラフもリセットされます。<br>
+※直近入金日　　<span id="myfx-last-deposit">--</span>
+</p>
+<script>
+(async function() {
+  try {
+    const [histRes, sumRes] = await Promise.all([
+      fetch('/data/myfxbook-history.json'),
+      fetch('/data/myfxbook-summary.json')
+    ]);
+    const history = await histRes.json();
+    const sum = await sumRes.json();
+    if (!history || history.length === 0) return;
+
+    // 直近入金を検索（データは新しい順）
+    const deposit = history.find(t => (t.action || '').toLowerCase() === 'deposit');
+    if (!deposit) return;
+
+    // MyFXbook時刻（UTC） → JST変換
+    const timeStr = deposit.closeTime || '';
+    const [datePart, timePart] = timeStr.split(' ');
+    if (!datePart) return;
+    const [month, day, year] = datePart.split('/');
+    const [hour, min] = (timePart || '00:00').split(':');
+    const utc = new Date(Date.UTC(year, month - 1, day, hour, min));
+    const jst = new Date(utc.getTime() + 9 * 60 * 60 * 1000);
+    const pad = n => String(n).padStart(2, '0');
+    const dateFormatted = `${jst.getUTCFullYear()}/${pad(jst.getUTCMonth()+1)}/${pad(jst.getUTCDate())}`;
+
+    const amount = parseFloat(deposit.profit).toLocaleString();
+    const currency = sum.currency || 'JPY';
+
+    document.getElementById('myfx-last-deposit').textContent = `${dateFormatted}（${amount} ${currency}）`;
+    document.getElementById('myfx-deposit-note').style.display = '';
+  } catch(e) {
+    console.error('入金情報読み込みエラー:', e);
+  }
+})();
+</script>
