@@ -132,7 +132,7 @@
 
         if (action === 'deposit') {
           totalDeposits += profit;
-        } else if (action !== 'withdrawal') {
+        } else if (action !== 'withdrawal' && totalDeposits > 0) {
           cumulativeProfit += profit;
         }
 
