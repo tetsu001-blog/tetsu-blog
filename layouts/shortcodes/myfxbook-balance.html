@@ -74,7 +74,7 @@
       });
     }
 
-    // --- 確定残高（Balance）: 取引履歴から算出（直近入金以降のみ） ---
+    // --- 口座残高（Balance）: 取引履歴から算出（直近入金以降のみ） ---
     const balanceMap = new Map();
 
     if (history && history.length > 0) {
@@ -108,7 +108,7 @@
       return;
     }
 
-    // 確定残高を共通ラベルに合わせる
+    // 口座残高を共通ラベルに合わせる
     const balanceValues = [];
     let lastBalance = null;
     labels.forEach(date => {
@@ -118,15 +118,15 @@
       balanceValues.push(lastBalance);
     });
 
-    // 有効証拠金データがない場合は確定残高のみ表示
+    // 有効証拠金データがない場合は口座残高のみ表示
     const hasEquity  = equityValues.length > 0;
     const hasBalance = balanceValues.some(v => v !== null);
 
     const datasets = [];
-    if (hasEquity) {
+    if (hasBalance) {
       datasets.push({
-        label: `有効証拠金 (${currency})`,
-        data: equityValues,
+        label: `口座残高 (${currency})`,
+        data: balanceValues,
         borderColor: '#1a7f3c',
         backgroundColor: 'rgba(26, 127, 60, 0.1)',
         borderWidth: 2,
@@ -135,12 +135,12 @@
         tension: 0.3
       });
     }
-    if (hasBalance) {
+    if (hasEquity) {
       datasets.push({
-        label: `確定残高 (${currency})`,
-        data: balanceValues,
-        borderColor: '#0024ff',
-        backgroundColor: 'rgba(0, 36, 255, 0.05)',
+        label: `有効証拠金 (${currency})`,
+        data: equityValues,
+        borderColor: '#e67e22',
+        backgroundColor: 'rgba(230, 126, 34, 0.05)',
         borderWidth: 2,
         pointRadius: 2,
         fill: false,
