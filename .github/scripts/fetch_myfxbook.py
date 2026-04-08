@@ -8,9 +8,10 @@ MYFXBOOK_EMAIL    = os.environ.get('MYFXBOOK_EMAIL')
 MYFXBOOK_PASSWORD = os.environ.get('MYFXBOOK_PASSWORD')
 ACCOUNT_ID        = os.environ.get('MYFXBOOK_ACCOUNT_ID')
 
-SUMMARY_FILE    = './static/data/myfxbook-summary.json'
-DAILY_GAIN_FILE = './static/data/myfxbook-data.json'
-HISTORY_FILE    = './static/data/myfxbook-history.json'
+SUMMARY_FILE      = './static/data/myfxbook-summary.json'
+DAILY_GAIN_FILE   = './static/data/myfxbook-data.json'
+DAILY_BALANCE_FILE = './static/data/myfxbook-daily-balance.json'
+HISTORY_FILE      = './static/data/myfxbook-history.json'
 API_BASE_URL    = 'https://www.myfxbook.com/api'
 
 def api_get(url):
@@ -88,6 +89,19 @@ def fetch_myfxbook_data():
             print(f"日次データ保存完了: {DAILY_GAIN_FILE}")
         else:
             print(f"Daily Gain スキップ: {daily_data.get('message') if daily_data else '取得失敗'}")
+
+        # --- Daily Balance（任意） ---
+        daily_balance_data = api_get(
+            f"{API_BASE_URL}/get-data-daily.json"
+            f"?session={session_id}&id={ACCOUNT_ID}"
+            f"&start={start_date}&end={end_date}"
+        )
+        if daily_balance_data and not daily_balance_data.get('error'):
+            with open(DAILY_BALANCE_FILE, 'w', encoding='utf-8') as f:
+                json.dump(daily_balance_data.get('dataDaily', []), f, ensure_ascii=False, indent=4)
+            print(f"日次残高保存完了: {DAILY_BALANCE_FILE}")
+        else:
+            print(f"Daily Balance スキップ: {daily_balance_data.get('message') if daily_balance_data else '取得失敗'}")
 
         # --- 取引履歴（任意・蓄積型） ---
         # 既存データを読み込み

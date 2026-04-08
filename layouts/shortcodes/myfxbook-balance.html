@@ -16,47 +16,18 @@
 <script>
 (async function() {
   try {
-    const [sumRes, dataRes] = await Promise.all([
-      fetch('/data/myfxbook-summary.json'),
-      fetch('/data/myfxbook-data.json')
-    ]);
-    const sum     = await sumRes.json();
-    const rawData = await dataRes.json();
+    const res = await fetch('/data/myfxbook-daily-balance.json');
+    const data = await res.json();
 
-    const currentBalance = parseFloat(sum.balance);
-    const currency       = sum.currency || 'JPY';
+    if (!data || data.length === 0) return;
 
-    // daily gain データをフラット化（各要素が配列の配列になっている）
-    const data = rawData.map(d => Array.isArray(d) ? d[0] : d).filter(Boolean);
-    if (!data.length) return;
-
-    // --- sum.balance から daily gain の profit で逆算して各日の終了時残高を計算 ---
     const labels = [];
     const balanceValues = [];
-    let bal = currentBalance;
 
-    const reversed = [...data].reverse(); // 新しい日→古い日
-    reversed.forEach(d => {
-      labels.unshift(d.date);
-      balanceValues.unshift(Math.round(bal));
-      const profit = parseFloat(d.profit);
-      if (!isNaN(profit)) {
-        bal -= profit;
-      }
+    data.forEach(d => {
+      labels.push(d.date);
+      balanceValues.push(Math.round(parseFloat(d.balance)));
     });
-
-    const datasets = [
-      {
-        label: '口座残高',
-        data: balanceValues,
-        borderColor: '#6b8e23',
-        backgroundColor: 'rgba(107, 142, 35, 0.12)',
-        borderWidth: 2,
-        pointRadius: 3,
-        fill: true,
-        tension: 0.3
-      }
-    ];
 
     const chartEl = document.getElementById('myfxBalanceChart');
     chartEl.style.display = '';
@@ -64,18 +35,26 @@
 
     new Chart(ctx, {
       type: 'line',
-      data: { labels, datasets },
+      data: {
+        labels,
+        datasets: [{
+          label: '口座残高',
+          data: balanceValues,
+          borderColor: '#6b8e23',
+          backgroundColor: 'rgba(107, 142, 35, 0.12)',
+          borderWidth: 2,
+          pointRadius: 3,
+          fill: true,
+          tension: 0.3
+        }]
+      },
       options: {
         responsive: true,
         plugins: {
           legend: { display: true },
           tooltip: {
             callbacks: {
-              label: function(context) {
-                const val = context.parsed.y;
-                if (val === null) return null;
-                return ` ${val.toLocaleString()} ${currency}`;
-              }
+              label: ctx => ` ${ctx.parsed.y.toLocaleString()} JPY`
             }
           }
         },
