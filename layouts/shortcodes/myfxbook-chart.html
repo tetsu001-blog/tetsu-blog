@@ -174,45 +174,38 @@
   }
 
   try {
-    // グラフ描画（myfxbook風 棒グラフ + ライン複合チャート）
-    const [dataRes, histRes2, sumRes2] = await Promise.all([
-      fetch('/data/myfxbook-data.json'),
-      fetch('/data/myfxbook-history.json'),
-      fetch('/data/myfxbook-summary.json')
+    // グラフ描画（get-data-daily API の balance をそのまま使用）
+    const [balRes, histRes2] = await Promise.all([
+      fetch('/data/myfxbook-daily-balance.json'),
+      fetch('/data/myfxbook-history.json')
     ]);
-    const dailyData = await dataRes.json();
-    const history   = await histRes2.json();
-    const sum2      = await sumRes2.json();
-    const currency  = sum2.currency || 'JPY';
+    const rawBalData = await balRes.json();
+    const history    = await histRes2.json();
+    const currency   = 'JPY';
 
-    if (!history || history.length === 0) return;
+    // 入れ子配列をフラット化
+    const balData = rawBalData.map(d => Array.isArray(d) ? d[0] : d).filter(Boolean);
+    if (!balData.length) return;
 
-    // --- 日別データを集計（oldest-first） ---
-    const sorted = [...history].reverse();
-    const dailyBalanceMap = new Map();   // 日付 → 残高
-    const depositDates    = new Map();   // 日付 → 入金額
-    const withdrawDates   = new Map();   // 日付 → 出金額
-    let runningBalance = 0;
+    // --- 入金・出金マーカー用（取引履歴から） ---
+    const depositDates  = new Map();
+    const withdrawDates = new Map();
+    if (history && history.length > 0) {
+      history.forEach(t => {
+        const action = (t.action || '').toLowerCase();
+        const profit = parseFloat(t.profit) || 0;
+        const dateStr = (t.closeTime || '').split(' ')[0];
+        if (!dateStr) return;
+        if (action === 'deposit') {
+          depositDates.set(dateStr, (depositDates.get(dateStr) || 0) + profit);
+        } else if (action === 'withdrawal') {
+          withdrawDates.set(dateStr, (withdrawDates.get(dateStr) || 0) + Math.abs(profit));
+        }
+      });
+    }
 
-    sorted.forEach(t => {
-      const profit = parseFloat(t.profit) || 0;
-      const action = (t.action || '').toLowerCase();
-      runningBalance += profit;
-
-      const dateStr = (t.closeTime || '').split(' ')[0];
-      if (!dateStr) return;
-
-      dailyBalanceMap.set(dateStr, Math.round(runningBalance));
-
-      if (action === 'deposit') {
-        depositDates.set(dateStr, (depositDates.get(dateStr) || 0) + profit);
-      } else if (action === 'withdrawal') {
-        withdrawDates.set(dateStr, (withdrawDates.get(dateStr) || 0) + Math.abs(profit));
-      }
-    });
-
-    const labels        = Array.from(dailyBalanceMap.keys());
-    const balanceValues = Array.from(dailyBalanceMap.values());
+    const labels        = balData.map(d => d.date);
+    const balanceValues = balData.map(d => Math.round(parseFloat(d.balance)));
 
     if (labels.length === 0) return;
 
