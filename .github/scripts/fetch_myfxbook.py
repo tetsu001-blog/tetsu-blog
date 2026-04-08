@@ -54,20 +54,29 @@ def fetch_myfxbook_data():
             sys.exit(1)
 
         summary = {
-            "name":     account.get('name', ''),
-            "balance":  account.get('balance', 0),
-            "currency": account.get('currency', 'USD'),
-            "growth":   account.get('gain', 0),
-            "drawdown": account.get('drawdown', 0),
-            "monthly":  account.get('monthly', 0),
+            "name":        account.get('name', ''),
+            "balance":     account.get('balance', 0),
+            "currency":    account.get('currency', 'USD'),
+            "growth":      account.get('gain', 0),
+            "absGain":     account.get('absGain', 0),
+            "daily":       account.get('daily', 0),
+            "monthly":     account.get('monthly', 0),
+            "drawdown":    account.get('drawdown', 0),
+            "equity":      account.get('equity', 0),
+            "equityPercent": account.get('equityPercent', 0),
+            "highest":     account.get('highest', 0),
+            "profit":      account.get('profit', 0),
+            "interest":    account.get('interest', 0),
+            "deposits":    account.get('deposits', 0),
+            "withdrawals": account.get('withdrawals', 0),
         }
         with open(SUMMARY_FILE, 'w', encoding='utf-8') as f:
             json.dump(summary, f, ensure_ascii=False, indent=4)
         print(f"サマリー保存完了: {SUMMARY_FILE}")
 
         # --- Daily Gain（任意） ---
-        end_date   = datetime.now().strftime('%m/%d/%Y')
-        start_date = (datetime.now() - timedelta(days=365)).strftime('%m/%d/%Y')
+        end_date   = datetime.now().strftime('%Y-%m-%d')
+        start_date = (datetime.now() - timedelta(days=365)).strftime('%Y-%m-%d')
         daily_data = api_get(
             f"{API_BASE_URL}/get-daily-gain.json"
             f"?session={session_id}&id={ACCOUNT_ID}"
@@ -75,7 +84,7 @@ def fetch_myfxbook_data():
         )
         if daily_data and not daily_data.get('error'):
             with open(DAILY_GAIN_FILE, 'w', encoding='utf-8') as f:
-                json.dump(daily_data.get('dailyData', []), f, ensure_ascii=False, indent=4)
+                json.dump(daily_data.get('dailyGain', []), f, ensure_ascii=False, indent=4)
             print(f"日次データ保存完了: {DAILY_GAIN_FILE}")
         else:
             print(f"Daily Gain スキップ: {daily_data.get('message') if daily_data else '取得失敗'}")

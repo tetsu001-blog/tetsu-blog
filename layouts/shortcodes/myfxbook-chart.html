@@ -17,14 +17,17 @@
   border-bottom: 1px solid #eee;
   padding-bottom: 0.6rem;
 }
-.myfx-stats {
+.myfx-section {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0.6rem 1.5rem;
+  gap: 0.4rem 1.5rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid #eee;
 }
+.myfx-section:last-of-type { border-bottom: none; }
 .myfx-stat { display: flex; justify-content: space-between; align-items: center; }
-.myfx-stat .label { color: #666; font-size: 0.9rem; }
-.myfx-stat .value { font-weight: bold; font-size: 1rem; color: #222; }
+.myfx-stat .label { color: #666; font-size: 0.85rem; }
+.myfx-stat .value { font-weight: bold; font-size: 0.95rem; color: #222; }
 .myfx-stat .value.positive { color: #1a7f3c; }
 .myfx-stat .value.negative { color: #c0392b; }
 
@@ -39,24 +42,71 @@
 <div class="myfx-wrap">
   <div class="myfx-card">
     <h3 id="myfx-name">てつFX</h3>
-    <div class="myfx-stats">
+
+    <!-- セクション1: 増加 -->
+    <div class="myfx-section">
       <div class="myfx-stat">
-        <span class="label">口座残高</span>
-        <span class="value" id="myfx-balance">--</span>
-      </div>
-      <div class="myfx-stat">
-        <span class="label">成長率</span>
+        <span class="label">増加</span>
         <span class="value" id="myfx-growth">--</span>
       </div>
       <div class="myfx-stat">
-        <span class="label">最大DD</span>
-        <span class="value" id="myfx-drawdown">--</span>
-      </div>
-      <div class="myfx-stat">
-        <span class="label">月次損益</span>
-        <span class="value" id="myfx-monthly">--</span>
+        <span class="label">増加平均</span>
+        <span class="value" id="myfx-abs-gain">--</span>
       </div>
     </div>
+
+    <!-- セクション2: 日々・月々・DD -->
+    <div class="myfx-section">
+      <div class="myfx-stat">
+        <span class="label">日々</span>
+        <span class="value" id="myfx-daily">--</span>
+      </div>
+      <div class="myfx-stat">
+        <span class="label">月々</span>
+        <span class="value" id="myfx-monthly">--</span>
+      </div>
+      <div class="myfx-stat">
+        <span class="label">ドローダウン</span>
+        <span class="value" id="myfx-drawdown">--</span>
+      </div>
+    </div>
+
+    <!-- セクション3: 残高・エクイティ・最高・利益・金利 -->
+    <div class="myfx-section">
+      <div class="myfx-stat">
+        <span class="label">残高</span>
+        <span class="value" id="myfx-balance">--</span>
+      </div>
+      <div class="myfx-stat">
+        <span class="label">エクイティ</span>
+        <span class="value" id="myfx-equity">--</span>
+      </div>
+      <div class="myfx-stat">
+        <span class="label">最高</span>
+        <span class="value" id="myfx-highest">--</span>
+      </div>
+      <div class="myfx-stat">
+        <span class="label">利益</span>
+        <span class="value" id="myfx-profit">--</span>
+      </div>
+      <div class="myfx-stat">
+        <span class="label">金利</span>
+        <span class="value" id="myfx-interest">--</span>
+      </div>
+    </div>
+
+    <!-- セクション4: デポジット・引き出し -->
+    <div class="myfx-section">
+      <div class="myfx-stat">
+        <span class="label">デポジット</span>
+        <span class="value" id="myfx-deposits">--</span>
+      </div>
+      <div class="myfx-stat">
+        <span class="label">引き出し</span>
+        <span class="value" id="myfx-withdrawals">--</span>
+      </div>
+    </div>
+
     <div class="myfx-verified">VERIFIED BY MYFXBOOK.COM</div>
   </div>
 
@@ -72,180 +122,232 @@
     const sum = await sumRes.json();
 
     document.getElementById('myfx-name').textContent = 'てつFX';
-    document.getElementById('myfx-balance').textContent =
-      Number(sum.balance).toLocaleString() + ' ' + (sum.currency || 'USD');
+    const cur = sum.currency || 'JPY';
+    const sym = cur === 'JPY' ? '¥' : cur + ' ';
 
-    function pct(val) {
+    // ヘルパー: パーセント表示 + 色付け
+    function setPct(id, val) {
+      const el = document.getElementById(id);
+      if (!el) return;
       const n = parseFloat(val);
-      const el_id = arguments[1];
-      return (n >= 0 ? '+' : '') + n.toFixed(2) + '%';
+      el.textContent = (n >= 0 ? '+' : '') + n.toFixed(2) + '%';
+      el.classList.add(n >= 0 ? 'positive' : 'negative');
     }
 
-    const growthEl = document.getElementById('myfx-growth');
-    const g = parseFloat(sum.growth);
-    growthEl.textContent = (g >= 0 ? '+' : '') + g.toFixed(2) + '%';
-    growthEl.classList.add(g >= 0 ? 'positive' : 'negative');
+    // ヘルパー: 金額表示 + 色付け
+    function setMoney(id, val, colored) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const n = parseFloat(val);
+      el.textContent = sym + n.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      if (colored) el.classList.add(n >= 0 ? 'positive' : 'negative');
+    }
 
+    // セクション1: 増加
+    setPct('myfx-growth', sum.growth);
+    setPct('myfx-abs-gain', sum.absGain);
+
+    // セクション2: 日々・月々・DD
+    setPct('myfx-daily', sum.daily);
+    setPct('myfx-monthly', sum.monthly);
     const ddEl = document.getElementById('myfx-drawdown');
     ddEl.textContent = parseFloat(sum.drawdown).toFixed(2) + '%';
     ddEl.classList.add('negative');
 
-    const moEl = document.getElementById('myfx-monthly');
-    const mo = parseFloat(sum.monthly);
-    moEl.textContent = (mo >= 0 ? '+' : '') + mo.toFixed(2) + '%';
-    moEl.classList.add(mo >= 0 ? 'positive' : 'negative');
+    // セクション3: 残高・エクイティ・最高・利益・金利
+    setMoney('myfx-balance', sum.balance, false);
+    const eqEl = document.getElementById('myfx-equity');
+    const eqPct = parseFloat(sum.equityPercent || 0).toFixed(2);
+    const eqVal = parseFloat(sum.equity || 0);
+    eqEl.textContent = `(${eqPct}%) ${sym}${eqVal.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+
+    setMoney('myfx-highest', sum.highest, false);
+    setMoney('myfx-profit', sum.profit, true);
+    setMoney('myfx-interest', sum.interest, true);
+
+    // セクション4: デポジット・引き出し
+    setMoney('myfx-deposits', sum.deposits, false);
+    setMoney('myfx-withdrawals', sum.withdrawals, false);
 
   } catch(e) {
     console.error('サマリー読み込みエラー:', e);
   }
 
   try {
-    // グラフ描画（口座残高 + 累積損益率の統合チャート）
-    const [res, histRes2, sumRes2] = await Promise.all([
+    // グラフ描画（myfxbook風 棒グラフ + ライン複合チャート）
+    const [dataRes, histRes2, sumRes2] = await Promise.all([
       fetch('/data/myfxbook-data.json'),
       fetch('/data/myfxbook-history.json'),
       fetch('/data/myfxbook-summary.json')
     ]);
-    const data    = await res.json();
-    const history = await histRes2.json();
-    const sum2    = await sumRes2.json();
-    const currency = sum2.currency || 'JPY';
+    const dailyData = await dataRes.json();
+    const history   = await histRes2.json();
+    const sum2      = await sumRes2.json();
+    const currency  = sum2.currency || 'JPY';
 
-    // --- 直近入金日を取得 ---
-    let depositDate = null;
-    if (history && history.length > 0) {
-      const deposit = history.find(t => (t.action || '').toLowerCase() === 'deposit');
-      if (deposit) {
-        const ds = (deposit.closeTime || '').split(' ')[0];
-        const [m, d, y] = ds.split('/');
-        if (y) depositDate = new Date(y, m - 1, d);
+    if (!history || history.length === 0) return;
+
+    // --- 直近入金以降のデータを抽出（oldest-first） ---
+    const sorted = [...history].reverse();
+    let lastDepositIdx = -1;
+    sorted.forEach((t, i) => {
+      if ((t.action || '').toLowerCase() === 'deposit') lastDepositIdx = i;
+    });
+    const filtered = lastDepositIdx >= 0 ? sorted.slice(lastDepositIdx) : sorted;
+
+    // --- 日別データを集計 ---
+    const dailyBalanceMap = new Map();   // 日付 → 残高
+    const depositDates    = new Map();   // 日付 → 入金額
+    const withdrawDates   = new Map();   // 日付 → 出金額
+    let runningBalance = 0;
+
+    filtered.forEach(t => {
+      const profit = parseFloat(t.profit) || 0;
+      const action = (t.action || '').toLowerCase();
+      runningBalance += profit;
+
+      const dateStr = (t.closeTime || '').split(' ')[0];
+      if (!dateStr) return;
+
+      dailyBalanceMap.set(dateStr, Math.round(runningBalance));
+
+      if (action === 'deposit') {
+        depositDates.set(dateStr, (depositDates.get(dateStr) || 0) + profit);
+      } else if (action === 'withdrawal') {
+        withdrawDates.set(dateStr, (withdrawDates.get(dateStr) || 0) + Math.abs(profit));
       }
-    }
+    });
 
-    function parseFlexDate(str) {
-      if (!str) return null;
-      const parts = str.split('/');
-      if (parts.length === 3 && parts[2] && parts[2].length === 4) {
-        return new Date(parts[2], parts[0] - 1, parts[1]);
-      }
-      return new Date(str);
-    }
-
-    // === 累積損益率 ===
-    const labels = [];
-    const gains  = [];
-
-    if (data && data.length > 0) {
-      let cumulative = 0;
-      data.forEach(d => {
-        if (depositDate) {
-          const dd = parseFlexDate(d.date);
-          if (dd && dd < depositDate) return;
-        }
-        cumulative += d.gain;
-        labels.push(d.date);
-        gains.push(parseFloat(cumulative.toFixed(2)));
-      });
-    } else if (history && history.length > 0) {
-      const sorted = [...history].reverse();
-      let lastDepositIdx = -1;
-      sorted.forEach((t, i) => {
-        if ((t.action || '').toLowerCase() === 'deposit') lastDepositIdx = i;
-      });
-      const filtered = lastDepositIdx >= 0 ? sorted.slice(lastDepositIdx) : sorted;
-
-      let totalDeposits = 0;
-      let cumulativeProfit = 0;
-      const dailyMap = new Map();
-
-      filtered.forEach(t => {
-        const profit = parseFloat(t.profit) || 0;
-        const action = (t.action || '').toLowerCase();
-        if (action === 'deposit') {
-          totalDeposits += profit;
-        } else if (action !== 'withdrawal' && totalDeposits > 0) {
-          cumulativeProfit += profit;
-        }
-        if (totalDeposits > 0) {
-          const dateStr = (t.closeTime || '').split(' ')[0];
-          if (dateStr) {
-            dailyMap.set(dateStr, parseFloat(((cumulativeProfit / totalDeposits) * 100).toFixed(2)));
-          }
-        }
-      });
-
-      dailyMap.forEach((val, key) => {
-        labels.push(key);
-        gains.push(val);
-      });
-    }
+    const labels        = Array.from(dailyBalanceMap.keys());
+    const balanceValues = Array.from(dailyBalanceMap.values());
 
     if (labels.length === 0) return;
 
-    // === 口座残高 ===
-    const balanceMap = new Map();
-    if (history && history.length > 0) {
-      const sorted = [...history].reverse();
-      let lastDepositIdx = -1;
-      sorted.forEach((t, i) => {
-        if ((t.action || '').toLowerCase() === 'deposit') lastDepositIdx = i;
-      });
-      const filtered = lastDepositIdx >= 0 ? sorted.slice(lastDepositIdx) : sorted;
+    // --- 入金・出金マーカー（該当日のみ値、他はnull） ---
+    const depositData  = labels.map(d => depositDates.has(d) ? 0 : null);
+    const withdrawData = labels.map(d => withdrawDates.has(d) ? 0 : null);
 
-      let runningBalance = 0;
-      filtered.forEach(t => {
-        const profit = parseFloat(t.profit) || 0;
-        runningBalance += profit;
-        const dateStr = (t.closeTime || '').split(' ')[0];
-        if (dateStr) {
-          balanceMap.set(dateStr, Math.round(runningBalance));
+    // --- エクイティライン（Daily Gainデータがある場合） ---
+    let equityValues = null;
+    if (dailyData && dailyData.length > 0) {
+      let depositDateObj = null;
+      if (lastDepositIdx >= 0) {
+        const ds = (sorted[lastDepositIdx].closeTime || '').split(' ')[0];
+        const [m, d, y] = ds.split('/');
+        if (y) depositDateObj = new Date(y, m - 1, d);
+      }
+
+      function parseFlexDate(str) {
+        if (!str) return null;
+        const parts = str.split('/');
+        if (parts.length === 3 && parts[2] && parts[2].length === 4) {
+          return new Date(parts[2], parts[0] - 1, parts[1]);
         }
+        return new Date(str);
+      }
+
+      const currentBalance = parseFloat(sum2.balance);
+      const filteredDaily = depositDateObj
+        ? dailyData.filter(d => {
+            const dd = parseFlexDate(d.date);
+            return dd && dd >= depositDateObj;
+          })
+        : dailyData;
+
+      if (filteredDaily.length > 0) {
+        const eqMap = new Map();
+        let bal = currentBalance;
+        const rev = [...filteredDaily].reverse();
+        rev.forEach(d => {
+          eqMap.set(d.date, parseFloat(bal.toFixed(0)));
+          const profit = parseFloat(d.profit);
+          if (!isNaN(profit)) {
+            bal -= profit;
+          } else {
+            bal = bal / (1 + parseFloat(d.gain) / 100);
+          }
+        });
+
+        equityValues = labels.map(d => eqMap.has(d) ? eqMap.get(d) : null);
+        // 前方補間
+        let lastVal = null;
+        for (let i = 0; i < equityValues.length; i++) {
+          if (equityValues[i] !== null) lastVal = equityValues[i];
+          else equityValues[i] = lastVal;
+        }
+      }
+    }
+
+    // === チャート描画 ===
+    const datasets = [
+      {
+        type: 'bar',
+        label: '残高',
+        data: balanceValues,
+        backgroundColor: 'rgba(46, 139, 87, 0.7)',
+        borderColor: 'rgba(46, 139, 87, 0.9)',
+        borderWidth: 1,
+        borderRadius: 2,
+        order: 2
+      },
+      {
+        type: 'line',
+        label: '残高ライン',
+        data: balanceValues,
+        borderColor: '#e74c3c',
+        backgroundColor: 'transparent',
+        borderWidth: 2,
+        pointRadius: 0,
+        tension: 0.4,
+        order: 1
+      }
+    ];
+
+    if (equityValues) {
+      datasets.push({
+        type: 'line',
+        label: 'エクイティ',
+        data: equityValues,
+        borderColor: '#f39c12',
+        backgroundColor: 'transparent',
+        borderWidth: 2,
+        pointRadius: 0,
+        tension: 0.4,
+        order: 0
       });
     }
 
-    const balanceValues = [];
-    let lastBalance = null;
-    labels.forEach(date => {
-      if (balanceMap.has(date)) {
-        lastBalance = balanceMap.get(date);
-      }
-      balanceValues.push(lastBalance);
-    });
+    if (depositData.some(v => v !== null)) {
+      datasets.push({
+        type: 'line',
+        label: 'デポジット',
+        data: depositData,
+        showLine: false,
+        pointRadius: 7,
+        pointBackgroundColor: '#e67e22',
+        pointBorderColor: '#e67e22',
+        order: 0
+      });
+    }
 
-    // === 統合チャート描画 ===
+    if (withdrawData.some(v => v !== null)) {
+      datasets.push({
+        type: 'line',
+        label: '引き出し',
+        data: withdrawData,
+        showLine: false,
+        pointRadius: 7,
+        pointBackgroundColor: '#8e44ad',
+        pointBorderColor: '#8e44ad',
+        order: 0
+      });
+    }
+
     const chartEl = document.getElementById('myfxbookChart');
     chartEl.style.display = '';
     const ctx = chartEl.getContext('2d');
     new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: labels,
-        datasets: [
-          {
-            label: `口座残高 (${currency})`,
-            data: balanceValues,
-            borderColor: '#1a7f3c',
-            backgroundColor: 'rgba(26, 127, 60, 0.1)',
-            borderWidth: 2,
-            pointRadius: 3,
-            fill: true,
-            tension: 0.3,
-            yAxisID: 'y'
-          },
-          {
-            label: '累積損益率 (%)',
-            data: gains,
-            borderColor: '#0024ff',
-            backgroundColor: 'rgba(0, 36, 255, 0.05)',
-            borderWidth: 2,
-            pointRadius: 3,
-            fill: false,
-            tension: 0.3,
-            borderDash: [5, 3],
-            yAxisID: 'y1'
-          }
-        ]
-      },
+      data: { labels, datasets },
       options: {
         responsive: true,
         interaction: {
@@ -253,17 +355,28 @@
           intersect: false
         },
         plugins: {
-          legend: { display: true },
+          legend: {
+            display: true,
+            labels: {
+              usePointStyle: true,
+              filter: item => item.text !== '残高ライン'
+            }
+          },
           tooltip: {
             mode: 'index',
             intersect: false,
             callbacks: {
               label: function(ctx) {
-                if (ctx.dataset.yAxisID === 'y') {
-                  return ` 口座残高: ${ctx.parsed.y != null ? ctx.parsed.y.toLocaleString() : '--'} ${currency}`;
-                } else {
-                  return ` 累積損益率: ${ctx.parsed.y != null ? ctx.parsed.y.toFixed(2) : '--'}%`;
+                if (ctx.dataset.label === '残高' || ctx.dataset.label === '残高ライン') {
+                  if (ctx.dataset.label === '残高ライン') return null;
+                  return ` 残高: ${ctx.parsed.y != null ? ctx.parsed.y.toLocaleString() : '--'} ${currency}`;
                 }
+                if (ctx.dataset.label === 'エクイティ') {
+                  return ` エクイティ: ${ctx.parsed.y != null ? ctx.parsed.y.toLocaleString() : '--'} ${currency}`;
+                }
+                if (ctx.dataset.label === 'デポジット') return ' デポジット';
+                if (ctx.dataset.label === '引き出し') return ' 引き出し';
+                return null;
               }
             }
           }
@@ -271,15 +384,8 @@
         scales: {
           x: { ticks: { maxTicksLimit: 10 } },
           y: {
-            type: 'linear',
-            position: 'left',
+            beginAtZero: true,
             ticks: { callback: val => val.toLocaleString() }
-          },
-          y1: {
-            type: 'linear',
-            position: 'right',
-            ticks: { callback: val => val + '%' },
-            grid: { drawOnChartArea: false }
           }
         }
       }
