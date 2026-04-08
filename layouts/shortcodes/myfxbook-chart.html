@@ -224,7 +224,7 @@
     const datasets = [
       {
         type: 'line',
-        label: '残高',
+        label: '口座残高',
         data: balanceValues,
         borderColor: '#7cb342',
         backgroundColor: 'rgba(124, 179, 66, 0.15)',
@@ -236,31 +236,27 @@
       }
     ];
 
-    if (depositData.some(v => v !== null)) {
-      datasets.push({
-        type: 'line',
-        label: '入金',
-        data: depositData,
-        showLine: false,
-        pointRadius: 7,
-        pointBackgroundColor: '#e67e22',
-        pointBorderColor: '#e67e22',
-        order: 0
-      });
-    }
+    datasets.push({
+      type: 'line',
+      label: '入金',
+      data: depositData,
+      showLine: false,
+      pointRadius: 7,
+      pointBackgroundColor: '#e67e22',
+      pointBorderColor: '#e67e22',
+      order: 0
+    });
 
-    if (withdrawData.some(v => v !== null)) {
-      datasets.push({
-        type: 'line',
-        label: '出金',
-        data: withdrawData,
-        showLine: false,
-        pointRadius: 7,
-        pointBackgroundColor: '#3498db',
-        pointBorderColor: '#3498db',
-        order: 0
-      });
-    }
+    datasets.push({
+      type: 'line',
+      label: '出金',
+      data: withdrawData,
+      showLine: false,
+      pointRadius: 7,
+      pointBackgroundColor: '#3498db',
+      pointBorderColor: '#3498db',
+      order: 0
+    });
 
     const chartEl = document.getElementById('myfxbookChart');
     chartEl.style.display = '';
@@ -284,8 +280,8 @@
             callbacks: {
               label: function(ctx) {
                 const lbl = ctx.dataset.label;
-                if (lbl === '残高') {
-                  return ` 残高: ${ctx.parsed.y != null ? ctx.parsed.y.toLocaleString() : '--'} ${currency}`;
+                if (lbl === '口座残高') {
+                  return ` 口座残高: ${ctx.parsed.y != null ? ctx.parsed.y.toLocaleString() : '--'} ${currency}`;
                 }
                 if (lbl === 'エクイティ') {
                   return ` エクイティ: ${ctx.parsed.y != null ? ctx.parsed.y.toLocaleString() : '--'} ${currency}`;
