@@ -1,7 +1,4 @@
-<p id="myfx-deposit-note" style="display: none;">
-※ロスカットした場合、グラフ描画が不自然になるため入金処理が行われるとグラフもリセットされます。<br>
-※直近入金日　　<span id="myfx-last-deposit">--</span>
-</p>
+<span id="myfx-deposit-note" style="display: none;">※直近入金日　　<span id="myfx-last-deposit">--</span></span>
 <script>
 (async function() {
   try {
@@ -13,11 +10,9 @@
     const sum = await sumRes.json();
     if (!history || history.length === 0) return;
 
-    // 直近入金を検索（データは新しい順）
     const deposit = history.find(t => (t.action || '').toLowerCase() === 'deposit');
     if (!deposit) return;
 
-    // MyFXbook時刻（UTC） → JST変換
     const timeStr = deposit.closeTime || '';
     const [datePart, timePart] = timeStr.split(' ');
     if (!datePart) return;
