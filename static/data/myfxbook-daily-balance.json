@@ -1,0 +1,98 @@
+[
+    [
+        {
+            "date": "03/27/2026",
+            "balance": 3255,
+            "pips": 14,
+            "lots": 0.24,
+            "floatingPL": 0,
+            "profit": 255,
+            "growthEquity": 8.5,
+            "floatingPips": 0
+        }
+    ],
+    [
+        {
+            "date": "03/30/2026",
+            "balance": 1674,
+            "pips": -19.2,
+            "lots": 0.25,
+            "floatingPL": 0,
+            "profit": -1581,
+            "growthEquity": -44.2,
+            "floatingPips": 0
+        }
+    ],
+    [
+        {
+            "date": "03/31/2026",
+            "balance": 5790,
+            "pips": -3.6,
+            "lots": 0.32,
+            "floatingPL": 0,
+            "profit": 1096,
+            "growthEquity": -99.8,
+            "floatingPips": 0
+        }
+    ],
+    [
+        {
+            "date": "04/01/2026",
+            "balance": 0,
+            "pips": -123.1,
+            "lots": 0.12,
+            "floatingPL": 0,
+            "profit": -5807,
+            "growthEquity": -99.9,
+            "floatingPips": 0
+        }
+    ],
+    [
+        {
+            "date": "04/03/2026",
+            "balance": 3552,
+            "pips": 44,
+            "lots": 0.44,
+            "floatingPL": 0,
+            "profit": 552,
+            "growthEquity": -99.82,
+            "floatingPips": 0
+        }
+    ],
+    [
+        {
+            "date": "04/06/2026",
+            "balance": 4330,
+            "pips": 19.75,
+            "lots": 0.24,
+            "floatingPL": 0,
+            "profit": 778,
+            "growthEquity": -99.78,
+            "floatingPips": 0
+        }
+    ],
+    [
+        {
+            "date": "04/07/2026",
+            "balance": 7055,
+            "pips": 50.1,
+            "lots": 0.28,
+            "floatingPL": 0,
+            "profit": 2725,
+            "growthEquity": -99.64,
+            "floatingPips": 0
+        }
+    ],
+    [
+        {
+            "date": "04/08/2026",
+            "balance": 2366,
+            "pips": 43.2,
+            "lots": 0.46,
+            "floatingPL": 0,
+            "profit": -4689,
+            "growthEquity": -99.58,
+            "floatingPips": 0
+        }
+    ]
+]
