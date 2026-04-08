@@ -78,7 +78,6 @@
           <th>決済値</th>
           <th>Pips</th>
           <th>損益</th>
-          <th>残高</th>
         </tr>
       </thead>
       <tbody id="myfx-history-body"></tbody>
@@ -121,23 +120,11 @@ function toJST(timeStr) {
     const PER_PAGE = 25;
     const tbody = document.getElementById('myfx-history-body');
 
-    // 元データ（新しい→古い順）と残高を事前計算
     const tradesDesc = [...data];
-    let bal = parseFloat(sum.balance) || 0;
-    const balanceMapDesc = [];
-    for (let i = 0; i < tradesDesc.length; i++) {
-      balanceMapDesc[i] = Math.round(bal);
-      const t = tradesDesc[i];
-      const impact = (parseFloat(t.profit) || 0) + (parseFloat(t.commission) || 0) + (parseFloat(t.interest) || 0);
-      bal -= impact;
-    }
-
-    // 表示用の配列（並び順切り替え対応）
     let trades = [...tradesDesc];
-    let balanceMap = [...balanceMapDesc];
     let sortDesc = true; // true=新→古, false=古→新
 
-    function buildRow(t, idx) {
+    function buildRow(t) {
       const profit = parseFloat(t.profit);
       const pips   = parseFloat(t.pips);
       const isBuy  = (t.action || '').toLowerCase() === 'buy';
@@ -158,7 +145,6 @@ function toJST(timeStr) {
             ${isDeposit ? '入金' : '出金'}
           </td>
           <td class="${profit >= 0 ? 'myfx-pos' : 'myfx-neg'}">${profit >= 0 ? '+' : ''}${profit.toFixed(0)}</td>
-          <td>${balanceMap[idx].toLocaleString()}</td>
         `;
       } else {
         tr.innerHTML = `
@@ -170,7 +156,6 @@ function toJST(timeStr) {
           <td>${t.closePrice || '--'}</td>
           <td class="${pips >= 0 ? 'myfx-pos' : 'myfx-neg'}">${pips >= 0 ? '+' : ''}${pips.toFixed(1)}</td>
           <td class="${profit >= 0 ? 'myfx-pos' : 'myfx-neg'}">${profit >= 0 ? '+' : ''}${profit.toFixed(2)}</td>
-          <td>${balanceMap[idx].toLocaleString()}</td>
         `;
       }
       return tr;
@@ -186,7 +171,7 @@ function toJST(timeStr) {
       const start = (page - 1) * PER_PAGE;
       const end = Math.min(start + PER_PAGE, trades.length);
       for (let i = start; i < end; i++) {
-        tbody.appendChild(buildRow(trades[i], i));
+        tbody.appendChild(buildRow(trades[i]));
       }
 
       // ページャー表示（2ページ以上ある場合のみ）
@@ -206,10 +191,8 @@ function toJST(timeStr) {
       sortDesc = !sortDesc;
       if (sortDesc) {
         trades = [...tradesDesc];
-        balanceMap = [...balanceMapDesc];
       } else {
         trades = [...tradesDesc].reverse();
-        balanceMap = [...balanceMapDesc].reverse();
       }
       document.getElementById('myfx-sort-icon').textContent = sortDesc ? '▼' : '▲';
       renderPage(1);

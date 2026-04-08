@@ -22,13 +22,38 @@
       fetch('/data/myfxbook-history.json')
     ]);
     const sum     = await sumRes.json();
-    const data    = await dataRes.json();
+    const rawData = await dataRes.json();
     const history = await histRes.json();
 
     const currentBalance = parseFloat(sum.balance);
     const currency       = sum.currency || 'JPY';
 
-    // --- 直近入金日を取得 ---
+    // daily gain データをフラット化（各要素が配列の配列になっている）
+    const data = rawData.map(d => Array.isArray(d) ? d[0] : d).filter(Boolean);
+    if (!data.length) return;
+
+    // --- 入出金マップ（日付→金額）を取引履歴から作成 ---
+    const depositMap = new Map();   // date -> total deposits
+    const withdrawMap = new Map();  // date -> total withdrawals
+    if (history && history.length > 0) {
+      history.forEach(t => {
+        const action = (t.action || '').toLowerCase();
+        const symbol = t.symbol || '';
+        const profit = parseFloat(t.profit) || 0;
+        const isDeposit  = (action === 'deposit')  || (!symbol || symbol === '--') && profit > 0;
+        const isWithdraw = (action === 'withdrawal') || (!symbol || symbol === '--') && profit < 0;
+        if (!isDeposit && !isWithdraw) return;
+        const dateStr = (t.closeTime || '').split(' ')[0];
+        if (!dateStr) return;
+        if (isDeposit) {
+          depositMap.set(dateStr, (depositMap.get(dateStr) || 0) + profit);
+        } else {
+          withdrawMap.set(dateStr, (withdrawMap.get(dateStr) || 0) + Math.abs(profit));
+        }
+      });
+    }
+
+    // --- 直近入金日を取得（フィルター用） ---
     let depositDate = null;
     if (history && history.length > 0) {
       const deposit = history.find(t => (t.action || '').toLowerCase() === 'deposit');
@@ -48,108 +73,86 @@
       return new Date(str);
     }
 
-    // --- 有効証拠金（Equity）: Daily Gainデータから逆算（入金日以降のみ） ---
-    const equityLabels = [];
-    const equityValues = [];
+    // 入金日以降のみにフィルター
+    const filteredData = depositDate
+      ? data.filter(d => {
+          const dd = parseFlexDate(d.date);
+          return dd && dd >= depositDate;
+        })
+      : data;
 
-    if (data && data.length > 0) {
-      const filteredData = depositDate
-        ? data.filter(d => {
-            const dd = parseFlexDate(d.date);
-            return dd && dd >= depositDate;
-          })
-        : data;
+    if (!filteredData.length) return;
 
-      let balance = currentBalance;
-      const reversed = [...filteredData].reverse();
-      reversed.forEach(d => {
-        equityLabels.unshift(d.date);
-        equityValues.unshift(parseFloat(balance.toFixed(0)));
-        const profit = parseFloat(d.profit);
-        if (!isNaN(profit)) {
-          balance -= profit;
-        } else {
-          balance = balance / (1 + parseFloat(d.gain) / 100);
-        }
-      });
-    }
-
-    // --- 口座残高（Balance）: 取引履歴から算出（直近入金以降のみ） ---
-    const balanceMap = new Map();
-
-    if (history && history.length > 0) {
-      const sorted = [...history].reverse(); // oldest first
-
-      // 直近入金のインデックスを探す
-      let lastDepositIdx = -1;
-      sorted.forEach((t, i) => {
-        if ((t.action || '').toLowerCase() === 'deposit') lastDepositIdx = i;
-      });
-      const filtered = lastDepositIdx >= 0 ? sorted.slice(lastDepositIdx) : sorted;
-
-      let runningBalance = 0;
-      filtered.forEach(t => {
-        const profit = parseFloat(t.profit) || 0;
-        runningBalance += profit;
-        const dateStr = (t.closeTime || '').split(' ')[0];
-        if (dateStr) {
-          balanceMap.set(dateStr, Math.round(runningBalance));
-        }
-      });
-    }
-
-    // --- 共通の日付ラベルを作成 ---
-    let labels = [];
-    if (equityLabels.length > 0) {
-      labels = equityLabels;
-    } else if (balanceMap.size > 0) {
-      labels = Array.from(balanceMap.keys());
-    } else {
-      return;
-    }
-
-    // 口座残高を共通ラベルに合わせる
+    // --- sum.balance から逆算して各日の終了時残高を計算 ---
+    // 新しい日 → 古い日の順で処理
+    const labels = [];
     const balanceValues = [];
-    let lastBalance = null;
-    labels.forEach(date => {
-      if (balanceMap.has(date)) {
-        lastBalance = balanceMap.get(date);
+    let bal = currentBalance;
+
+    const reversed = [...filteredData].reverse();
+    reversed.forEach(d => {
+      labels.unshift(d.date);
+      balanceValues.unshift(Math.round(bal));
+      // 当日の取引損益を引く
+      const profit = parseFloat(d.profit);
+      if (!isNaN(profit)) {
+        bal -= profit;
       }
-      balanceValues.push(lastBalance);
+      // 当日の入出金を調整（入金分を引く、出金分を足す）
+      const dep = depositMap.get(d.date) || 0;
+      const wd  = withdrawMap.get(d.date) || 0;
+      bal -= dep;
+      bal += wd;
     });
 
-    // 有効証拠金データがない場合は口座残高のみ表示
-    const hasEquity  = equityValues.length > 0;
-    const hasBalance = balanceValues.some(v => v !== null);
+    // --- 入出金ポイントのマーカー ---
+    const depositPoints = [];
+    const withdrawPoints = [];
+    labels.forEach((date, i) => {
+      depositPoints.push(depositMap.has(date) ? balanceValues[i] : null);
+      withdrawPoints.push(withdrawMap.has(date) ? balanceValues[i] : null);
+    });
 
-    const datasets = [];
-    if (hasBalance) {
-      datasets.push({
-        label: `口座残高 (${currency})`,
+    const hasDeposits  = depositPoints.some(v => v !== null);
+    const hasWithdraws = withdrawPoints.some(v => v !== null);
+
+    const datasets = [
+      {
+        label: '口座残高',
         data: balanceValues,
-        borderColor: '#1a7f3c',
-        backgroundColor: 'rgba(26, 127, 60, 0.1)',
+        borderColor: '#6b8e23',
+        backgroundColor: 'rgba(107, 142, 35, 0.12)',
         borderWidth: 2,
         pointRadius: 2,
         fill: true,
         tension: 0.3
-      });
-    }
-    if (hasEquity) {
-      datasets.push({
-        label: `有効証拠金 (${currency})`,
-        data: equityValues,
-        borderColor: '#e67e22',
-        backgroundColor: 'rgba(230, 126, 34, 0.05)',
-        borderWidth: 2,
-        pointRadius: 2,
-        fill: false,
-        tension: 0.3,
-        borderDash: [5, 3]
-      });
-    }
+      }
+    ];
 
-    if (datasets.length === 0) return;
+    if (hasDeposits) {
+      datasets.push({
+        label: '入金',
+        data: depositPoints,
+        borderColor: '#e67e22',
+        backgroundColor: '#e67e22',
+        borderWidth: 0,
+        pointRadius: 6,
+        pointStyle: 'circle',
+        showLine: false
+      });
+    }
+    if (hasWithdraws) {
+      datasets.push({
+        label: '出金',
+        data: withdrawPoints,
+        borderColor: '#3498db',
+        backgroundColor: '#3498db',
+        borderWidth: 0,
+        pointRadius: 6,
+        pointStyle: 'circle',
+        showLine: false
+      });
+    }
 
     const chartEl = document.getElementById('myfxBalanceChart');
     chartEl.style.display = '';
@@ -164,7 +167,11 @@
           legend: { display: true },
           tooltip: {
             callbacks: {
-              label: ctx => ` ${ctx.parsed.y.toLocaleString()} ${currency}`
+              label: function(context) {
+                const val = context.parsed.y;
+                if (val === null) return null;
+                return ` ${val.toLocaleString()} ${currency}`;
+              }
             }
           }
         },
