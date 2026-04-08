@@ -17,9 +17,13 @@
 (async function() {
   try {
     const res = await fetch('/data/myfxbook-daily-balance.json');
-    const data = await res.json();
+    const rawData = await res.json();
 
-    if (!data || data.length === 0) return;
+    if (!rawData || rawData.length === 0) return;
+
+    // APIレスポンスが [[{...}], [{...}]] の入れ子配列のためフラット化
+    const data = rawData.map(d => Array.isArray(d) ? d[0] : d).filter(Boolean);
+    if (!data.length) return;
 
     const labels = [];
     const balanceValues = [];
