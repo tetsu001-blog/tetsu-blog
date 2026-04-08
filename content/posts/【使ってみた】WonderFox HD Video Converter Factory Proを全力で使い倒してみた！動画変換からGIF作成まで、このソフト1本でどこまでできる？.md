@@ -1,8 +1,8 @@
 ---
 title: 【使ってみた】WonderFox HD Video Converter Factory Proを全力で使い倒してみた！動画変換からGIF作成まで、このソフト1本でどこまでできる？
 description: 動画の知識がゼロの初心者ブロガーが、多機能動画変換ソフト『WonderFox HD Video Converter Factory Pro』を徹底レビュー。動画変換からYouTube保存、画面録画、GIF作成まで、ブログ運営に役立つ機能を忖度なしで検証します。
-date: 2026-04-15T17:00:00
-draft: true
+date: 2026-04-09T17:00:00
+draft: false
 tags:
   - デジタル
 categories:
