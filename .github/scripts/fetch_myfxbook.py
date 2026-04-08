@@ -89,14 +89,39 @@ def fetch_myfxbook_data():
         else:
             print(f"Daily Gain スキップ: {daily_data.get('message') if daily_data else '取得失敗'}")
 
-        # --- 取引履歴（任意） ---
+        # --- 取引履歴（任意・蓄積型） ---
+        # 既存データを読み込み
+        existing_history = []
+        if os.path.exists(HISTORY_FILE):
+            try:
+                with open(HISTORY_FILE, 'r', encoding='utf-8') as f:
+                    existing_history = json.load(f)
+            except Exception:
+                existing_history = []
+
         history_data = api_get(
             f"{API_BASE_URL}/get-history.json?session={session_id}&id={ACCOUNT_ID}"
         )
         if history_data and not history_data.get('error'):
+            new_history = history_data.get('history', [])
+            # 既存データと新規データをマージ（openTime + closeTime をキーに重複排除）
+            seen = set()
+            merged = []
+            for trade in existing_history + new_history:
+                key = (trade.get('openTime', ''), trade.get('closeTime', ''), trade.get('symbol', ''), trade.get('profit', ''))
+                if key not in seen:
+                    seen.add(key)
+                    merged.append(trade)
+            # closeTime で新しい順にソート（MM/DD/YYYY HH:MM 形式）
+            def parse_close_time(t):
+                try:
+                    return datetime.strptime(t.get('closeTime', ''), '%m/%d/%Y %H:%M')
+                except Exception:
+                    return datetime.min
+            merged.sort(key=parse_close_time, reverse=True)
             with open(HISTORY_FILE, 'w', encoding='utf-8') as f:
-                json.dump(history_data.get('history', []), f, ensure_ascii=False, indent=4)
-            print(f"取引履歴保存完了: {HISTORY_FILE}")
+                json.dump(merged, f, ensure_ascii=False, indent=4)
+            print(f"取引履歴保存完了: {HISTORY_FILE} ({len(merged)}件, 新規{len(merged) - len(existing_history)}件追加)")
         else:
             print(f"取引履歴 スキップ: {history_data.get('message') if history_data else '取得失敗'}")
 
