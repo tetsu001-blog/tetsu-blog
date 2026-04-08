@@ -121,12 +121,8 @@ function toJST(timeStr) {
     const PER_PAGE = 25;
     const tbody = document.getElementById('myfx-history-body');
 
-    // 直近入金以降のデータのみ表示
-    const depositIdx = data.findIndex(t => (t.action || '').toLowerCase() === 'deposit');
-    const filteredData = depositIdx >= 0 ? data.slice(0, depositIdx + 1) : data;
-
     // 元データ（新しい→古い順）と残高を事前計算
-    const tradesDesc = [...filteredData];
+    const tradesDesc = [...data];
     let bal = parseFloat(sum.balance) || 0;
     const balanceMapDesc = [];
     for (let i = 0; i < tradesDesc.length; i++) {

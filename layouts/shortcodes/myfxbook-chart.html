@@ -187,21 +187,14 @@
 
     if (!history || history.length === 0) return;
 
-    // --- 直近入金以降のデータを抽出（oldest-first） ---
+    // --- 日別データを集計（oldest-first） ---
     const sorted = [...history].reverse();
-    let lastDepositIdx = -1;
-    sorted.forEach((t, i) => {
-      if ((t.action || '').toLowerCase() === 'deposit') lastDepositIdx = i;
-    });
-    const filtered = lastDepositIdx >= 0 ? sorted.slice(lastDepositIdx) : sorted;
-
-    // --- 日別データを集計 ---
     const dailyBalanceMap = new Map();   // 日付 → 残高
     const depositDates    = new Map();   // 日付 → 入金額
     const withdrawDates   = new Map();   // 日付 → 出金額
     let runningBalance = 0;
 
-    filtered.forEach(t => {
+    sorted.forEach(t => {
       const profit = parseFloat(t.profit) || 0;
       const action = (t.action || '').toLowerCase();
       runningBalance += profit;
@@ -230,34 +223,12 @@
     // --- エクイティライン（Daily Gainデータがある場合） ---
     let equityValues = null;
     if (dailyData && dailyData.length > 0) {
-      let depositDateObj = null;
-      if (lastDepositIdx >= 0) {
-        const ds = (sorted[lastDepositIdx].closeTime || '').split(' ')[0];
-        const [m, d, y] = ds.split('/');
-        if (y) depositDateObj = new Date(y, m - 1, d);
-      }
-
-      function parseFlexDate(str) {
-        if (!str) return null;
-        const parts = str.split('/');
-        if (parts.length === 3 && parts[2] && parts[2].length === 4) {
-          return new Date(parts[2], parts[0] - 1, parts[1]);
-        }
-        return new Date(str);
-      }
-
       const currentBalance = parseFloat(sum2.balance);
-      const filteredDaily = depositDateObj
-        ? dailyData.filter(d => {
-            const dd = parseFlexDate(d.date);
-            return dd && dd >= depositDateObj;
-          })
-        : dailyData;
 
-      if (filteredDaily.length > 0) {
+      if (dailyData.length > 0) {
         const eqMap = new Map();
         let bal = currentBalance;
-        const rev = [...filteredDaily].reverse();
+        const rev = [...dailyData].reverse();
         rev.forEach(d => {
           eqMap.set(d.date, parseFloat(bal.toFixed(0)));
           const profit = parseFloat(d.profit);
@@ -269,7 +240,6 @@
         });
 
         equityValues = labels.map(d => eqMap.has(d) ? eqMap.get(d) : null);
-        // 前方補間
         let lastVal = null;
         for (let i = 0; i < equityValues.length; i++) {
           if (equityValues[i] !== null) lastVal = equityValues[i];
@@ -281,25 +251,16 @@
     // === チャート描画 ===
     const datasets = [
       {
-        type: 'bar',
+        type: 'line',
         label: '残高',
         data: balanceValues,
-        backgroundColor: 'rgba(46, 139, 87, 0.7)',
-        borderColor: 'rgba(46, 139, 87, 0.9)',
-        borderWidth: 1,
-        borderRadius: 2,
-        order: 2
-      },
-      {
-        type: 'line',
-        label: '残高ライン',
-        data: balanceValues,
-        borderColor: '#e74c3c',
-        backgroundColor: 'transparent',
+        borderColor: '#7cb342',
+        backgroundColor: 'rgba(124, 179, 66, 0.15)',
         borderWidth: 2,
         pointRadius: 0,
+        fill: true,
         tension: 0.4,
-        order: 1
+        order: 2
       }
     ];
 
@@ -313,14 +274,14 @@
         borderWidth: 2,
         pointRadius: 0,
         tension: 0.4,
-        order: 0
+        order: 1
       });
     }
 
     if (depositData.some(v => v !== null)) {
       datasets.push({
         type: 'line',
-        label: 'デポジット',
+        label: '入金',
         data: depositData,
         showLine: false,
         pointRadius: 7,
@@ -333,7 +294,7 @@
     if (withdrawData.some(v => v !== null)) {
       datasets.push({
         type: 'line',
-        label: '引き出し',
+        label: '出金',
         data: withdrawData,
         showLine: false,
         pointRadius: 7,
@@ -357,25 +318,30 @@
         plugins: {
           legend: {
             display: true,
-            labels: {
-              usePointStyle: true,
-              filter: item => item.text !== '残高ライン'
-            }
+            labels: { usePointStyle: true }
           },
           tooltip: {
             mode: 'index',
             intersect: false,
             callbacks: {
               label: function(ctx) {
-                if (ctx.dataset.label === '残高' || ctx.dataset.label === '残高ライン') {
-                  if (ctx.dataset.label === '残高ライン') return null;
+                const lbl = ctx.dataset.label;
+                if (lbl === '残高') {
                   return ` 残高: ${ctx.parsed.y != null ? ctx.parsed.y.toLocaleString() : '--'} ${currency}`;
                 }
-                if (ctx.dataset.label === 'エクイティ') {
+                if (lbl === 'エクイティ') {
                   return ` エクイティ: ${ctx.parsed.y != null ? ctx.parsed.y.toLocaleString() : '--'} ${currency}`;
                 }
-                if (ctx.dataset.label === 'デポジット') return ' デポジット';
-                if (ctx.dataset.label === '引き出し') return ' 引き出し';
+                if (lbl === '入金') {
+                  const dateKey = labels[ctx.dataIndex];
+                  const amount = depositDates.get(dateKey);
+                  return ` 入金: ${amount != null ? amount.toLocaleString() : '--'} ${currency}`;
+                }
+                if (lbl === '出金') {
+                  const dateKey = labels[ctx.dataIndex];
+                  const amount = withdrawDates.get(dateKey);
+                  return ` 出金: ${amount != null ? amount.toLocaleString() : '--'} ${currency}`;
+                }
                 return null;
               }
             }
