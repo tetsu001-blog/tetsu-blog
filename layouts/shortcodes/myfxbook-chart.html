@@ -95,14 +95,14 @@
       </div>
     </div>
 
-    <!-- セクション4: デポジット・引き出し -->
+    <!-- セクション4: 入金・出金 -->
     <div class="myfx-section">
       <div class="myfx-stat">
-        <span class="label">デポジット</span>
+        <span class="label">入金</span>
         <span class="value" id="myfx-deposits">--</span>
       </div>
       <div class="myfx-stat">
-        <span class="label">引き出し</span>
+        <span class="label">出金</span>
         <span class="value" id="myfx-withdrawals">--</span>
       </div>
     </div>
@@ -220,34 +220,6 @@
     const depositData  = labels.map(d => depositDates.has(d) ? 0 : null);
     const withdrawData = labels.map(d => withdrawDates.has(d) ? 0 : null);
 
-    // --- エクイティライン（Daily Gainデータがある場合） ---
-    let equityValues = null;
-    if (dailyData && dailyData.length > 0) {
-      const currentBalance = parseFloat(sum2.balance);
-
-      if (dailyData.length > 0) {
-        const eqMap = new Map();
-        let bal = currentBalance;
-        const rev = [...dailyData].reverse();
-        rev.forEach(d => {
-          eqMap.set(d.date, parseFloat(bal.toFixed(0)));
-          const profit = parseFloat(d.profit);
-          if (!isNaN(profit)) {
-            bal -= profit;
-          } else {
-            bal = bal / (1 + parseFloat(d.gain) / 100);
-          }
-        });
-
-        equityValues = labels.map(d => eqMap.has(d) ? eqMap.get(d) : null);
-        let lastVal = null;
-        for (let i = 0; i < equityValues.length; i++) {
-          if (equityValues[i] !== null) lastVal = equityValues[i];
-          else equityValues[i] = lastVal;
-        }
-      }
-    }
-
     // === チャート描画 ===
     const datasets = [
       {
@@ -263,20 +235,6 @@
         order: 2
       }
     ];
-
-    if (equityValues) {
-      datasets.push({
-        type: 'line',
-        label: 'エクイティ',
-        data: equityValues,
-        borderColor: '#f39c12',
-        backgroundColor: 'transparent',
-        borderWidth: 2,
-        pointRadius: 0,
-        tension: 0.4,
-        order: 1
-      });
-    }
 
     if (depositData.some(v => v !== null)) {
       datasets.push({
@@ -298,8 +256,8 @@
         data: withdrawData,
         showLine: false,
         pointRadius: 7,
-        pointBackgroundColor: '#8e44ad',
-        pointBorderColor: '#8e44ad',
+        pointBackgroundColor: '#3498db',
+        pointBorderColor: '#3498db',
         order: 0
       });
     }
