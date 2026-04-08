@@ -1,12 +1,16 @@
 ---
-title: "HTML・CSS知識不要！Antigravityでブログカスタマイズを爆速化する方法"
-description: "GoogleのAIコードエディタ「Antigravity」を使えば、HTML・CSSの知識がなくてもブログのデザイン調整や表作成が驚くほど簡単に。具体的な活用法を備忘録としてまとめました。"
+title: HTML・CSS知識不要！Antigravityでブログカスタマイズを爆速化する方法
+description: GoogleのAIコードエディタ「Antigravity」を使えば、HTML・CSSの知識がなくてもブログのデザイン調整や表作成が驚くほど簡単に。具体的な活用法を備忘録としてまとめました。
 date: 2026-02-19T08:00:00Z
 lastmod: 2026-02-19T12:11:25.825Z
 draft: false
-tags: ["AI"]
-categories: ["ブログ運営"]
-image: "/images/img_421bf202699a.png"
+tags:
+  - ブログ運営
+  - AI
+categories:
+  - ブログ運営
+  - AI
+image: /images/img_421bf202699a.png
 ---
 こんにちは、てつです！
 

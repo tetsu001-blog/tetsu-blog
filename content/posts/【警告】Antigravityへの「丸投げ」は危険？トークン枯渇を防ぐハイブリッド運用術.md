@@ -1,13 +1,15 @@
 ---
 title: 【警告】Antigravityへの「丸投げ」は危険？トークン枯渇を防ぐハイブリッド運用術
-description: "AIエディタAntigravityへの丸投げでトークンが枯渇し7日間ロックされた実体験から、ブログ運用で踏んだ3つの落とし穴と、効率的なハイブリッド運用術を解説します。"
+description: AIエディタAntigravityへの丸投げでトークンが枯渇し7日間ロックされた実体験から、ブログ運用で踏んだ3つの落とし穴と、効率的なハイブリッド運用術を解説します。
 date: 2026-03-11T17:00:00
 draft: false
 tags:
   - AI
   - ブログ運営
-categories: ["ブログ運営"]
-image: "/images/Pasted-image-20260311135606.jpg"
+categories:
+  - AI
+  - ブログ運営
+image: /images/Pasted-image-20260311135606.jpg
 ---
 
 <!-- thumbnail_start -->

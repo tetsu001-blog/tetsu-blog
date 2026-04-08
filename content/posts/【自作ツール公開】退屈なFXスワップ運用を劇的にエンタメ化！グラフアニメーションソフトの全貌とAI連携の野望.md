@@ -1,13 +1,17 @@
 ---
 title: 【自作ツール公開】退屈なFXスワップ運用を劇的にエンタメ化！グラフアニメーションソフトの全貌とAI連携の野望
-description: "退屈なスワップ運用をゲーム実況のように楽しめるグラフアニメーション作成ソフトを自作。YouTube対応の機能紹介と、AI連携で今後目指す進化の野望を語ります。"
+description: 退屈なスワップ運用をゲーム実況のように楽しめるグラフアニメーション作成ソフトを自作。YouTube対応の機能紹介と、AI連携で今後目指す進化の野望を語ります。
 date: 2026-03-20T17:00:00
 draft: false
 tags:
   - FX
   - AI
-categories: ["FX・投資", "デジタル"]
-image: "/images/Pasted-image-20260320154619.jpg"
+  - デジタル
+categories:
+  - FX・投資
+  - AI
+  - デジタル
+image: /images/Pasted-image-20260320154619.jpg
 ---
 
 <!-- thumbnail_start -->

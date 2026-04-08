@@ -1,12 +1,14 @@
 ---
-title: "マイクロソフトへの信頼が揺らぐ今こそ考えるOSの安定性とLinuxへの移行"
-description: "頻発するセキュリティ脆弱性やアップデートの不具合でWindowsの信頼が揺らぐ今、OSの安定性という観点からLinuxへの移行を真剣に考察します。"
+title: マイクロソフトへの信頼が揺らぐ今こそ考えるOSの安定性とLinuxへの移行
+description: 頻発するセキュリティ脆弱性やアップデートの不具合でWindowsの信頼が揺らぐ今、OSの安定性という観点からLinuxへの移行を真剣に考察します。
 date: 2025-12-18T08:00:00Z
 lastmod: 2025-12-18T08:00:00.114Z
 draft: false
-tags: ["雑記"]
-categories: ["デジタル"]
-image: "/images/img_f0c05517dd7a.jpg"
+tags:
+  - デジタル
+categories:
+  - デジタル
+image: /images/img_f0c05517dd7a.jpg
 ---
 
 ![](/images/img_f0c05517dd7a.jpg)

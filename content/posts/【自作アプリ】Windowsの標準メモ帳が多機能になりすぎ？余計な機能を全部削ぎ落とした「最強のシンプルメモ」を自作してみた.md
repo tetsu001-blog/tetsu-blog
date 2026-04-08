@@ -1,13 +1,13 @@
 ---
 title: 【自作アプリ】Windowsの標準メモ帳が多機能になりすぎ？余計な機能を全部削ぎ落とした「最強のシンプルメモ」を自作してみた
-description: "AI搭載で重くなったWindows標準メモ帳への逆張りとして、AIエディタ「Antigravity」を使って本当に必要な機能だけの超軽量メモアプリを自作した体験記です。"
+description: AI搭載で重くなったWindows標準メモ帳への逆張りとして、AIエディタ「Antigravity」を使って本当に必要な機能だけの超軽量メモアプリを自作した体験記です。
 date: 2026-02-13T10:25:00Z
 lastmod: 2026-02-19T05:38:42.025Z
 draft: false
 tags:
   - デジタル
-  - 雑記
-categories: ["デジタル"]
+categories:
+  - デジタル
 image: /images/img_ca3dd4cb02e5.jpg
 ---
 こんにちは、てつです！
