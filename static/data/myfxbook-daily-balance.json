@@ -86,12 +86,12 @@
     [
         {
             "date": "04/08/2026",
-            "balance": 2366,
-            "pips": 43.2,
-            "lots": 0.46,
+            "balance": 3637,
+            "pips": 33.8,
+            "lots": 0.53,
             "floatingPL": 0,
-            "profit": -4689,
-            "growthEquity": -99.58,
+            "profit": -5827,
+            "growthEquity": -99.86,
             "floatingPips": 0
         }
     ]

@@ -1,17 +1,17 @@
 {
     "name": "tetsufx",
-    "balance": 2366,
+    "balance": 3637,
     "currency": "JPY",
-    "growth": -99.58,
-    "absGain": -73.82,
-    "daily": -36.62,
-    "monthly": -99.58,
+    "growth": -99.86,
+    "absGain": -64.83,
+    "daily": -39.68,
+    "monthly": -99.86,
     "drawdown": 99.9,
-    "equity": 2366,
+    "equity": 3637,
     "equityPercent": 100,
     "highest": 0,
-    "profit": -6671,
+    "profit": -7809,
     "interest": -3,
-    "deposits": 9037,
-    "withdrawals": 0
+    "deposits": 12046,
+    "withdrawals": 600
 }
