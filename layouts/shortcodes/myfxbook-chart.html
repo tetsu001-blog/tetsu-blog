@@ -210,8 +210,22 @@
     if (labels.length === 0) return;
 
     // --- 入金・出金マーカー（該当日のみ値、他はnull） ---
-    const depositData  = labels.map(d => depositDates.has(d) ? 0 : null);
-    const withdrawData = labels.map(d => withdrawDates.has(d) ? 0 : null);
+    // 同じ日に入金と出金がある場合は、〇が重ならないよう上下にずらす
+    const maxBalance = Math.max(...balanceValues, 0);
+    const overlapOffset = maxBalance * 0.04;
+    const depositData  = [];
+    const withdrawData = [];
+    labels.forEach(d => {
+      const hasDep = depositDates.has(d);
+      const hasWdr = withdrawDates.has(d);
+      if (hasDep && hasWdr) {
+        depositData.push(0);
+        withdrawData.push(overlapOffset);
+      } else {
+        depositData.push(hasDep ? 0 : null);
+        withdrawData.push(hasWdr ? 0 : null);
+      }
+    });
 
     // === チャート描画 ===
     const datasets = [
