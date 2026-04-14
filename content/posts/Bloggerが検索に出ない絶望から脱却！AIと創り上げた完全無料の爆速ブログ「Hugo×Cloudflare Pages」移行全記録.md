@@ -9,7 +9,7 @@ tags:
 categories:
   - ブログ運営
   - AI
-image: /images/Pasted-image-20260304161343.png
+image: "/images/Pasted-image-20260304161343.png"
 ---
 
 <!-- thumbnail_start -->

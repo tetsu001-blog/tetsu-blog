@@ -7,7 +7,7 @@ tags:
   - デジタル
 categories:
   - デジタル
-image: /images/wonderfox_review_thumbnail.jpg
+image: "/images/wonderfox_review_thumbnail.jpg"
 ---
 
 <!-- thumbnail_start -->

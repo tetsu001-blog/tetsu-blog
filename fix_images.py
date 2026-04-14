@@ -13,7 +13,12 @@ git push の前に実行してください。
 import re
 import glob
 import shutil
+import sys
 import os
+
+# WindowsのターミナルでUnicode文字（エミダッシュ等）を正しく表示するための設定
+if sys.platform == "win32":
+    sys.stdout.reconfigure(encoding='utf-8')
 
 CONTENT_IMAGES = os.path.join("content", "images")
 STATIC_IMAGES = os.path.join("static", "images")

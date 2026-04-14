@@ -11,7 +11,7 @@ categories:
   - FX・投資
   - AI
   - デジタル
-image: /images/Pasted-image-20260320154619.jpg
+image: "/images/Pasted-image-20260320154619.jpg"
 ---
 
 <!-- thumbnail_start -->
