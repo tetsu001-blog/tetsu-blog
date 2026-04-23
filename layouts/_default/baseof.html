@@ -17,6 +17,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Summary }}{{ . | plainify | truncate 160 }}{{ else }}{{ .Site.Params.description }}{{ end }}{{ end }}">
+    {{/* タグ・カテゴリ・セクション一覧ページと固定ページはインデックスさせない */}}
+    {{ if or (eq .Kind "taxonomy") (eq .Kind "term") (eq .Kind "section") (eq .Slug "contact") (eq .Slug "thanks") (eq .Slug "privacy") (eq .Slug "swap") (eq .Slug "trade") }}
+    <meta name="robots" content="noindex, follow">
+    {{ end }}
     <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
 
     <link rel="icon" href="/favicon.ico">
