@@ -40,6 +40,73 @@
     </div>
 </article>
 
+{{ if eq .Section "posts" }}
+{{ $current := . }}
+{{ $posts := where .Site.RegularPages "Section" "posts" }}
+{{ $currentTags := .Params.tags | default (slice) }}
+{{ $currentCategories := .Params.categories | default (slice) }}
+{{ $related := slice }}
+
+{{ range $posts.ByDate.Reverse }}
+{{ if and (ne .RelPermalink $current.RelPermalink) (lt (len $related) 6) }}
+{{ if gt (len (intersect (.Params.tags | default (slice)) $currentTags)) 0 }}
+{{ $related = $related | append . }}
+{{ end }}
+{{ end }}
+{{ end }}
+
+{{ range $posts.ByDate.Reverse }}
+{{ if and (ne .RelPermalink $current.RelPermalink) (lt (len $related) 6) (eq (len (where $related "RelPermalink" .RelPermalink)) 0) }}
+{{ if gt (len (intersect (.Params.categories | default (slice)) $currentCategories)) 0 }}
+{{ $related = $related | append . }}
+{{ end }}
+{{ end }}
+{{ end }}
+
+{{ range $posts.ByDate.Reverse }}
+{{ if and (ne .RelPermalink $current.RelPermalink) (lt (len $related) 6) (eq (len (where $related "RelPermalink" .RelPermalink)) 0) }}
+{{ $related = $related | append . }}
+{{ end }}
+{{ end }}
+
+{{ if gt (len $related) 0 }}
+<section class="bg-white rounded shadow-sm border border-slate-100 p-6 md:p-8 mb-8">
+    <h2 class="text-lg font-bold text-slate-800 mb-4">あわせて読みたい</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {{ range $related }}
+        <a href="{{ .RelPermalink }}"
+            class="block rounded border border-slate-200 p-4 hover:border-blue-300 hover:bg-blue-50 transition-colors">
+            {{ if .Date }}
+            <span class="text-xs text-slate-500">{{ .Date.Format "2006年1月2日" }}</span>
+            {{ end }}
+            <span class="mt-2 block text-sm font-bold text-slate-800 leading-relaxed">{{ .Title }}</span>
+        </a>
+        {{ end }}
+    </div>
+</section>
+{{ end }}
+
+{{ if or .PrevInSection .NextInSection }}
+<nav class="bg-white rounded shadow-sm border border-slate-100 p-6 md:p-8 mb-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+    {{ with .PrevInSection }}
+    <a href="{{ .RelPermalink }}" class="block rounded border border-slate-200 p-4 hover:border-blue-300 hover:bg-blue-50 transition-colors">
+        <span class="text-xs text-slate-500">前の記事</span>
+        <span class="mt-2 block text-sm font-bold text-slate-800 leading-relaxed">{{ .Title }}</span>
+    </a>
+    {{ else }}
+    <div></div>
+    {{ end }}
+
+    {{ with .NextInSection }}
+    <a href="{{ .RelPermalink }}" class="block rounded border border-slate-200 p-4 hover:border-blue-300 hover:bg-blue-50 transition-colors md:text-right">
+        <span class="text-xs text-slate-500">次の記事</span>
+        <span class="mt-2 block text-sm font-bold text-slate-800 leading-relaxed">{{ .Title }}</span>
+    </a>
+    {{ end }}
+</nav>
+{{ end }}
+{{ end }}
+
 {{/* サムネと同じ画像が本文内にもある場合、本文内の方を非表示にする */}}
 {{ if and $thumb (ne .Slug "about") }}
 <script>
