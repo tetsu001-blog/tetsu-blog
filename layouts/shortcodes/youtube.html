@@ -6,6 +6,8 @@
   {{- $videoID = replaceRE ".*[?&]v=([^&]+).*" "$1" $url -}}
 {{- else if findRE "/embed/" $url -}}
   {{- $videoID = replaceRE ".*/embed/([^?&/]+).*" "$1" $url -}}
+{{- else if findRE "/shorts/" $url -}}
+  {{- $videoID = replaceRE ".*/shorts/([^?&/]+).*" "$1" $url -}}
 {{- else -}}
   {{- $videoID = $url -}}
 {{- end -}}
