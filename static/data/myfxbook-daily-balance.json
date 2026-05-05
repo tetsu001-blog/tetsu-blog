@@ -170,12 +170,24 @@
     [
         {
             "date": "05/04/2026",
-            "balance": 3113,
-            "pips": 22.3,
-            "lots": 0.08,
+            "balance": 397,
+            "pips": -8.55,
+            "lots": 0.17,
             "floatingPL": 0,
-            "profit": 563,
-            "growthEquity": -99.62207518,
+            "profit": -2153,
+            "growthEquity": -99.85,
+            "floatingPips": 0
+        }
+    ],
+    [
+        {
+            "date": "05/05/2026",
+            "balance": 675,
+            "pips": 31.8,
+            "lots": 0.14,
+            "floatingPL": 0,
+            "profit": 278,
+            "growthEquity": -99.74308152,
             "floatingPips": 0
         }
     ]
