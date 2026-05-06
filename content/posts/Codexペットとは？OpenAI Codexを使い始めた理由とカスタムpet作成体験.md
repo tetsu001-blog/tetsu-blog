@@ -7,11 +7,11 @@ tags:
   - AI
 categories:
   - AI
-image: /images/Pasted-image-20260506100740.png
+image: /images/codex-pet-og.jpg
 ---
 
 <!-- thumbnail_start -->
-![](/images/Pasted-image-20260506100740.png)
+![](/images/codex-pet-og.jpg)
 <!-- thumbnail_end -->
 最近、OpenAI の **Codex** を使い始めました。
 
