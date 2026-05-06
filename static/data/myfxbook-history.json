@@ -1,5 +1,100 @@
 [
     {
+        "openTime": "05/05/2026 14:08",
+        "closeTime": "05/05/2026 14:08",
+        "symbol": "",
+        "action": "Deposit",
+        "sizing": {
+            "type": "lots",
+            "value": ""
+        },
+        "openPrice": 0,
+        "closePrice": 0,
+        "tp": 0,
+        "sl": 0,
+        "pips": 0,
+        "profit": 5,
+        "comment": "protooachangebalancetype",
+        "interest": 0,
+        "commission": 0
+    },
+    {
+        "openTime": "05/05/2026 07:27",
+        "closeTime": "05/05/2026 14:08",
+        "symbol": "GBPUSD_Z",
+        "action": "Sell",
+        "sizing": {
+            "type": "lots",
+            "value": "0.01"
+        },
+        "openPrice": 1.35372,
+        "closePrice": 1.35667,
+        "tp": 1.35272,
+        "sl": 0,
+        "pips": -29.5,
+        "profit": -481,
+        "comment": "",
+        "interest": 0,
+        "commission": -16
+    },
+    {
+        "openTime": "05/05/2026 07:23",
+        "closeTime": "05/05/2026 07:37",
+        "symbol": "GBPUSD_Z",
+        "action": "Buy",
+        "sizing": {
+            "type": "lots",
+            "value": "0.01"
+        },
+        "openPrice": 1.35409,
+        "closePrice": 1.35448,
+        "tp": 1.35559,
+        "sl": 0,
+        "pips": 3.9,
+        "profit": 45,
+        "comment": "",
+        "interest": 0,
+        "commission": -16
+    },
+    {
+        "openTime": "05/05/2026 06:28",
+        "closeTime": "05/05/2026 07:07",
+        "symbol": "GBPUSD_Z",
+        "action": "Sell",
+        "sizing": {
+            "type": "lots",
+            "value": "0.01"
+        },
+        "openPrice": 1.35207,
+        "closePrice": 1.35394,
+        "tp": 0,
+        "sl": 0,
+        "pips": -18.7,
+        "profit": -310,
+        "comment": "",
+        "interest": 0,
+        "commission": -16
+    },
+    {
+        "openTime": "05/05/2026 05:26",
+        "closeTime": "05/05/2026 06:26",
+        "symbol": "GBPUSD_Z",
+        "action": "Sell",
+        "sizing": {
+            "type": "lots",
+            "value": "0.01"
+        },
+        "openPrice": 1.35217,
+        "closePrice": 1.35165,
+        "tp": 0,
+        "sl": 0,
+        "pips": 5.2,
+        "profit": 66,
+        "comment": "",
+        "interest": 0,
+        "commission": -16
+    },
+    {
         "openTime": "05/05/2026 05:03",
         "closeTime": "05/05/2026 05:21",
         "symbol": "GBPUSD_Z",
