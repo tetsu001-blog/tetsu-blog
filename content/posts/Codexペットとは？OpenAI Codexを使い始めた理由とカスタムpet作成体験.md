@@ -7,7 +7,7 @@ tags:
   - AI
 categories:
   - AI
-image: /images/codex-pet-og.jpg
+image: "/images/codex-pet-og.jpg"
 ---
 
 <!-- thumbnail_start -->
