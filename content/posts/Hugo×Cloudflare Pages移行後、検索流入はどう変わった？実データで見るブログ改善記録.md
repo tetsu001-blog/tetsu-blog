@@ -5,11 +5,9 @@ date: 2026-05-11T17:00:00
 draft: false
 tags:
   - ブログ運営
-  - Hugo
-  - SEO
 categories:
   - ブログ運営
-image: "/images/Pasted-image-20260511134716.jpg"
+image: /images/Pasted-image-20260511134716.jpg
 ---
 
 <!-- thumbnail_start -->
