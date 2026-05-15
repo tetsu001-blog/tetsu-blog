@@ -7,7 +7,7 @@ tags:
   - ブログ運営
 categories:
   - ブログ運営
-image: /images/Pasted-image-20260511134716.jpg
+image: "/images/Pasted-image-20260511134716.jpg"
 ---
 
 <!-- thumbnail_start -->
