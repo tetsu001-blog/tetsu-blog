@@ -1,5 +1,5 @@
 ---
-title: 【Gmail】SunnyDay迷惑メールを自動削除する方法
+title: 【Gmail】キーワードで迷惑メールを自動削除する方法
 description: GmailでSunnyDayのような特定の差出人名やキーワードを含む迷惑メールを自動削除するフィルタ設定方法を、実体験ベースで解説。重要メールを探しやすくし、容量のムダを減らすための注意点も整理します。
 date: 2026-05-15T17:00:00
 draft: false
@@ -7,7 +7,7 @@ tags:
   - デジタル
 categories:
   - デジタル
-image: "/images/Pasted-image-20260515111446.jpg"
+image: /images/Pasted-image-20260515111446.jpg
 ---
 
 
