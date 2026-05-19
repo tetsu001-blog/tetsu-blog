@@ -7,7 +7,7 @@ tags:
   - デジタル
 categories:
   - デジタル
-image: /images/Pasted-image-20260515111446.jpg
+image: "/images/Pasted-image-20260515111446.jpg"
 ---
 
 
