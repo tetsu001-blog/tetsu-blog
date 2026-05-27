@@ -7,6 +7,7 @@ draft: false
 tags: ["AI"]
 categories: ["AI"]
 image: "/images/img_921514736c85.jpg"
+slug: "chatgpt-yen-pricing"
 ---
 ChatGPTユーザー、特に有料版「ChatGPT Plus」を利用している皆様に朗報であり、同時に注意が必要なニュースが飛び込んできました。
 

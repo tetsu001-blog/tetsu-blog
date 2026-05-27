@@ -7,6 +7,7 @@ draft: false
 tags: ["AI"]
 categories: ["AI"]
 image: "/images/img_18a802189672.jpg"
+slug: "ai-bubble-collapse-strategy"
 ---
 ## はじめに：熱狂の終わりか、選別の始まりか
 

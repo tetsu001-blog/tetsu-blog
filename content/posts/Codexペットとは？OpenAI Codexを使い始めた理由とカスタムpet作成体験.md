@@ -8,8 +8,8 @@ tags:
 categories:
   - AI
 image: "/images/codex-pet-og.jpg"
+slug: "openai-codex-pet"
 ---
-
 <!-- thumbnail_start -->
 ![](/images/codex-pet-og.jpg)
 <!-- thumbnail_end -->

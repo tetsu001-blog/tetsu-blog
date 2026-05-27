@@ -9,6 +9,7 @@ tags:
 categories:
   - デジタル
 image: /images/img_99b94de82ad5.jpg
+slug: "website-to-app-pwa"
 ---
 普段よく使うWEBサイトやサービスを、毎回ブラウザを開いて検索したり、ブックマークから探したりしていませんか。
 

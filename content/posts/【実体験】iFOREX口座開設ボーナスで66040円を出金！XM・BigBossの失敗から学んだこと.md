@@ -9,8 +9,8 @@ tags:
 categories:
   - FX・投資
 image: "/images/Pasted-image-20260519134113.jpg"
+slug: "iforex-bonus-withdrawal"
 ---
-
 <!-- thumbnail_start -->
 ![](/images/Pasted-image-20260519134113.jpg)
 <!-- thumbnail_end -->

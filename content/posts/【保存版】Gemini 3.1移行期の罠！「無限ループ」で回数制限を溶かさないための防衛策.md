@@ -7,8 +7,8 @@ tags:
   - AI
 categories: ["AI"]
 image: "/images/Pasted-image-20260304174244.jpg"
+slug: "gemini-infinite-loop-prevention"
 ---
-
 <!-- thumbnail_start -->
 ![](/images/Pasted-image-20260304174244.jpg)
 <!-- thumbnail_end -->

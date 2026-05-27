@@ -7,6 +7,7 @@ tags:
   - AI
 categories: ["AI"]
 image: "/images/Pasted-image-20260317102010.jpg"
+slug: "google-ai-pro-cancellation"
 ---
 <!-- thumbnail_start -->
 ![](/images/Pasted-image-20260317102010.jpg)

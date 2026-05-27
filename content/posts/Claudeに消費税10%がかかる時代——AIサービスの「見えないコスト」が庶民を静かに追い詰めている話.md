@@ -7,8 +7,8 @@ tags:
   - AI
 categories: ["AI"]
 image: "/images/Pasted-image-20260323162100.jpg"
+slug: "claude-tax-invisible-cost"
 ---
-
 <!-- thumbnail_start -->
 ![](/images/Pasted-image-20260323162100.jpg)
 <!-- thumbnail_end -->

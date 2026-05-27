@@ -12,8 +12,8 @@ categories:
   - AI
   - デジタル
 image: "/images/Pasted-image-20260320154619.jpg"
+slug: "fx-swap-animation-tool"
 ---
-
 <!-- thumbnail_start -->
 ![](/images/Pasted-image-20260320154619.jpg)
 <!-- thumbnail_end -->

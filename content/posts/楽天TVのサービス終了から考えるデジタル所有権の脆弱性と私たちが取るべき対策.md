@@ -7,6 +7,7 @@ draft: false
 tags: ["デジタル"]
 categories: ["デジタル"]
 image: "/images/img_dd405d457404.jpg"
+slug: "rakutentv-shutdown-digital-ownership"
 ---
 2025年12月、動画配信サービス「楽天TV」に関する衝撃的なニュースが飛び込んできました。私たちが当たり前のように利用している「デジタルコンテンツの購入」という行為が、いかに脆い土台の上に成り立っているかを痛感させる内容です。
 

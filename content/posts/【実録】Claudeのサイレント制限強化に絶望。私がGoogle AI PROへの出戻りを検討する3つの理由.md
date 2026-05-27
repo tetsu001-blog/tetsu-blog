@@ -9,8 +9,8 @@ tags:
 categories:
   - AI
 image: "/images/Pasted-image-20260404144325.jpg"
+slug: "claude-limit-google-ai-pro"
 ---
-
 <!-- thumbnail_start -->
 ![](/images/Pasted-image-20260404144325.jpg)
 <!-- thumbnail_end -->

@@ -9,6 +9,7 @@ tags:
 categories:
   - 政治・社会
 image: /images/img_1aaa387d7820.png
+slug: "nhk-public-broadcasting"
 ---
 ## はじめに：揺らぐ公共放送の信頼性
 

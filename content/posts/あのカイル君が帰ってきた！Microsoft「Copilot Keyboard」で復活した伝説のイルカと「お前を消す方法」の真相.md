@@ -10,6 +10,7 @@ tags:
 categories:
   - デジタル
 image: /images/img_copilot_keyboard_kairu.png
+slug: "microsoft-clippy-copilot-keyboard"
 ---
 「**お前を消す方法**」——この言葉にピンときた人は、間違いなくインターネット古参勢です。
 

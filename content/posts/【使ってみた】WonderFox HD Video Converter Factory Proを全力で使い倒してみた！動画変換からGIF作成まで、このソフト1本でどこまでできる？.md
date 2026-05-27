@@ -8,8 +8,8 @@ tags:
 categories:
   - デジタル
 image: "/images/wonderfox_review_thumbnail.jpg"
+slug: "wonderfox-video-converter-review"
 ---
-
 <!-- thumbnail_start -->
 ![](/images/wonderfox_review_thumbnail.jpg)
 <!-- thumbnail_end -->

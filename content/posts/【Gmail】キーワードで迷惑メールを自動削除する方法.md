@@ -8,9 +8,8 @@ tags:
 categories:
   - デジタル
 image: "/images/Pasted-image-20260515111446.jpg"
+slug: "gmail-spam-auto-delete"
 ---
-
-
 <!-- thumbnail_start -->
 ![](/images/Pasted-image-20260515111446.jpg)
 <!-- thumbnail_end -->

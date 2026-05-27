@@ -7,6 +7,7 @@ draft: false
 tags: ["AI"]
 categories: ["AI"]
 image: "/images/img_eb586a93a859.png"
+slug: "google-ai-plus-gemini-plan"
 ---
 2026年1月、GoogleのAIサブスクリプションに待望の新しい選択肢が登場しました。その名も**「Google AI Plus」**。月額1,200円という手頃な価格で、最新の高性能AIモデルとクラウドストレージを利用できるこのプランは、多くのユーザーにとって「ちょうどいい」選択肢となりそうです。本記事では、新プラン「Google AI Plus」のメリットを、無料版や上位プラン（Pro/Ultra）と比較しながら詳しく解説します。
 

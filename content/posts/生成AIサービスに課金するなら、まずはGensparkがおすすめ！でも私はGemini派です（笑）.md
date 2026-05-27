@@ -7,6 +7,7 @@ draft: false
 tags: ["AI"]
 categories: ["AI"]
 image: "/images/img_7ef4f3c86980.jpg"
+slug: "genspark-vs-gemini"
 ---
 こんにちは、てつです！
 

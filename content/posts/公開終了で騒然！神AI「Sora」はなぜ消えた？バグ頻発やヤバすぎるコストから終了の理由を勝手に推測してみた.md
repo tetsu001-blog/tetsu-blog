@@ -7,8 +7,8 @@ tags:
   - AI
 categories: ["AI"]
 image: "/images/Pasted-image-20260325113654.jpg"
+slug: "openai-sora-shutdown-speculation"
 ---
-
 <!-- thumbnail_start -->
 ![](/images/Pasted-image-20260325113654.jpg)
 <!-- thumbnail_end -->

@@ -9,6 +9,7 @@ tags:
 categories:
   - ブログ運営
 image: /images/img_06c18ab94cd6.jpg
+slug: "blogger-auto-blog-card"
 ---
 Bloggerで記事を書いていると、「他サイトのリンクを貼るとき、もっと見栄え良くしたい」と思うことはありませんか？ WordPressなどではURLを貼るだけで自動的に「ブログカード（サムネイル付きのリンクボックス）」が表示されますが、Bloggerの標準機能では単なるテキストリンクになってしまいます。ブログを運営して半年ほどずっと悩んでいました。
 

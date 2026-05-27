@@ -8,8 +8,8 @@ tags:
 categories:
   - AI
 image: "/images/Pasted-image-20260401234412.jpg"
+slug: "sakana-chat-comparison"
 ---
-
 <!-- thumbnail_start -->
 ![](/images/Pasted-image-20260401234412.jpg)
 <!-- thumbnail_end -->

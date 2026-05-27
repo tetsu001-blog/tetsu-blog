@@ -7,6 +7,7 @@ tags:
   - AI
 categories: ["AI"]
 image: "/images/mixboard_thumbnail.png"
+slug: "google-mixboard-how-to-use"
 ---
 こんにちは！てつです。
 

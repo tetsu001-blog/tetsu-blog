@@ -10,8 +10,8 @@ tags:
 categories:
   - FX・投資
 image: "/images/Pasted-image-20260314150457.png"
+slug: "fx-failure-first-trade"
 ---
-
 <!-- thumbnail_start -->
 ![](/images/Pasted-image-20260314150457.png)
 <!-- thumbnail_end -->

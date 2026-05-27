@@ -7,6 +7,7 @@ draft: false
 tags: ["デジタル"]
 categories: ["デジタル"]
 image: "/images/img_21dabd69ae95.jpg"
+slug: "affinity-alternatives-free"
 ---
 毎月のサブスク代が気にならない（負担にならない）人ばかりではないと思います。
 

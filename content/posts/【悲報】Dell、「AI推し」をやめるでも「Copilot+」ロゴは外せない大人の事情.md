@@ -11,6 +11,7 @@ categories:
   - デジタル
   - AI
 image: /images/img_09e8d0556937.jpg
+slug: "dell-ai-pc-copilot-logo"
 ---
 2026年、PC業界に激震が走りました。これまで「AI PC」の旗振り役だったDellが、その看板を自ら下ろすような動きを見せたのです。
 

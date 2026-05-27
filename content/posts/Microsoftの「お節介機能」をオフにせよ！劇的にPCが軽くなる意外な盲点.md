@@ -7,6 +7,7 @@ draft: false
 tags: ["デジタル"]
 categories: ["デジタル"]
 image: "/images/img_8d6e7a2413e5.jpg"
+slug: "microsoft-windows-annoying-features-off"
 ---
 「最近、何もしていないのにパソコンのファンがうるさい」「動作がもっさりして重い」と感じていませんか？
 

@@ -9,6 +9,7 @@ tags:
 categories:
   - デジタル
 image: /images/img_ca3dd4cb02e5.jpg
+slug: "windows-notepad-simple-alternative"
 ---
 こんにちは、てつです！
 

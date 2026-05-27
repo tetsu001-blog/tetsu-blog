@@ -15,7 +15,7 @@ enableRobotsTXT = true
 
 [permalinks]
   [permalinks.page]
-    posts = "/posts/:year-:month-:day/"
+    posts = "/posts/:slug/"
 
 [markup.goldmark.renderer]
   unsafe = true

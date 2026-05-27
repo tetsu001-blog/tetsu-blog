@@ -9,6 +9,7 @@ tags:
 categories:
   - デジタル
 image: /images/img_15ac5dd1ec14.png
+slug: "microsoft-edge-recommendation"
 ---
 Microsoft Edgeは、Google ChromeやFirefoxなどと並ぶ主要なWebブラウザですが、特に近年は大幅な進化を遂げ、他のブラウザにはない独自の強みを持っています。Edgeをメインとして使用している私が単なる「Windows標準ブラウザ」ではない、Edgeの**真の価値**をご紹介します。
 

@@ -9,10 +9,8 @@ categories:
   - ブログ運営
   - AI
 image: /images/20260222-1.jpg
+slug: "blogger-to-hugo-reborn"
 ---
-
-
-
 みなさん、こんにちは！てつです。
 
 いつも「てつblog」を読んでいただき、ありがとうございます。

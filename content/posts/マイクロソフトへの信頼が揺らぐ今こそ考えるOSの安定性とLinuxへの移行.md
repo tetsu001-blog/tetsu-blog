@@ -9,8 +9,8 @@ tags:
 categories:
   - デジタル
 image: /images/img_f0c05517dd7a.jpg
+slug: "windows-reliability-linux-transition"
 ---
-
 ![](/images/img_f0c05517dd7a.jpg)
 
 <!--more-->

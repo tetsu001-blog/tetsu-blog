@@ -7,6 +7,7 @@ draft: false
 tags: ["AI"]
 categories: ["AI"]
 image: "/images/img_de2b4716d062.jpg"
+slug: "ai-career-strategy-30s"
 ---
 現代のビジネスシーンで最もホットな話題の一つが「AIと仕事」の関係です。特に生成AIの進化は目覚ましく、「AIに仕事を奪われるのではないか」という不安は、キャリアの岐路に立つことが多い30代にとって切実な問題でしょう。
 

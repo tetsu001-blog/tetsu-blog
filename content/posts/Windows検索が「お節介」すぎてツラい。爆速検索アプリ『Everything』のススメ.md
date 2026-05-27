@@ -7,6 +7,7 @@ draft: false
 tags: ["デジタル"]
 categories: ["デジタル"]
 image: "/images/img_7f7cd4e2d974.jpg"
+slug: "windows-search-everything"
 ---
 皆さんはWindowsのスタートメニューでファイルを探そうとして、**「余計なWeb検索（Bing）が立ち上がってイライラした」**経験はありませんか？
 

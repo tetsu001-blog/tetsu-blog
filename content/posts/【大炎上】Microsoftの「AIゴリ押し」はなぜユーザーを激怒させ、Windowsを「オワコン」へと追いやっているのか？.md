@@ -7,6 +7,7 @@ draft: false
 tags: ["AI"]
 categories: ["AI"]
 image: "/images/img_9a65b204fc11.jpg"
+slug: "microsoft-ai-push-backlash"
 ---
 Microsoftが推進する「AIネイティブOS」への転換が、忠実なユーザーや開発者コミュニティからの猛反発を招き、深刻な危機に瀕しています。本記事では、ソースの情報に基づき、MicrosoftのAI戦略が抱える危険性と、Windowsが「オワコン」と捉えられ始めている現実を分析します。
 

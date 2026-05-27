@@ -9,8 +9,8 @@ tags:
 categories:
   - デジタル
 image: /images/Pasted-image-20260525145909.png
+slug: "edge-to-vivaldi-switch"
 ---
-
 <!-- thumbnail_start -->
 ![](/images/Pasted-image-20260525145909.png)
 <!-- thumbnail_end -->

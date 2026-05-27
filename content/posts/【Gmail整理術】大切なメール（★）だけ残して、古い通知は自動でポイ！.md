@@ -7,6 +7,7 @@ draft: false
 tags: ["デジタル"]
 categories: ["デジタル"]
 image: "/images/img_9d3d739fa36e.jpg"
+slug: "gmail-star-filter-auto-archive"
 ---
 Gmailを長く使っていると、メルマガや通知メールが溜まりに溜まって「保存容量が少なくなっています」という警告が出ること、ありませんか？
 

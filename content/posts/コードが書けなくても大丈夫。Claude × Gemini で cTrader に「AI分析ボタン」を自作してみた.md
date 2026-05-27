@@ -8,8 +8,8 @@ tags:
   - AI
 categories: ["FX・投資", "AI"]
 image: "/images/Pasted-image-20260328151949.jpg"
+slug: "ctrader-ai-analysis-button"
 ---
-
 <!-- thumbnail_start -->
 ![](/images/Pasted-image-20260328151949.jpg)
 <!-- thumbnail_end -->

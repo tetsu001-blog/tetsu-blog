@@ -7,8 +7,8 @@ tags:
   - AI
 categories: ["AI"]
 image: "/images/Pasted-image-20260227144130.jpg"
+slug: "openclaw-ai-agent-opinion"
 ---
-
 <!-- thumbnail_start -->
 ![](/images/Pasted-image-20260227144130.jpg)
 <!-- thumbnail_end -->

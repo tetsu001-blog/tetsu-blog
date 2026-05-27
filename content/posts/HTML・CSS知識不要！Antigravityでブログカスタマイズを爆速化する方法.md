@@ -11,6 +11,7 @@ categories:
   - ブログ運営
   - AI
 image: /images/img_421bf202699a.png
+slug: "antigravity-blog-customize"
 ---
 こんにちは、てつです！
 

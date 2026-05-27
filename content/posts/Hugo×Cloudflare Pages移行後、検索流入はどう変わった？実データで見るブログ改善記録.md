@@ -8,8 +8,8 @@ tags:
 categories:
   - ブログ運営
 image: "/images/Pasted-image-20260511134716.jpg"
+slug: "hugo-cloudflare-pages-migration-result"
 ---
-
 <!-- thumbnail_start -->
 ![](/images/Pasted-image-20260511134716.jpg)
 <!-- thumbnail_end -->

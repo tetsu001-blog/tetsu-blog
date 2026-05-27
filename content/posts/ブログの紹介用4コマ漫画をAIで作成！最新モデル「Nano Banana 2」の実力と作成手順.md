@@ -7,8 +7,8 @@ tags:
   - AI
 categories: ["AI"]
 image: "/images/Pasted-image-20260306143637.jpg"
+slug: "nano-banana-2-ai-4frame-manga"
 ---
-
 <!-- thumbnail_start -->
 ![](/images/Pasted-image-20260306143637.jpg)
 <!-- thumbnail_end -->

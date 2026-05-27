@@ -7,8 +7,8 @@ tags:
   - AI
 categories: ["AI"]
 image: "/images/adversarial_result.png"
+slug: "security-ai-prompt-injection-image"
 ---
-
 <!-- thumbnail_start -->
 ![](/images/adversarial_result.png)
 <!-- thumbnail_end -->

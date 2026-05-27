@@ -8,8 +8,8 @@ tags:
 categories:
   - AI
 image: "/images/Pasted-image-20260414151717.jpg"
+slug: "ai-generated-text-detection"
 ---
-
 <!-- thumbnail_start -->
 ![](/images/Pasted-image-20260414151717.jpg)
 <!-- thumbnail_end -->

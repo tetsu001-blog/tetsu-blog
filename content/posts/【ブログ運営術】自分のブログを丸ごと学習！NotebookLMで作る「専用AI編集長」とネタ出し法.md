@@ -7,8 +7,8 @@ tags:
   - ブログ運営
 categories: ["ブログ運営"]
 image: "/images/Pasted-image-20260308194514.jpg"
+slug: "notebooklm-blog-editor"
 ---
-
 <!-- thumbnail_start -->
 ![](/images/Pasted-image-20260308194514.jpg)
 <!-- thumbnail_end -->

@@ -9,6 +9,7 @@ tags:
 categories:
   - デジタル
 image: /images/img_85631adc10fc.jpg
+slug: "windows-to-linux-lepton"
 ---
 ## Microsoftの「AIごり押し」戦略に辟易、高まるWindows脱却の機運
 
