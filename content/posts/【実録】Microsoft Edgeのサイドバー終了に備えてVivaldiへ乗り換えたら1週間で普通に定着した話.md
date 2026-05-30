@@ -8,7 +8,7 @@ tags:
   - デジタル
 categories:
   - デジタル
-image: /images/Pasted-image-20260525145909.png
+image: "/images/Pasted-image-20260525145909.png"
 slug: "edge-to-vivaldi-switch"
 ---
 <!-- thumbnail_start -->
