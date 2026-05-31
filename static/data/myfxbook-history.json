@@ -1,5 +1,24 @@
 [
     {
+        "openTime": "05/30/2026 11:05",
+        "closeTime": "05/30/2026 11:05",
+        "symbol": "",
+        "action": "Deposit",
+        "sizing": {
+            "type": "lots",
+            "value": ""
+        },
+        "openPrice": 0,
+        "closePrice": 0,
+        "tp": 0,
+        "sl": 0,
+        "pips": 0,
+        "profit": 3000,
+        "comment": "protooachangebalancetype",
+        "interest": 0,
+        "commission": 0
+    },
+    {
         "openTime": "05/29/2026 13:20",
         "closeTime": "05/29/2026 13:20",
         "symbol": "",
