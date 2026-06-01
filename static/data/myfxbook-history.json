@@ -1,5 +1,62 @@
 [
     {
+        "openTime": "06/01/2026 09:32",
+        "closeTime": "06/01/2026 12:04",
+        "symbol": "GBPUSD_Z",
+        "action": "Buy",
+        "sizing": {
+            "type": "lots",
+            "value": "0.01"
+        },
+        "openPrice": 1.34619,
+        "closePrice": 1.34668,
+        "tp": 1.34719,
+        "sl": 0,
+        "pips": 4.9,
+        "profit": 60,
+        "comment": "",
+        "interest": 0,
+        "commission": -18
+    },
+    {
+        "openTime": "06/01/2026 08:15",
+        "closeTime": "06/01/2026 08:45",
+        "symbol": "GBPUSD_Z",
+        "action": "Buy",
+        "sizing": {
+            "type": "lots",
+            "value": "0.01"
+        },
+        "openPrice": 1.34681,
+        "closePrice": 1.34731,
+        "tp": 0,
+        "sl": 0,
+        "pips": 5,
+        "profit": 62,
+        "comment": "",
+        "interest": 0,
+        "commission": -18
+    },
+    {
+        "openTime": "06/01/2026 08:05",
+        "closeTime": "06/01/2026 08:10",
+        "symbol": "GBPUSD_Z",
+        "action": "Buy",
+        "sizing": {
+            "type": "lots",
+            "value": "0.01"
+        },
+        "openPrice": 1.3462,
+        "closePrice": 1.34651,
+        "tp": 0,
+        "sl": 0,
+        "pips": 3.1,
+        "profit": 31,
+        "comment": "",
+        "interest": 0,
+        "commission": -18
+    },
+    {
         "openTime": "05/30/2026 11:05",
         "closeTime": "05/30/2026 11:05",
         "symbol": "",
