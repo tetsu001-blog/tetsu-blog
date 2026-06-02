@@ -214,5 +214,17 @@
             "growthEquity": -99.9,
             "floatingPips": 0
         }
+    ],
+    [
+        {
+            "date": "06/02/2026",
+            "balance": 3855,
+            "pips": 17.7,
+            "lots": 0.09,
+            "floatingPL": 0,
+            "profit": 702,
+            "growthEquity": -99.87,
+            "floatingPips": 0
+        }
     ]
 ]
