@@ -1,5 +1,24 @@
 [
     {
+        "openTime": "06/08/2026 08:10",
+        "closeTime": "06/08/2026 10:12",
+        "symbol": "GBPUSD_Z",
+        "action": "Buy",
+        "sizing": {
+            "type": "lots",
+            "value": "0.06"
+        },
+        "openPrice": 1.3321,
+        "closePrice": 1.33303,
+        "tp": 1.33414,
+        "sl": 0,
+        "pips": 9.4,
+        "profit": 795,
+        "comment": "",
+        "interest": 0,
+        "commission": -103
+    },
+    {
         "openTime": "06/04/2026 12:12",
         "closeTime": "06/04/2026 12:52",
         "symbol": "GBPUSD_Z",
