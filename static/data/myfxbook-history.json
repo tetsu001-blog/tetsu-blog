@@ -1,5 +1,24 @@
 [
     {
+        "openTime": "06/11/2026 19:31",
+        "closeTime": "06/11/2026 19:31",
+        "symbol": "",
+        "action": "Withdrawal",
+        "sizing": {
+            "type": "lots",
+            "value": ""
+        },
+        "openPrice": 0,
+        "closePrice": 0,
+        "tp": 0,
+        "sl": 0,
+        "pips": 0,
+        "profit": -5570,
+        "comment": "protooachangebalancetype",
+        "interest": 0,
+        "commission": 0
+    },
+    {
         "openTime": "06/08/2026 10:34",
         "closeTime": "06/08/2026 16:13",
         "symbol": "GBPUSD_Z",
