@@ -30,7 +30,7 @@ slug: "antigravity-hybrid-use"
 
 この現象は、以前書いた以下の記事で触れた「AIの予期せぬ挙動による利用制限」と似た側面があります。 AIの「思考」プロセスはブラックボックス化しているため、ユーザー側からは見えない部分で大量のコンテキスト（文脈）を読み込み、トークンを激しく消費してしまうんですね。
 
-https://tetsu-blog.pages.dev/posts/2026-03-05/
+https://tetsu-blog.net/posts/gemini-infinite-loop-prevention/
 
 ## 私が踏んだ「3つの落とし穴」
 ![](/images/Pasted-image-20260311135907.png)

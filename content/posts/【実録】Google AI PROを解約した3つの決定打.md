@@ -49,7 +49,7 @@ https://note.com/ai_heihou/n/nfcc51db641c8
 
 サービス改悪により下記記事で紹介したトークン節約をしても、制限に引っかかるようになりました。
 
-https://tetsu-blog.net/posts/2026-03-11/
+https://tetsu-blog.net/posts/antigravity-hybrid-use/
 
 
 ## 2. Antigravity環境での「絶望的な相性」とデバッグ地獄

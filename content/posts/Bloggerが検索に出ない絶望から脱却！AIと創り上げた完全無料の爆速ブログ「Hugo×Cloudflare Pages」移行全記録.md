@@ -60,7 +60,7 @@ https://antigravity.google/
     
 - **予約投稿ができない問題：** 静的サイトゆえに「指定した時間に公開する」ことができません。これは「GitHub Actions」を利用して定期的に自動ビルドを走らせることで、擬似的な予約投稿を実現させました。
 
-https://tetsu-blog.pages.dev/posts/2026-02-22/
+https://tetsu-blog.net/posts/blogger-to-hugo-reborn/
 
 ## 最終形態「Cloudflare Pages」へ！そして検索結果への歓喜
 

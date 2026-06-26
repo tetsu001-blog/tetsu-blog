@@ -38,7 +38,7 @@ slug: "fx-failure-first-trade"
 
 2025年9月から、毎月1,000円のお小遣いをコツコツ入金し、メキシコペソやトルコリラのスワップポイントを貯めてきました。半年以上かけて、ようやく「10,688円」まで増えた私の宝物です。
 
-https://tetsu-blog.net/posts/2026-03-10/
+https://tetsu-blog.net/posts/tryjpy-settlement-new-trade/
 
 「この資金をトレードでさらに増やして、資産形成のスピードを上げるんだ！」
 

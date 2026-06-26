@@ -29,7 +29,7 @@ slug: "claude-limit-google-ai-pro"
 
 「天下のGoogleが出した最新モデルなら間違いないはずだ」——そう信じていたGoogle AI PRO（Gemini）を解約し、コード生成の賢さを求めてClaudeへ乗り換えたのがつい最近のことです。
 
-https://tetsu-blog.net/posts/2026-03-17/
+https://tetsu-blog.net/posts/google-ai-pro-cancellation/
 
 こんにちは、てつです。
 

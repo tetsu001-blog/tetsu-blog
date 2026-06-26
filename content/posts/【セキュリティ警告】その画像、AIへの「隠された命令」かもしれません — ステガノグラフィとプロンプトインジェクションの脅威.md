@@ -112,4 +112,4 @@ AIの目が進化すればするほど、「目に見えない攻撃」も巧妙
 
 **プロンプトインジェクション**については、下記記事でも少しだけ触れています。
 
-https://tetsu-blog.pages.dev/posts/2026-02-27/
+https://tetsu-blog.net/posts/openclaw-ai-agent-opinion/

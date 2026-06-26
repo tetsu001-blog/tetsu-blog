@@ -19,7 +19,7 @@ slug: "hugo-cloudflare-pages-migration-result"
 
 以前、私はBloggerからHugo×Cloudflare Pagesへブログを移行した話を書きました。
 
-https://tetsu-blog.net/posts/2026-03-04/
+https://tetsu-blog.net/posts/blogger-not-indexed-escape/
 
 移行理由はいろいろありますが、いちばん大きかったのは **「Blogger時代に記事がなかなか検索に出てこなかったこと」** です。
 
