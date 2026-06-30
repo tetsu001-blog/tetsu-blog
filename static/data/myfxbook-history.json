@@ -1,5 +1,43 @@
 [
     {
+        "openTime": "06/29/2026 18:00",
+        "closeTime": "06/29/2026 18:00",
+        "symbol": "",
+        "action": "Deposit",
+        "sizing": {
+            "type": "lots",
+            "value": ""
+        },
+        "openPrice": 0,
+        "closePrice": 0,
+        "tp": 0,
+        "sl": 0,
+        "pips": 0,
+        "profit": 3,
+        "comment": "protooachangebalancetype",
+        "interest": 0,
+        "commission": 0
+    },
+    {
+        "openTime": "06/29/2026 08:35",
+        "closeTime": "06/29/2026 18:00",
+        "symbol": "GBPUSD_Z",
+        "action": "Sell",
+        "sizing": {
+            "type": "lots",
+            "value": "0.06"
+        },
+        "openPrice": 1.32266,
+        "closePrice": 1.32587,
+        "tp": 1.31871,
+        "sl": 0,
+        "pips": -32.1,
+        "profit": -3223,
+        "comment": "Stop-Out: Balance=3220, Equity=-3, Total Margin=1286, Stop-Out Level=0%, Margin Level=-0.22317262830482115%",
+        "interest": 0,
+        "commission": -104
+    },
+    {
         "openTime": "06/26/2026 08:16",
         "closeTime": "06/26/2026 08:50",
         "symbol": "GBPUSD_Z",
