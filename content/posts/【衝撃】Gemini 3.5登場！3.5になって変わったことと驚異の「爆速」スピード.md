@@ -7,7 +7,7 @@ tags:
   - AI
 categories:
   - AI
-image: /images/Pasted-image-20260606155045.jpg
+image: "/images/Pasted-image-20260606155045.jpg"
 slug: gemini-3-5-what-changed
 ---
 <!-- thumbnail_start -->
