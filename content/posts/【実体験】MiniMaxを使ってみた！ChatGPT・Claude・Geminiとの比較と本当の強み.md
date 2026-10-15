@@ -1,13 +1,13 @@
 ---
 title: 【実体験】MiniMaxを使ってみた！ChatGPT・Claude・Geminiとの比較と本当の強み
 description: 中国発AI「MiniMax」を実際に触ってみた実体験レビュー。ChatGPT・Claude・Geminiと性能・料金・日本語対応を比較し、メリットとデメリットを正直に語ります。
-date: 2026-10-15T21:00:00
+date: 2026-10-16T17:00:00
 draft: false
 tags:
   - AI
 categories:
   - AI
-image: "/images/Pasted-image-20261016003325.png"
+image: /images/Pasted-image-20261016003325.png
 slug: minimax-m3-comparison
 ---
 
@@ -598,11 +598,16 @@ MiniMax M3 と M Plan は、
 他にも、
 - FX-ctrader用のインジケータの作成
 - ファイル整理
+
 などにも使用してみました。
 どれも、問題なく作業完了することが出来ました。
 
-興味本位で、1ヶ月使用してみようと思い課金したので、またClaudeに戻ると思いますが今のところ不満はありません。
+興味本位で、1ヶ月使用してみようと思い課金したので、またClaudeに戻ると思いますが今のところ不満はありません。あえて、不満を上げるなら「回答に中国語が稀に混ざる。」ぐらいです。
 
 1ヶ月使用してみて、問題があればまた記事にします。
+<br>
 
-こうし
+公式サイト
+
+https://www.minimax.io
+
