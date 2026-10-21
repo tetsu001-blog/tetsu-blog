@@ -12,6 +12,10 @@ try:
 except ImportError:
     print("Error: 'atproto' library is not installed. Run 'pip install atproto'.")
     sys.exit(1)
+except Exception as e:
+    # 依存パッケージの不整合 (例: typing_extensions の import 失敗) をそのまま出す
+    print(f"Error: failed to import 'atproto': {type(e).__name__}: {e}")
+    sys.exit(1)
 
 try:
     from PIL import Image

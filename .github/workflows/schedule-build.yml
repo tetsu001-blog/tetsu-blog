@@ -35,10 +35,14 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
-          python-version: '3.x'
+          # atproto は Python 3.15 未満まで対応。固定しないと Python 3.15 解決時に
+          # pip が古い atproto へ自動退行し typing_extensions の import で落ちる
+          python-version: '3.14'
 
       - name: Install dependencies
-        run: pip install atproto Pillow
+        # 上限なしの指定だと Python 非対応時に pip が黙って旧版へ退行するため
+        # 明示的にバージョン指定し、解決できなければエラーにする
+        run: pip install 'atproto>=0.0.70' Pillow
 
       - name: Auto Post to Bluesky
         env:
