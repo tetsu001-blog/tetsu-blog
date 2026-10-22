@@ -7,7 +7,7 @@ tags:
   - AI
 categories:
   - AI
-image: /images/Pasted-image-20261016003325.png
+image: "/images/Pasted-image-20261016003325.png"
 slug: minimax-m3-comparison
 ---
 

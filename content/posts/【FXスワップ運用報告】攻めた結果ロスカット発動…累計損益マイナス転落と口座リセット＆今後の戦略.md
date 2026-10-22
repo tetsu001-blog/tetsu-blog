@@ -8,7 +8,7 @@ tags:
 categories:
   - FX・投資
 slug: mxnjpy-losscut-analysis-strategy
-image: /images/Pasted-image-20260929120241.jpg
+image: "/images/Pasted-image-20260929120241.jpg"
 ---
 <!-- thumbnail_start -->
 ![](/images/Pasted-image-20260929120241.jpg)
