@@ -20,8 +20,12 @@ import os
 if sys.platform == "win32":
     sys.stdout.reconfigure(encoding='utf-8')
 
-CONTENT_IMAGES = os.path.join("content", "images")
-STATIC_IMAGES = os.path.join("static", "images")
+# 実行ディレクトリ（cwd）に依存せず、スクリプト自身の位置を基準に解決する。
+# これにより blog/ 直下からもリポジトリ直下からも同じコマンドで実行できる。
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+CONTENT_IMAGES = os.path.join(BASE_DIR, "content", "images")
+STATIC_IMAGES = os.path.join(BASE_DIR, "static", "images")
+POSTS_DIR = os.path.join(BASE_DIR, "content", "posts")
 
 
 def move_images():
@@ -49,7 +53,7 @@ def move_images():
         pass
 
     # content/static/images/ も処理
-    content_static = os.path.join("content", "static", "images")
+    content_static = os.path.join(BASE_DIR, "content", "static", "images")
     if os.path.exists(content_static):
         for filepath in glob.glob(os.path.join(content_static, "*")):
             filename = os.path.basename(filepath)
@@ -62,7 +66,7 @@ def move_images():
                 os.remove(filepath)
         try:
             os.rmdir(content_static)
-            os.rmdir(os.path.join("content", "static"))
+            os.rmdir(os.path.join(BASE_DIR, "content", "static"))
         except OSError:
             pass
 
@@ -71,7 +75,7 @@ def move_images():
 
 def fix_paths():
     """記事内の画像パスをHugo用に変換"""
-    posts = glob.glob("content/posts/*.md")
+    posts = glob.glob(os.path.join(POSTS_DIR, "*.md"))
     fixed_count = 0
 
     for filepath in posts:
@@ -190,7 +194,7 @@ def compress_images():
 
 
 def replace_image_in_markdown(old_name, new_name):
-    posts = glob.glob("content/posts/*.md")
+    posts = glob.glob(os.path.join(POSTS_DIR, "*.md"))
     for filepath in posts:
         with open(filepath, "r", encoding="utf-8") as f:
             content = f.read()
@@ -218,4 +222,4 @@ if __name__ == "__main__":
         print("{} posts fixed".format(fixed))
     if moved == 0 and fixed == 0 and compressed == 0:
         print("Nothing to fix!")
-    print("Done! Now run: git add . && git commit && git push")
+    print("Done! Now run: cd {} && git add . && git commit && git push".format(BASE_DIR))

@@ -10,7 +10,7 @@ tags:
   - ブログ運営
 categories:
   - デジタル
-image: /images/php2shell-og.png
+image: "/images/php2shell-og.png"
 slug: php2shell-php-critical-vulnerability-2026
 ---
 
