@@ -1,7 +1,7 @@
 ---
-title: "【実体験】MiniMax codeを1カ月使用してみて！良かった点・多言語混入の壁と解約した理由"
-description: "中国発AI「MiniMax Code（M Plan Go）」を1ヶ月間ガッツリ使ってみた本音レビュー。コード整理での実用性、デイリーボーナスを含めた利用枠の多さと「日本語修正ラリーで実質作業量はトントンになる」リアル、文句なしの画像・動画生成、そして向いている人を語ります。"
-date: 2026-11-14T10:00:00
+title: 【実体験】MiniMax codeを1カ月使用してみて！良かった点・多言語混入の壁と解約した理由
+description: 中国発AI「MiniMax Code（M Plan Go）」を1ヶ月間ガッツリ使ってみた本音レビュー。コード整理での実用性、デイリーボーナスを含めた利用枠の多さと「日本語修正ラリーで実質作業量はトントンになる」リアル、文句なしの画像・動画生成、そして向いている人を語ります。
+date: 2026-11-14T17:00:00
 draft: false
 tags:
   - AI
@@ -9,7 +9,7 @@ tags:
   - ブログ運営
 categories:
   - AI
-image: "/images/Pasted-image-20261114100607.jpg"
+image: /images/Pasted-image-20261114100607.jpg
 slug: minimax-code-1month-review
 ---
 
@@ -21,7 +21,7 @@ slug: minimax-code-1month-review
 
 先月（2026年10月）、興味本位で中国発のフルモーダルAI **「MiniMax」のサブスク（M Plan の Go：$22/月）** に課金して、ファーストインプレッションの記事を書きました。
 
-詳しくはこちらの記事で書いてます
+詳しくはこちらの記事で書いてます。
 
 https://tetsu-blog.net/posts/minimax-m3-comparison/
 
