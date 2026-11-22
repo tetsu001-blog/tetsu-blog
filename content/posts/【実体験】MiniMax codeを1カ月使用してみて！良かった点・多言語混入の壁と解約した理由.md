@@ -9,7 +9,7 @@ tags:
   - ブログ運営
 categories:
   - AI
-image: /images/Pasted-image-20261114100607.jpg
+image: "/images/Pasted-image-20261114100607.jpg"
 slug: minimax-code-1month-review
 ---
 
