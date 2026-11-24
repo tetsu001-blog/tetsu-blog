@@ -7,7 +7,7 @@ enableRobotsTXT = true
 
 [params]
   author = "てつ"
-  description = "Antigravityを用いたHugoブログのクローン"
+  description = "AI・ガジェット・FXスワップ運用などを発信する雑記ブログ"
   favicon = "/favicon.ico"
   favicon_16x16 = "/favicon-16x16.png"
   favicon_32x32 = "/favicon-32x32.png"
